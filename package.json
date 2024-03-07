@@ -1,24 +1,32 @@
 {
-  "name": "mulhouse.escape.neafo.com",
-  "private": true,
-  "scripts": {
-    "build": "turbo build",
-    "dev": "turbo dev",
-    "lint": "turbo lint",
-    "format": "prettier --write \"**/*.{ts,tsx,md}\""
-  },
-  "devDependencies": {
-    "@repo/eslint-config": "*",
-    "@repo/typescript-config": "*",
-    "prettier": "^3.2.5",
-    "turbo": "latest"
-  },
-  "engines": {
-    "node": ">=18"
-  },
-  "packageManager": "bun@1.0.29",
-  "workspaces": [
-    "apps/*",
-    "packages/*"
-  ]
+	"name": "escape.neafo.com",
+	"devDependencies": {
+		"@repo/eslint-config": "*",
+		"@repo/typescript-config": "*",
+		"@vercel/style-guide": "^6.0.0",
+		"czg": "^1.9.0",
+		"prettier": "^3.2.5",
+		"semantic-release": "^23.0.2",
+		"turbo": "latest"
+	},
+	"engines": {
+		"node": ">=18"
+	},
+	"repository": {
+		"type": "git",
+		"url": "https://github.com/xKesvaL/escape.neafo.com"
+	},
+	"packageManager": "bun@1.0.29",
+	"private": true,
+	"scripts": {
+		"dev": "turbo run dev",
+		"build": "turbo run build",
+		"preview": "turbo run preview",
+		"lint": "turbo run lint",
+		"format": "turbo run format",
+		"test": "turbo run test",
+		"commit": "czg"
+	},
+	"workspaces": ["apps/*", "packages/*"],
+	"prettier": "@vercel/style-guide/prettier"
 }
