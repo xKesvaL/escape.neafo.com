@@ -1,0 +1,16 @@
+{
+	"$schema": "https://json.schemastore.org/tsconfig",
+	"extends": "./base.json",
+	"display": "Api",
+	"compilerOptions": {
+		"lib": ["ESNext"],
+		"noFallthroughCasesInSwitch": true,
+		"module": "NodeNext",
+		"allowImportingTsExtensions": false,
+		"noEmit": false,
+		"outDir": "build"
+	},
+	"ts-node": {
+		"esm": true
+	}
+}
