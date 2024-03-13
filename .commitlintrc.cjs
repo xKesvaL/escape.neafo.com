@@ -4,6 +4,6 @@ module.exports = {
 		// @see: https://commitlint.js.org/#/reference-rules
 	},
 	prompt: {
-		scopes: ["api-auth", "api-general", "api-database"],
+		scopes: ["app-auth", "app-general", "app-database", "app-design"],
 	},
 };
