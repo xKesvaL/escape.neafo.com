@@ -28,5 +28,5 @@
     "test": "turbo run test",
     "commit": "czg"
   },
-  "workspaces": ["apps/*", "packages/*"]
+  "workspaces": ["web/*", "packages/*"]
 }
