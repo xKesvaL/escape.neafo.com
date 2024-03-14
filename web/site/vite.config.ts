@@ -3,6 +3,7 @@ import { defineConfig } from "vitest/config";
 import { kitRoutes } from "vite-plugin-kit-routes";
 import type { KIT_ROUTES } from "$lib/ROUTES";
 import { paraglide } from "@inlang/paraglide-js-adapter-sveltekit/vite";
+import { CONFIG } from "@repo/global-config";
 
 export default defineConfig({
 	plugins: [
@@ -19,6 +20,6 @@ export default defineConfig({
 		include: ["src/**/*.{test,spec}.{js,ts}"],
 	},
 	server: {
-		port: 5200,
+		port: CONFIG.ports.site,
 	},
 });

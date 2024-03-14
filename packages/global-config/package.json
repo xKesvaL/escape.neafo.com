@@ -1,0 +1,14 @@
+{
+	"name": "@repo/global-config",
+	"version": "0.0.0",
+	"private": true,
+	"files": ["config.ts"],
+	"devDependencies": {
+		"typescript": "^5.3.3"
+	},
+	"exports": {
+		".": {
+			"import": "./config.ts"
+		}
+	}
+}
