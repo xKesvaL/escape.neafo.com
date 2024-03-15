@@ -3,7 +3,7 @@ import { defineConfig } from "vitest/config";
 import { kitRoutes } from "vite-plugin-kit-routes";
 import type { KIT_ROUTES } from "$lib/ROUTES";
 import { paraglide } from "@inlang/paraglide-js-adapter-sveltekit/vite";
-import { CONFIG } from "@repo/global-config";
+import CONFIG from "../../global.config";
 
 export default defineConfig({
 	plugins: [
