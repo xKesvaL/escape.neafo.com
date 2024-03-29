@@ -1,32 +1,35 @@
 {
-	"name": "escape.neafo.com",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/xKesvaL/escape.neafo.com"
-	},
-	"devDependencies": {
-		"@repo/eslint-config": "*",
-		"@repo/typescript-config": "*",
-		"@vercel/style-guide": "^6.0.0",
-		"czg": "^1.9.0",
-		"prettier": "^3.2.5",
-		"semantic-release": "^23.0.5",
-		"turbo": "^1.13.0"
-	},
-	"engines": {
-		"node": ">=18"
-	},
-	"packageManager": "bun@1.0.33",
-	"prettier": "@vercel/style-guide/prettier",
-	"private": true,
-	"scripts": {
-		"dev": "turbo run dev",
-		"build": "turbo run build",
-		"preview": "turbo run preview",
-		"lint": "turbo run lint",
-		"format": "turbo run format",
-		"test": "turbo run test",
-		"commit": "czg"
-	},
-	"workspaces": ["web/*", "packages/*"]
+  "name": "escape.neafo.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xKesvaL/escape.neafo.com"
+  },
+  "devDependencies": {
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@vercel/style-guide": "^6.0.0",
+    "czg": "^1.9.0",
+    "prettier": "^3.2.5",
+    "semantic-release": "^23.0.5",
+    "turbo": "^1.13.0"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.0.33",
+  "prettier": "@vercel/style-guide/prettier",
+  "private": true,
+  "scripts": {
+    "dev": "turbo run dev",
+    "build": "turbo run build",
+    "preview": "turbo run preview",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "test": "turbo run test",
+    "commit": "czg"
+  },
+  "workspaces": ["web/*", "packages/*"],
+  "trustedDependencies": [
+    "svelte-preprocess"
+  ]
 }

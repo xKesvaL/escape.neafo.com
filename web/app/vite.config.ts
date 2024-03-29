@@ -10,7 +10,7 @@ export default defineConfig({
 	plugins: [
 		enhancedImages(),
 		paraglide({
-			project: "./project.inlang",
+			project: "../../project.inlang",
 			outdir: "./src/paraglide",
 		}),
 		sveltekit(),
