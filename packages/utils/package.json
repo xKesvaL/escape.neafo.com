@@ -1,0 +1,6 @@
+{
+	"name": "@repo/utils",
+	"exports": {
+		".": "./index.ts"
+	}
+}

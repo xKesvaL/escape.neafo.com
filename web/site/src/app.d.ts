@@ -5,10 +5,12 @@ import "@total-typescript/ts-reset";
 declare global {
 	namespace App {
 		// interface Error {}
-		// interface Locals {}
+		interface Locals {
+			user: import("lucia").User | null;
+			session: import("lucia").Session | null;
+		}
 		// interface PageData {}
 		// interface PageState {}
 		// interface Platform {}
 	}
 }
-	

@@ -54,7 +54,13 @@
 		"vitest": "^1.3.1",
 		"zod": "^3.22.4",
 		"@sveltejs/enhanced-img": "^0.1.9",
-		"@tabler/icons-svelte": "^3.1.0"
+		"@tabler/icons-svelte": "^3.1.0",
+		"@repo/schemas": "*",
+		"lucia": "^3.1.1",
+		"oslo": "^1.2.0",
+		"@lucia-auth/adapter-mongodb": "^1.0.3",
+		"mongoose": "^8.2.4",
+		"@repo/utils": "*"
 	},
 	"type": "module"
 }
