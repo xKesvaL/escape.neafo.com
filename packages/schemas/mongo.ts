@@ -6,6 +6,14 @@ export const UserSchema = new Schema(
 			type: String,
 			required: true,
 		},
+		username: {
+			type: String,
+			required: true,
+		},
+		hashed_password: {
+			type: String,
+			required: false,
+		},
 	} as const,
 	{ _id: false },
 );
@@ -27,5 +35,3 @@ export const SessionSchema = new Schema(
 	} as const,
 	{ _id: false },
 );
-
-export const Session = model("Session", SessionSchema);

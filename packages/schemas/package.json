@@ -3,10 +3,17 @@
 	"version": "0.0.1",
 	"exports": {
 		".": {
-			"import": "./index.ts"
+			"import": "./mongo.ts"
+		},
+		"./mongo": {
+			"import": "./mongo.ts"
+		},
+		"./zod": {
+			"import": "./zod.ts"
 		}
 	},
 	"dependencies": {
-		"mongoose": "^8.2.1"
+		"mongoose": "^8.2.1",
+		"zod": "^3.22.4"
 	}
 }

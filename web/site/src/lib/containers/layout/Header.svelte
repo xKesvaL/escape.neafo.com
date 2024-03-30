@@ -9,9 +9,10 @@
 
 <header
 	class="bg-background/50 sticky left-0 right-0 top-0 flex h-20 items-center justify-between p-4 shadow backdrop-blur-3xl backdrop-saturate-200"
+	style:view-transition-name="header"
 >
 	<a href={route('/')}>
-		<enhanced:img src="$assets/logo.png?w=162" alt={BRAND.name} />
+		<enhanced:img src="$assets/logo.png?w=162" alt={BRAND.name} style:view-transition-name="header-img" />
 	</a>
 
 	<div class="flex gap-8 font-medium">
@@ -42,7 +43,7 @@
 					<h4 class="font-medium leading-none">Dimensions</h4>
 					<p class="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
 				</div>
-				<Button>Sign In</Button>
+				<Button href={route('/auth/login')}>Sign In</Button>
 			</div>
 		</Popover.Content>
 	</Popover.Root>

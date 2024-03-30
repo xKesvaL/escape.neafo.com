@@ -2,6 +2,7 @@ import { Lucia } from "lucia";
 import { dev } from "$app/environment";
 import { MongodbAdapter } from "@lucia-auth/adapter-mongodb";
 import { getDatabaseConnection } from "./db";
+import type { User } from "@repo/types";
 
 const mongoose = await getDatabaseConnection();
 
@@ -17,10 +18,16 @@ export const lucia = new Lucia(adapter, {
 			secure: !dev,
 		},
 	},
+	getUserAttributes: (attributes) => {
+		return {
+			username: attributes.username,
+		};
+	},
 });
 
 declare module "lucia" {
 	interface Register {
 		Lucia: typeof lucia;
+		DatabaseUserAttributes: User;
 	}
 }

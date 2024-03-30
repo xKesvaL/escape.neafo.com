@@ -1,5 +1,5 @@
 import { BRAND } from "$lib/config/brand";
-import { connect, model, type Mongoose } from "mongoose";
+import { connect, type Mongoose } from "mongoose";
 import { UserSchema, SessionSchema } from "@repo/schemas";
 import { logger } from "@repo/utils";
 
@@ -10,19 +10,18 @@ export const getDatabaseConnection = async (): Promise<Mongoose> => {
 		return con;
 	}
 
-	const connection = await connect(
-		process.env.MONGODB_URI || "mongodb://localhost:27017",
-		{
-			appName: `${BRAND.name}/web`,
-		},
-	);
+	const connection = await connect("mongodb://localhost:27017", {
+		appName: `${BRAND.name}/web`,
+	});
 
-	logger.info("");
+	logger.info("Mongoose connection complete");
+
+	if (!connection.models.User) {
+		connection.model("User", UserSchema);
+		connection.model("Session", SessionSchema);
+	}
 
 	con = connection;
 
 	return connection;
 };
-
-export const User = model("User", UserSchema);
-export const Session = model("Session", SessionSchema);
