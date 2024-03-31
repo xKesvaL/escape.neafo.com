@@ -61,8 +61,7 @@
 		"@lucia-auth/adapter-mongodb": "^1.0.3",
 		"mongoose": "^8.2.4",
 		"@repo/utils": "*",
-		"@repo/types": "*",
-		"sveltekit-view-transition": "^0.5.3",
+		"sveltekit-view-transition": "^0.5.3"
 	},
 	"type": "module"
 }

@@ -5,6 +5,7 @@ import type { PageServerLoad, Actions } from "./$types.js";
 import { lucia } from "$lib/server/auth";
 import { getDatabaseConnection } from "$lib/server/db";
 import { fail, redirect } from "@sveltejs/kit";
+import { generateId } from "lucia";
 import { Argon2id } from "oslo/password";
 import { route } from "$lib/ROUTES";
 
@@ -25,32 +26,34 @@ export const actions: Actions = {
 
 		const { email, password } = form.data;
 
+		const userId = generateId(40);
+		const hashedPassword = await new Argon2id().hash(password);
+
 		const mongoose = await getDatabaseConnection();
 
 		const userModel = mongoose.model<User>("User");
-		const user = await userModel.findOne({ email }).select({ email: 1, hashed_password: 1 }).exec();
 
-		if (!user) {
+		if (await userModel.exists({ email })) {
 			return fail(400, {
 				form,
-				error: "Incorrect email or password",
+				error: "Email already in use",
 			});
 		}
 
-		const validPassword = await new Argon2id().verify(user.hashed_password || '', password);
-		if (!validPassword) {
-			return fail(400, {
-				message: "Incorrect username or password"
-			});
-		}
+		const user = new userModel({
+			_id: userId,
+			email,
+			hashed_password: hashedPassword,
+		});
 
-		const session = await lucia.createSession(user.id, {});
+		await user.save();
+
+		const session = await lucia.createSession(userId, {});
 		const sessionCookie = lucia.createSessionCookie(session.id);
 		event.cookies.set(sessionCookie.name, sessionCookie.value, {
 			path: ".",
-			...sessionCookie.attributes
+			...sessionCookie.attributes,
 		});
-
 
 		return redirect(302, route("/"));
 	},

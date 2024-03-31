@@ -1,14 +1,16 @@
-import { Schema, model } from "mongoose";
+import { Schema } from "mongoose";
+import type { User } from "./zod";
 
-export const UserSchema = new Schema(
+export const UserSchema = new Schema<User>(
 	{
 		_id: {
 			type: String,
 			required: true,
 		},
-		username: {
+		email: {
 			type: String,
 			required: true,
+			index: true
 		},
 		hashed_password: {
 			type: String,
