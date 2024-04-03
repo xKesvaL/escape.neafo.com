@@ -14,3 +14,19 @@ export const userZodSchema = z.object({
 });
 
 export type User = z.infer<typeof userZodSchema>;
+
+export const escapeCreateZodSchema = z.object({
+	name: z.string(),
+	description: z.string(),
+	langs: z.array(z.enum(["fr", "en", "de"] as const)),
+	difficulty: z.enum(["easy", "medium", "hard"] as const),
+	puzzle: z.enum(["beginner", "advanced", "expert"] as const),
+	time: z.number().positive(),
+	address: z.string(),
+	city: z.string(),
+	postal_code: z.number(),
+	price: z.number()
+	// images: z.array(z.string())
+});
+
+export type EscapeCreation = z.infer<typeof escapeCreateZodSchema>;
