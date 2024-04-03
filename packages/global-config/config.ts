@@ -1,3 +1,5 @@
+import type { EscapeCreation } from "@repo/schemas/zod";
+
 export const CONFIG = {
 	locales: ["en", "fr"],
 	ports: {
@@ -7,5 +9,6 @@ export const CONFIG = {
 } as const;
 
 export const ESCAPE = {
-	difficulties: ["easy", "medium", "hard"],
+	difficulties: ["easy", "medium", "hard"] satisfies Array<EscapeCreation['difficulty']>,
+	puzzle: ["beginner", "medium", "advanced", "expert"] satisfies Array<EscapeCreation['puzzle']>
 } as const;
