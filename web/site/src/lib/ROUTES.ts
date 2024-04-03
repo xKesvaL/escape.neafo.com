@@ -10,6 +10,7 @@
  */
 const PAGES = {
   "/": `/`,
+  "/admin/escape/create": `/admin/escape/create`,
   "/auth/login": `/auth/login`,
   "/auth/register": `/auth/register`
 }
@@ -136,7 +137,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/auth/login': never, '/auth/register': never }
+  PAGES: { '/': never, '/admin/escape/create': never, '/auth/login': never, '/auth/register': never }
   SERVERS: Record<string, never>
   ACTIONS: { 'default /auth/login': never, 'default /auth/register': never }
   LINKS: Record<string, never>
