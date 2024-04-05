@@ -15,6 +15,12 @@
 	"city": "City",
 	"postal_code": "Postal code",
 	"price": "Price",
-	"submit": "Submit"
-
+	"submit": "Submit",
+	"easy": "Easy",
+	"medium": "Medium",
+	"hard": "Hard",
+	"beginner": "Beginner",
+	"intermediate": "Intermediate",
+	"advanced": "Advanced",
+	"expert": "Expert"
 }
