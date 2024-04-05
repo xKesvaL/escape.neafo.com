@@ -61,7 +61,9 @@
 		"@lucia-auth/adapter-mongodb": "^1.0.3",
 		"mongoose": "^8.2.4",
 		"@repo/utils": "*",
-		"sveltekit-view-transition": "^0.5.3"
+		"sveltekit-view-transition": "^0.5.3",
+		"svelte-headless-table": "^0.18.2",
+		"lucide-svelte": "0.364.0"
 	},
 	"type": "module"
 }
