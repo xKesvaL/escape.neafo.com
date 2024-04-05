@@ -1,50 +1,67 @@
 <script>
-	import { route } from '$lib/ROUTES';
-	import * as Popover from '$lib/components/ui/popover/index';
-	import { Button } from '$lib/components/ui/button/index';
-	import { IconMenu2, IconUser } from '@tabler/icons-svelte';
-	import * as m from '$paraglide/messages';
-	import { BRAND } from '$lib/config/brand';
+    import { route } from '$lib/ROUTES';
+    import { Popover, PopoverContent, PopoverTrigger } from '$lib/components/ui/popover/index';
+    import { Button } from '$lib/components/ui/button/index';
+    import { IconMenu2, IconServerCog, IconUser, IconUserCog } from '@tabler/icons-svelte';
+    import * as m from '$paraglide/messages';
+    import { BRAND } from '$lib/config/brand';
+    import { Separator } from "$lib/components/ui/separator/index";
+    import { page } from '$app/stores';
 </script>
 
 <header
-	class="bg-background/50 sticky left-0 right-0 top-0 flex h-20 items-center justify-between p-4 shadow backdrop-blur-3xl backdrop-saturate-200"
-	style:view-transition-name="header"
+        class="bg-background/50 sticky left-0 right-0 top-0 flex h-20 items-center justify-between p-4 shadow backdrop-blur-3xl backdrop-saturate-200"
+        style:view-transition-name="header"
 >
-	<a href={route('/')}>
-		<enhanced:img src="$assets/logo.png?w=162" alt={BRAND.name} style:view-transition-name="header-img" />
-	</a>
+    <a href={route('/')}>
+        <enhanced:img alt={BRAND.name} src="$assets/logo.png?w=162" style:view-transition-name="header-img"/>
+    </a>
 
-	<div class="flex gap-8 font-medium">
-		<a href={route('/')}> {m.home()} </a>
-		<a href=""> Escape Games </a>
-		<a href=""> Teambuilding </a>
-	</div>
+    <div class="flex gap-8 font-medium">
+        <a href={route('/')}> {m.home()} </a>
+        <a href=""> Escape Games </a>
+        <a href=""> Teambuilding </a>
+    </div>
 
-	<Popover.Root>
-		<Popover.Trigger asChild let:builder>
-			<Button
-				builders={[builder]}
-				variant="outline"
-				class="hover:bg-primary h-[3.25rem] rounded-full px-1.5"
-			>
-				<span class="sr-only">{m.menu()}</span>
-				<div class="p-2">
-					<IconMenu2 />
-				</div>
-				<div class="bg-card rounded-full p-2">
-					<IconUser />
-				</div>
-			</Button>
-		</Popover.Trigger>
-		<Popover.Content align="end" class="mt-2 w-80">
-			<div class="grid gap-4">
-				<div class="space-y-2">
-					<h4 class="font-medium leading-none">Dimensions</h4>
-					<p class="text-muted-foreground text-sm">Set the dimensions for the layer.</p>
-				</div>
-				<Button href={route('/auth/login')}>Sign In</Button>
-			</div>
-		</Popover.Content>
-	</Popover.Root>
+    <Popover>
+        <PopoverTrigger asChild let:builder>
+            <Button
+                    builders={[builder]}
+                    class="hover:bg-primary h-[3.25rem] rounded-full px-1.5"
+                    variant="outline"
+            >
+                <span class="sr-only">{m.menu()}</span>
+                <div class="p-2">
+                    <IconMenu2 stroke="1.5"/>
+                </div>
+                <div class="bg-card rounded-full p-2">
+                    <IconUser stroke="1.5"/>
+                </div>
+            </Button>
+        </PopoverTrigger>
+        <PopoverContent align="end" class="mt-2 w-80">
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-col gap-2">
+                    <Button
+                            class="gap-2 font-normal justify-start hover:bg-muted {$page.url.pathname === route('/profile') ? 'bg-muted' : ''}"
+                            href={route('/profile')}
+                            variant="ghost"
+                    >
+                        <IconUserCog stroke="1.5"/>
+                        {m.profile()}
+                    </Button>
+                    <Button
+                            class="gap-2 font-normal justify-start hover:bg-muted {$page.url.pathname === route('/admin') ? 'bg-muted' : ''}"
+                            href={route('/admin')}
+                            variant="ghost"
+                    >
+                        <IconServerCog stroke="1.5"/>
+                        {m.admin()}
+                    </Button>
+                </div>
+                <Separator/>
+                <Button href={route('/auth/login')}>Sign In</Button>
+            </div>
+        </PopoverContent>
+    </Popover>
 </header>
