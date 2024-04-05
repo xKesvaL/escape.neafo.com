@@ -1,7 +1,8 @@
 <script lang="ts">
     import {Field, Fieldset, Control, Label, FieldErrors, Button} from '$lib/components/ui/form';
     import {Input} from '$lib/components/ui/input';
-    import { Textarea } from "$lib/components/ui/textarea";
+    import {Textarea} from "$lib/components/ui/textarea";
+    import {Switch} from "$lib/components/ui/switch";
     import {escapeCreateZodSchema} from '@repo/schemas/zod';
     import {superForm} from 'sveltekit-superforms';
     import {zodClient} from 'sveltekit-superforms/adapters';
@@ -125,7 +126,7 @@
                 <div class="text-sm font-medium">{m.escape_puzzle_difficulty()}</div>
                 <div class="flex items-center gap-4 my-2">
                     {#each ESCAPE.puzzle as puzzle}
-                        {@const color = puzzle === 'beginner' ? 'info' : puzzle === 'medium' ? 'success' : puzzle === 'advanced' ? 'primary' : 'destructive'}
+                        {@const color = puzzle === 'beginner' ? 'info' : puzzle === 'intermediate' ? 'success' : puzzle === 'advanced' ? 'primary' : 'destructive'}
                         <Button
                                 type="button"
                                 variant="outline"
@@ -142,7 +143,7 @@
                     {/each}
                 </div>
             </div>
-            <div class="flex flex-row gap-8">
+            <div class="flex flex-row gap-8 items-center">
                 <Field {form} class="w-full" name="time">
                     <Control let:attrs>
                         <Label>{m.time()}</Label>
@@ -154,6 +155,16 @@
                     <Control let:attrs>
                         <Label>{m.price()}</Label>
                         <Input {...attrs} bind:value={$formData.price} type="number"/>
+                    </Control>
+                    <FieldErrors/>
+                </Field>
+                <Field {form} class="w-1/4 pt-8" name="public">
+                    <Control let:attrs>
+                        <div class="flex flex-row items-center space-x-2">
+                            <Switch {...attrs} bind:checked={$formData.public}/>
+                            <Label>{m.escape_public()}</Label>
+                        </div>
+
                     </Control>
                     <FieldErrors/>
                 </Field>

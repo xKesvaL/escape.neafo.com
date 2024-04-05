@@ -26,7 +26,8 @@ export const escapeCreateZodSchema = z.object({
 	address: z.string(),
 	city: z.string(),
 	postal_code: z.number(),
-	price: z.number()
+	price: z.number(),
+	public: z.boolean().default(true)
 	// images: z.array(z.string())
 });
 

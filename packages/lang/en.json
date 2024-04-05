@@ -22,5 +22,6 @@
 	"beginner": "Beginner",
 	"intermediate": "Intermediate",
 	"advanced": "Advanced",
-	"expert": "Expert"
+	"expert": "Expert",
+	"escape_public": "Public"
 }
