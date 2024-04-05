@@ -2,5 +2,19 @@
 	"test": "test",
 	"home": "Home",
 	"menu": "Menu",
-	"user": "User"
+	"user": "User",
+	"locale_en": "English",
+	"locale_fr": "French",
+	"name": "Name",
+	"description": "Description",
+	"escape_langs": "Language(s)",
+	"difficulty": "Difficulty",
+	"escape_puzzle_difficulty": "Puzzle difficulty",
+	"time": "Time",
+	"address": "Address",
+	"city": "City",
+	"postal_code": "Postal code",
+	"price": "Price",
+	"submit": "Submit"
+
 }
