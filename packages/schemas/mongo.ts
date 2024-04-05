@@ -90,6 +90,10 @@ export const EscapeSchema = new Schema<Escape>(
 		price: {
 			type: Number,
 			required: true
+		},
+		public: {
+			type: Boolean,
+			default: true
 		}
 	} as const,
 	{ _id: false },
