@@ -20,19 +20,24 @@
   import { Button } from "$lib/components/ui/button";
   import { Input } from "$lib/components/ui/input";
   import * as DropdownMenu from "$lib/components/ui/dropdown-menu";
+  import DataTableCheckbox from "./DataTableCheckbox.svelte";
  
   type Payment = {
     id: string;
-    amount: number;
+    age: number;
     status: "pending" | "processing" | "success" | "failed";
     email: string;
+    name: string;
+    firstname:string
   };
   const data: Payment[] = [
     {
       id: "m5gr84i9",
-      amount: 316,
       status: "success",
       email: "ken99@yahoo.com",
+      name: "Bob",
+      firstname:"Jordan",
+      age: 19,
     },
     // ...
   ];
@@ -50,7 +55,20 @@
   const columns = table.createColumns([
     table.column({
       accessor: "id",
-      header: "ID",
+      header: (_, { pluginStates }) => {
+        const { allPageRowsSelected } = pluginStates.select;
+        return createRender(DataTableCheckbox, {
+          checked: allPageRowsSelected,
+        });
+      },
+      cell: ({ row }, { pluginStates }) => {
+        const { getRowState } = pluginStates.select;
+        const { isSelected } = getRowState(row);
+ 
+        return createRender(DataTableCheckbox, {
+          checked: isSelected,
+        });
+      },
       plugins: {
         sort: {
           disable: true,
@@ -62,7 +80,7 @@
     }),
     table.column({
       accessor: "status",
-      header: "Status",
+      header: "Name",
       plugins: {
         sort: {
           disable: true,
@@ -71,29 +89,18 @@
           exclude: true,
         },
       },
+    }),
+    table.column({
+      accessor: "firstname",
+      header: "Firstname",
     }),
     table.column({
       accessor: "email",
       header: "Email",
     }),
     table.column({
-      accessor: "amount",
-      header: "Amount",
-      cell: ({ value }) => {
-        const formatted = new Intl.NumberFormat("en-US", {
-          style: "currency",
-          currency: "USD",
-        }).format(value);
-        return formatted;
-      },
-      plugins: {
-        sort: {
-          disable: true,
-        },
-        filter: {
-          exclude: true,
-        },
-      },
+      accessor: "age",
+      header: "Age",
     }),
     table.column({
       accessor: ({ id }) => id,
@@ -111,14 +118,13 @@
  
   const {
     headerRows,
-    pageRows,
     tableAttrs,
     tableBodyAttrs,
     pluginStates,
     flatColumns,
   } = table.createViewModel(columns);
  
-  const { pageIndex, hasNextPage, hasPreviousPage } = pluginStates.page;
+
   const { filterValue } = pluginStates.filter;
   const { hiddenColumnIds } = pluginStates.hide;
  
@@ -129,7 +135,7 @@
     .filter(([, hide]) => !hide)
     .map(([id]) => id);
  
-  const hidableCols = ["status", "email", "amount"];
+  const hidableCols = ["status","firstname", "email", "age"];
 </script>
 
 
@@ -196,4 +202,5 @@
       </Table.Body>
     </Table.Root>
   </div>
-</div>
+
+  </div>
