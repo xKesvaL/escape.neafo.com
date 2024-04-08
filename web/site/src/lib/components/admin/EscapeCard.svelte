@@ -1,6 +1,7 @@
 <script>
     import MapPin from "$lib/components/icons/MapPin.svelte"
     import Button from "$lib/components/ui/button/button.svelte"
+
 </script>
 
 <div class="flex bg-transparent bg-accent-foreground rounded-xl  flex-col w-60  p-4 gap-6 shrink-0">
