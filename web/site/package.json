@@ -63,7 +63,9 @@
 		"@repo/utils": "*",
 		"sveltekit-view-transition": "^0.5.3",
 		"svelte-headless-table": "^0.18.2",
-		"lucide-svelte": "0.364.0"
+		"lucide-svelte": "0.364.0",
+		"@repo/global-config": "*",
+		"replace-special-characters": "^1.2.7"
 	},
 	"type": "module"
 }
