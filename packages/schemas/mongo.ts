@@ -55,9 +55,8 @@ export const SessionSchema = new Schema(
 );
 
 export const ImageSchema = new Schema({
-	data: Buffer,
-	content_type: String,
-	id: String,
+    data: Buffer,
+    content_type: String,
 });
 
 export const EscapeSchema = new Schema<Escape>(
@@ -105,11 +104,11 @@ export const EscapeSchema = new Schema<Escape>(
 			required: true,
 		},
 		postal_code: {
-			type: String,
+			type: Number,
 			required: true,
 		},
 		price: {
-			type: String,
+			type: Number,
 			required: true,
 		},
 		public: {
@@ -130,3 +129,4 @@ export const EscapeSchema = new Schema<Escape>(
 		},
 	},
 );
+
