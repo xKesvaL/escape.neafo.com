@@ -6,7 +6,7 @@
     import * as m from '$paraglide/messages';
     import { BRAND } from '$lib/config/brand';
     import { Separator } from "$lib/components/ui/separator/index";
-    import { page } from '$app/stores';
+    import HeaderMenuButton from "$lib/containers/layout/HeaderMenuButton.svelte";
 </script>
 
 <header
@@ -42,22 +42,18 @@
         <PopoverContent align="end" class="mt-2 w-80">
             <div class="flex flex-col gap-4">
                 <div class="flex flex-col gap-2">
-                    <Button
-                            class="gap-2 font-normal justify-start hover:bg-muted {$page.url.pathname === route('/profile') ? 'bg-muted' : ''}"
+                    <HeaderMenuButton
                             href={route('/profile')}
-                            variant="ghost"
+                            icon={IconUserCog}
                     >
-                        <IconUserCog stroke="1.5"/>
                         {m.profile()}
-                    </Button>
-                    <Button
-                            class="gap-2 font-normal justify-start hover:bg-muted {$page.url.pathname === route('/admin') ? 'bg-muted' : ''}"
+                    </HeaderMenuButton>
+                    <HeaderMenuButton
                             href={route('/admin')}
-                            variant="ghost"
+                            icon={IconServerCog}
                     >
-                        <IconServerCog stroke="1.5"/>
                         {m.admin()}
-                    </Button>
+                    </HeaderMenuButton>
                 </div>
                 <Separator/>
                 <Button href={route('/auth/login')}>Sign In</Button>
