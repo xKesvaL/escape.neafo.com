@@ -10,10 +10,8 @@ export const load: PageServerLoad = async () => {
         email: true
      });
 
-    console.log(users);
-
     return {
-        users: structuredClone(users)
+        users: users
     };
 };
 
