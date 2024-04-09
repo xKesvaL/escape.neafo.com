@@ -10,9 +10,13 @@
  */
 const PAGES = {
   "/": `/`,
+  "/admin/escapes/create": `/admin/escapes/create`,
   "/admin/users": `/admin/users`,
   "/auth/login": `/auth/login`,
-  "/auth/register": `/auth/register`
+  "/auth/register": `/auth/register`,
+  "/escapes/[slug]": (params: { slug: (string | number) }) => {
+    return `/escapes/${params.slug}`
+  }
 }
 
 /**
@@ -26,6 +30,7 @@ const SERVERS = {
  * ACTIONS
  */
 const ACTIONS = {
+  "default /admin/escapes/create": `/admin/escapes/create`,
   "default /auth/login": `/auth/login`,
   "default /auth/register": `/auth/register`
 }
@@ -137,9 +142,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin/users': never, '/auth/login': never, '/auth/register': never }
+  PAGES: { '/': never, '/admin/escapes/create': never, '/admin/users': never, '/auth/login': never, '/auth/register': never, '/escapes/[slug]': 'slug' }
   SERVERS: Record<string, never>
-  ACTIONS: { 'default /auth/login': never, 'default /auth/register': never }
+  ACTIONS: { 'default /admin/escapes/create': never, 'default /auth/login': never, 'default /auth/register': never }
   LINKS: Record<string, never>
-  Params: Record<string, never>
+  Params: { slug: never }
 }
