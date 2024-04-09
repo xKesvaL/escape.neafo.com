@@ -54,6 +54,11 @@ export const SessionSchema = new Schema(
 	},
 );
 
+export const ImageSchema = new Schema({
+	data: Buffer,
+	content_type: String,
+});
+
 export const EscapeSchema = new Schema<Escape>(
 	{
 		_id: {
@@ -110,7 +115,11 @@ export const EscapeSchema = new Schema<Escape>(
 			type: Boolean,
 			default: true,
 		},
-		images: {},
+		images: {
+			type: [ImageSchema],
+			required: false,
+			default: [],
+		},
 	} as const,
 	{
 		_id: false,
@@ -120,8 +129,3 @@ export const EscapeSchema = new Schema<Escape>(
 		},
 	},
 );
-
-export const ImageSchema = new Schema({
-	data: Buffer,
-	content_type: String,
-});
