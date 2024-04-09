@@ -37,6 +37,10 @@
     "packages/*"
   ],
   "trustedDependencies": [
+    "@biomejs/biome",
+    "@sveltejs/kit",
+    "esbuild",
+    "sharp",
     "svelte-preprocess"
   ]
 }
