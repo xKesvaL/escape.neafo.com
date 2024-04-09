@@ -9,7 +9,7 @@ import { Argon2id } from "oslo/password";
 import { route } from "$lib/ROUTES";
 
 export const load: PageServerLoad = async () => {
-	return {
+	return { 
 		form: await superValidate(zod(userRegisterZodSchema)),
 	};
 };
