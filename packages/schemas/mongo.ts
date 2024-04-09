@@ -1,6 +1,5 @@
 import { Schema } from "mongoose";
-import type { User } from "./zod";
-import type { Escape } from "./zod";
+import type { Escape, User } from "./zod";
 
 export const UserSchema = new Schema<User>(
 	{
@@ -11,14 +10,28 @@ export const UserSchema = new Schema<User>(
 		email: {
 			type: String,
 			required: true,
-			index: true
+			index: true,
+		},
+		firstname: {
+			type: String,
+			required: false,
+		},
+		lastname: {
+			type: String,
+			required: false,
 		},
 		hashed_password: {
 			type: String,
 			required: false,
 		},
 	} as const,
-	{ _id: false },
+	{
+		_id: false,
+		timestamps: {
+			createdAt: "created_at",
+			updatedAt: "updated_at",
+		},
+	},
 );
 
 export const SessionSchema = new Schema(
@@ -36,7 +49,9 @@ export const SessionSchema = new Schema(
 			required: true,
 		},
 	} as const,
-	{ _id: false },
+	{
+		_id: false,
+	},
 );
 
 export const EscapeSchema = new Schema<Escape>(
@@ -48,53 +63,65 @@ export const EscapeSchema = new Schema<Escape>(
 		name: {
 			type: String,
 			required: true,
-			index: true
+			index: true,
 		},
 		slug: {
 			type: String,
 			required: true,
-			index: true
+			index: true,
 		},
 		description: {
 			type: String,
-			required: true
+			required: true,
 		},
 		langs: {
 			type: [String],
-			required: true
+			required: true,
 		},
 		difficulty: {
 			type: String,
-			required: true
+			required: true,
 		},
 		puzzle: {
 			type: String,
-			required: true
+			required: true,
 		},
 		time: {
 			type: String,
-			required: true
+			required: true,
 		},
 		address: {
 			type: String,
-			required: true
+			required: true,
 		},
 		city: {
 			type: String,
-			required: true
+			required: true,
 		},
 		postal_code: {
 			type: Number,
-			required: true
+			required: true,
 		},
 		price: {
 			type: Number,
-			required: true
+			required: true,
 		},
 		public: {
 			type: Boolean,
-			default: true
-		}
+			default: true,
+		},
+		images: {},
 	} as const,
-	{ _id: false },
+	{
+		_id: false,
+		timestamps: {
+			createdAt: "created_at",
+			updatedAt: "updated_at",
+		},
+	},
 );
+
+export const ImageSchema = new Schema({
+	data: Buffer,
+	content_type: String,
+});

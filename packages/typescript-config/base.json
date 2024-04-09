@@ -18,7 +18,6 @@
 		"noUnusedLocals": true,
 		"noUnusedParameters": true,
 		"noPropertyAccessFromIndexSignature": true,
-		"verbatimModuleSyntax": true,
 		"allowImportingTsExtensions": true,
 		"noEmit": true,
 		"module": "NodeNext"

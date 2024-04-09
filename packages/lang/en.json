@@ -23,5 +23,7 @@
 	"intermediate": "Intermediate",
 	"advanced": "Advanced",
 	"expert": "Expert",
-	"public_": "Public"
+	"public_": "Public",
+	"admin": "Admin",
+	"profile": "Profile"
 }

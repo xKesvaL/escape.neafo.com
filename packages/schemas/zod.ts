@@ -10,6 +10,8 @@ export type UserRegister = z.infer<typeof userRegisterZodSchema>;
 export const userZodSchema = z.object({
 	_id: z.string(),
 	email: z.string().email(),
+	firstname: z.string().optional(),
+	lastname: z.string().optional(),
 	hashed_password: z.string().optional(),
 });
 
@@ -27,8 +29,15 @@ export const escapeCreateZodSchema = z.object({
 	city: z.string(),
 	postal_code: z.number(),
 	price: z.number(),
-	public: z.boolean().default(true)
-	// images: z.array(z.string())
+	public: z.boolean().default(true),
+	images: z
+		.array(
+			z.object({
+				data: z.string(),
+				content_type: z.string(),
+			}),
+		)
+		.optional(),
 });
 
 export type EscapeCreation = z.infer<typeof escapeCreateZodSchema>;
@@ -36,7 +45,7 @@ export type EscapeCreation = z.infer<typeof escapeCreateZodSchema>;
 export const escapeZodSchema = escapeCreateZodSchema.extend({
 	_id: z.string(),
 	created_at: z.date(),
-	updated_at: z.date()
+	updated_at: z.date(),
 });
 
 export type Escape = z.infer<typeof escapeZodSchema>;

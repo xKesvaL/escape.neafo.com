@@ -10,13 +10,15 @@
  */
 const PAGES = {
   "/": `/`,
+  "/admin": `/admin`,
   "/admin/escapes/create": `/admin/escapes/create`,
   "/admin/users": `/admin/users`,
   "/auth/login": `/auth/login`,
   "/auth/register": `/auth/register`,
   "/escapes/[slug]": (params: { slug: (string | number) }) => {
     return `/escapes/${params.slug}`
-  }
+  },
+  "/profile": `/profile`
 }
 
 /**
@@ -142,6 +144,15 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
+  PAGES: {
+    '/': never,
+    '/admin': never,
+    '/admin/escapes/create': never,
+    '/auth/login': never,
+    '/auth/register': never,
+    '/escapes/[slug]': 'slug',
+    '/profile': never
+  }
   PAGES: { '/': never, '/admin/escapes/create': never, '/admin/users': never, '/auth/login': never, '/auth/register': never, '/escapes/[slug]': 'slug' }
   SERVERS: Record<string, never>
   ACTIONS: { 'default /admin/escapes/create': never, 'default /auth/login': never, 'default /auth/register': never }
