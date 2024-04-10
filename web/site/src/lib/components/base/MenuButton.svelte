@@ -4,12 +4,8 @@
     import {Button} from "$lib/components/ui/button";
     import type {SvelteComponent} from "svelte";
 
-    interface Props {
-        icon: SvelteComponent;
-        href: string;
-    }
-
-    const {href, icon}: Props = $props();
+    export let icon: SvelteComponent;
+    export let href: string;
 </script>
 
 <Button
