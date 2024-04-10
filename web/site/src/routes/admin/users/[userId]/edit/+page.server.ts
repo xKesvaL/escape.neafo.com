@@ -1,9 +1,9 @@
-import { getDatabaseConnection } from "$lib/server/db";
-import { type User, userEditZodSchema } from "@repo/schemas/zod";
-import { fail } from "@sveltejs/kit";
-import { superValidate } from "sveltekit-superforms";
-import { zod } from "sveltekit-superforms/adapters";
-import type { Actions, PageServerLoad } from "./$types.js";
+import { superValidate } from 'sveltekit-superforms';
+import { type User, userEditZodSchema } from '@repo/schemas/zod';
+import { zod } from 'sveltekit-superforms/adapters';
+import type { PageServerLoad, Actions } from './$types.js';
+import { getDatabaseConnection } from '$lib/server/db';
+import { fail } from '@sveltejs/kit';
 
 export const load: PageServerLoad = async ({ params }) => {
 	const userId = params.userId;
@@ -16,7 +16,6 @@ export const load: PageServerLoad = async ({ params }) => {
 		firstname: true,
 		lastname: true,
 	});
-
 	return {
 		user: user,
 		form: await superValidate(user, zod(userEditZodSchema)),
@@ -64,5 +63,5 @@ export const actions: Actions = {
 		await user.save();
 
 		return true;
-	},
+	}
 };

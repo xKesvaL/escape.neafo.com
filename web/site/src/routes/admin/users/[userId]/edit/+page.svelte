@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Button, Control, Field, FieldErrors, Label} from '$lib/components/ui/form';
+    import {Field, Control, Label, FieldErrors, Button} from '$lib/components/ui/form';
     import {Input} from '$lib/components/ui/input';
     import {userEditZodSchema} from '@repo/schemas/zod';
     import {superForm} from 'sveltekit-superforms';
@@ -42,7 +42,6 @@
         </Field>
         <Button>Submit</Button>
     </form>
-
     {:else}
     <p>Y'a pas d'utilisateur fait pas chier</p>
     {/if}
