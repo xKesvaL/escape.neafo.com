@@ -1,10 +1,12 @@
 <script lang="ts">
+    import 'filepond/dist/filepond.css';
+    import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
     import {Button, Control, Field, FieldErrors, Fieldset, Label} from '$lib/components/ui/form';
     import {Input} from '$lib/components/ui/input';
     import {Textarea} from "$lib/components/ui/textarea";
     import {Switch} from "$lib/components/ui/switch";
     import {escapeCreateZodSchema} from '@repo/schemas/zod';
-    import {superForm} from 'sveltekit-superforms';
+    import SuperDebug, {superForm} from 'sveltekit-superforms';
     import {zodClient} from 'sveltekit-superforms/adapters';
     import {Checkbox} from "$lib/components/ui/checkbox";
     import {availableLanguageTags} from '$paraglide/runtime';
@@ -13,8 +15,16 @@
     import type {Locale} from "$lib/config/brand";
     import * as m from '$paraglide/messages';
     import {getI18n} from "$lib/utils/functions";
+    import {type FilePondFile, registerPlugin} from 'filepond';
+    import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
+    import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
+    import {fileToBase64} from "@repo/utils";
+    import {browser} from "$app/environment";
+    import FilePond from "$lib/components/base/FilePond.svelte";
 
-    const {data} = $props();
+    registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+
+    export let data;
 
     const form = superForm(data.form, {
         validators: zodClient(escapeCreateZodSchema)
@@ -23,7 +33,7 @@
     const {form: formData, enhance} = form;
 
     function addItem(id: Locale) {
-        $formData.langs.push(id);
+        $formData.langs = [...$formData.langs, id];
     }
 
     function removeItem(id: string) {
@@ -37,24 +47,43 @@
             .toLowerCase();
     }
 
+    let filePond;
+
+    const handleAddFile = async (e, file: FilePondFile) => {
+        $formData.images = [...$formData.images, {
+            content_type: file.fileType,
+            data: await fileToBase64(file.file),
+            id: file.id
+        }];
+
+        console.log($formData.images)
+    };
+
+    const handleRemoveFile = (e, file: FilePondFile) => {
+        $formData.images = $formData.images.filter((i) => i.id !== file.id);
+        console.log($formData.images)
+    };
+
 </script>
 
 <section class="container py-12 flex flex-col gap-10">
     <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Admin - Escape - Creation</h1>
-    <form class="flex flex-row gap-8" method="POST" use:enhance>
+    <form class="flex flex-row gap-8" enctype="multipart/form-data" method="POST" use:enhance>
         <div class="flex flex-col gap-4 w-full">
             <div class="flex flex-row gap-4">
-                <Field {form} class="w-full" name="name">
+                <Field class="w-full" {form} name="name">
                     <Control let:attrs>
                         <Label>{m.name()}</Label>
-                        <Input placeholder="Cool escape game" {...attrs} bind:value={$formData.name} on:input={(e) => handleSlug(e.target.value)} />
+                        <Input {...attrs} bind:value={$formData.name} on:input={(e) => handleSlug(e.target.value)}
+                               placeholder="Cool escape game"/>
                     </Control>
                     <FieldErrors/>
                 </Field>
-                <Field {form} class="w-full" name="slug">
+                <Field class="w-full" {form} name="slug">
                     <Control let:attrs>
                         <Label>Slug</Label>
-                        <Input placeholder="cool-escape-game" class="pointer-events-none opacity-50" tabindex="-1" {...attrs} bind:value={$formData.slug} />
+                        <Input {...attrs} bind:value={$formData.slug} class="pointer-events-none opacity-50"
+                               placeholder="cool-escape-game" tabindex="-1"/>
                     </Control>
                     <FieldErrors/>
                 </Field>
@@ -62,7 +91,7 @@
             <Field {form} name="description">
                 <Control let:attrs>
                     <Label>{m.description()}</Label>
-                    <Textarea placeholder="Description of the escape..." {...attrs} bind:value={$formData.description}/>
+                    <Textarea {...attrs} bind:value={$formData.description} placeholder="Description of the escape..."/>
                 </Control>
                 <FieldErrors/>
             </Field>
@@ -113,7 +142,7 @@
                                 class={`h-10 border border-[var(--bt-diff-clr)] w-full p-2 rounded-md cursor-pointer hover:bg-[var(--bt-diff-clr)] ${
                         $formData.difficulty === difficulty ? "bg-[var(--bt-diff-clr)]" : ""
                     }`}
-                                onclick={() => {
+                                on:click={() => {
                         $formData.difficulty = difficulty;
                     }}
                                 style="--bt-diff-clr: hsl(var(--{color}))"
@@ -135,7 +164,7 @@
                                 class={`h-10 border border-[var(--bt-diff-clr)] w-full p-2 rounded-md cursor-pointer hover:bg-[var(--bt-diff-clr)] ${
                         $formData.puzzle === puzzle ? "bg-[var(--bt-diff-clr)]" : ""
                     }`}
-                                onclick={() => {
+                                on:click={() => {
                         $formData.puzzle = puzzle;
                     }}
                                 style="--bt-diff-clr: hsl(var(--{color}))"
@@ -146,21 +175,21 @@
                 </div>
             </div>
             <div class="flex flex-row gap-4 items-center">
-                <Field {form} class="w-full" name="time">
+                <Field class="w-full" {form} name="time">
                     <Control let:attrs>
                         <Label>{m.time()}</Label>
                         <Input {...attrs} bind:value={$formData.time} class="input-time" type="time"/>
                     </Control>
                     <FieldErrors/>
                 </Field>
-                <Field {form} class="w-full" name="price">
+                <Field class="w-full" {form} name="price">
                     <Control let:attrs>
                         <Label>{m.price()}</Label>
                         <Input {...attrs} bind:value={$formData.price} type="number"/>
                     </Control>
                     <FieldErrors/>
                 </Field>
-                <Field {form} class="w-1/4 pt-8" name="public">
+                <Field class="w-1/4 pt-8" {form} name="public">
                     <Control let:attrs>
                         <div class="flex flex-row items-center space-x-2">
                             <Switch {...attrs} bind:checked={$formData.public}/>
@@ -172,24 +201,24 @@
                 </Field>
             </div>
             <div class="flex flex-row gap-4">
-                <Field {form} class="w-full" name="address">
+                <Field class="w-full" {form} name="address">
                     <Control let:attrs>
                         <Label>{m.address()}</Label>
-                        <Input placeholder="18 street of street" {...attrs} bind:value={$formData.address}/>
+                        <Input {...attrs} bind:value={$formData.address} placeholder="18 street of street"/>
                     </Control>
                     <FieldErrors/>
                 </Field>
-                <Field {form} class="w-full" name="city">
+                <Field class="w-full" {form} name="city">
                     <Control let:attrs>
                         <Label>{m.city()}</Label>
-                        <Input placeholder="City" {...attrs} bind:value={$formData.city}/>
+                        <Input {...attrs} bind:value={$formData.city} placeholder="City"/>
                     </Control>
                     <FieldErrors/>
                 </Field>
                 <Field class="w-full max-w-24" {form} name="postal_code">
                     <Control let:attrs>
                         <Label>{m.postal_code()}</Label>
-                        <Input placeholder="68940" {...attrs} bind:value={$formData.postal_code} type="number"/>
+                        <Input {...attrs} bind:value={$formData.postal_code} placeholder="68940" type="number"/>
                     </Control>
                     <FieldErrors/>
                 </Field>
@@ -197,24 +226,38 @@
             <Button>{m.submit()}</Button>
         </div>
         <div class="flex flex-col w-full gap-2 pt-8">
-            <div class="relative rounded w-full h-full items-center bg-white">
-                <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black">Image</p>
-            </div>
-            <div class="flex flex-row h-40 gap-2">
-                <div class="relative square rounded h-full w-full bg-white">
-                    <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black">Image</p>
-                </div>
-                <div class="relative square rounded h-full w-full bg-white">
-                    <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black">Image</p>
-                </div>
-                <div class="relative square rounded h-full w-full bg-white">
-                    <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black">Image</p>
-                </div>
-                <div class="relative square rounded h-full w-full bg-white">
-                    <p class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-black">Image</p>
-                </div>
-            </div>
+            <FilePond
+                    acceptedFileTypes="image/png, image/jpeg, image/jpg"
+                    allowMultiple={true}
+                    bind:this={filePond}
+                    class="h-full"
+                    maxFiles={5}
+                    onaddfile={handleAddFile}
+                    onremovefile={handleRemoveFile}
+                    required={true}
+            />
         </div>
-
     </form>
+    {#if browser}
+        <SuperDebug data={$formData}/>
+    {/if}
 </section>
+
+<style lang="postcss">
+    :global(.filepond--panel-root) {
+        @apply bg-card border px-8;
+    }
+
+    :global(.filepond--drop-label) {
+        @apply text-muted-foreground;
+    }
+
+    :global(.filepond--item) {
+        @apply mx-4;
+    }
+
+    :global(.filepond--image-preview-wrapper) {
+        @apply border border-primary;
+    }
+</style>
+

@@ -13,8 +13,6 @@
     import { getI18n } from "$lib/utils/functions";
 
     const crumbs = ['home', ...$page.url.pathname.split('/').filter(Boolean)]
-
-    console.log(crumbs)
 </script>
 
 <!-- Height is 100dvh minus header -->

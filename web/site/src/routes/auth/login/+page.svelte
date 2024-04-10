@@ -1,5 +1,5 @@
 <script lang="ts">
-    import {Field, Control, Label, FieldErrors, Button} from '$lib/components/ui/form';
+    import {Button, Control, Field, FieldErrors, Label} from '$lib/components/ui/form';
     import {Input} from '$lib/components/ui/input';
     import {userRegisterZodSchema} from '@repo/schemas/zod';
     import {superForm} from 'sveltekit-superforms';
@@ -12,7 +12,7 @@
   
     
 
-    const {data} = $props();
+    export let data;
 
 
     const form = superForm(data.form, {

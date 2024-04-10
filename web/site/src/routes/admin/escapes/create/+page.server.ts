@@ -1,76 +1,80 @@
-import type {Actions, PageServerLoad} from "../../../../../.svelte-kit/types/src/routes/auth/register/$types";
-import {superValidate} from "sveltekit-superforms";
-import {zod} from "sveltekit-superforms/adapters";
-import {escapeCreateZodSchema, type Escape} from "@repo/schemas/zod";
-import {fail, redirect} from "@sveltejs/kit";
-import {generateId} from "lucia";
-import {getDatabaseConnection} from "$lib/server/db";
-import {route} from "$lib/ROUTES";
+import { getDatabaseConnection } from "$lib/server/db";
+import { type Escape, escapeCreateZodSchema } from "@repo/schemas/zod";
+import { fail } from "@sveltejs/kit";
+import { generateId } from "lucia";
+import { superValidate } from "sveltekit-superforms";
+import { zod } from "sveltekit-superforms/adapters";
+import type {
+	Actions,
+	PageServerLoad,
+} from "../../../../../.svelte-kit/types/src/routes/auth/register/$types";
 
 export const load: PageServerLoad = async () => {
-    return {
-        form: await superValidate(zod(escapeCreateZodSchema)),
-    };
+	return {
+		form: await superValidate(zod(escapeCreateZodSchema)),
+	};
 };
 
 export const actions: Actions = {
-    default: async (event) => {
-        const form = await superValidate(event, zod(escapeCreateZodSchema));
-        if (!form.valid) {
-            return fail(400, {
-                form,
-            });
-        }
+	default: async (event) => {
+		const form = await superValidate(event, zod(escapeCreateZodSchema), {
+			allowFiles: true,
+		});
+		if (!form.valid) {
+			return fail(400, {
+				form,
+			});
+		}
 
-        const {
-            name,
-            slug,
-            description,
-            langs,
-            difficulty,
-            puzzle,
-            time,
-            address,
-            city,
-            postal_code,
-            price
-        } = form.data;
+		const {
+			name,
+			slug,
+			description,
+			langs,
+			difficulty,
+			puzzle,
+			time,
+			address,
+			city,
+			postal_code,
+			price,
+			images,
+		} = form.data;
 
-        console.log(form.data)
+		const escapeId = generateId(40);
+		const mongoose = await getDatabaseConnection();
 
-        const escapeId = generateId(40);
+		const escapeModel = mongoose.model<Escape>("Escape");
 
-        const mongoose = await getDatabaseConnection();
+		if (await escapeModel.exists({ slug })) {
+			return fail(400, {
+				form,
+				error: "Name of escape already in use",
+			});
+		}
 
-        const escapeModel = mongoose.model<Escape>("Escape");
+		console.log(form.data);
 
-        if (await escapeModel.exists({ slug })) {
-            return fail(400, {
-                form,
-                error: "Name of escape already in use",
-            });
-        }
+		const escapeGame = new escapeModel({
+			_id: escapeId,
+			name,
+			slug,
+			description,
+			langs,
+			difficulty,
+			puzzle,
+			time,
+			address,
+			city,
+			postal_code,
+			price,
+			images,
+		});
 
-        const escape = new escapeModel({
-            _id: escapeId,
-            name,
-            slug,
-            description,
-            langs,
-            difficulty,
-            puzzle,
-            time,
-            address,
-            city,
-            postal_code,
-            price
-        });
+		// await escapeGame.save();
 
-        await escape.save();
-
-
-        return redirect(302, route("/escapes/[slug]", {
-            slug
-        }));
-    },
+		// return redirect(302, route("/escapes/[slug]", {
+		//     slug
+		// }));
+	},
 };
