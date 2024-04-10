@@ -13,6 +13,9 @@ const PAGES = {
   "/admin": `/admin`,
   "/admin/escapes/create": `/admin/escapes/create`,
   "/admin/users": `/admin/users`,
+  "/admin/users/[userId]": (params: { userId: (string | number) }) => {
+    return `/admin/users/${params.userId}`
+  },
   "/auth/login": `/auth/login`,
   "/auth/register": `/auth/register`,
   "/contact": `/contact`,
@@ -149,9 +152,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin': never, '/admin/escapes/create': never, '/admin/users': never, '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/profile': never, '/team-building': never }
+  PAGES: { '/': never, '/admin': never, '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/profile': never, '/team-building': never }
   SERVERS: Record<string, never>
   ACTIONS: { 'default /admin/escapes/create': never, 'default /auth/login': never, 'default /auth/register': never }
   LINKS: Record<string, never>
-  Params: { slug: never }
+  Params: { userId: never, slug: never }
 }
