@@ -206,6 +206,7 @@
                     <FileInput
                             accept="image/png, image/jpeg, image/jpg"
                             {attrs}
+                            multiple
                             on:input={(e) => ($formData.images = Array.from(e.currentTarget.files ?? []))}
                             required
                     />
