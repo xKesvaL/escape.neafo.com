@@ -1,5 +1,5 @@
 import { superValidate } from 'sveltekit-superforms';
-import { type User, userRegisterZodSchema, userZodSchema } from '@repo/schemas/zod';
+import { type User, userEditZodSchema } from '@repo/schemas/zod';
 import { zod } from 'sveltekit-superforms/adapters';
 import type { PageServerLoad, Actions } from './$types.js';
 import { getDatabaseConnection } from '$lib/server/db';
@@ -16,18 +16,23 @@ export const load: PageServerLoad = async ({ params }) => {
 	});
 	return {
 		user: user,
-		form: await superValidate(zod(userZodSchema))
+		form: await superValidate(zod(userEditZodSchema))
 	};
 };
 
 export const actions: Actions = {
 	default: async (event) => {
-		const form = await superValidate(event, zod(userRegisterZodSchema));
+		const form = await superValidate(event, zod(userEditZodSchema));
+
+		console.log(form.errors);
+
 		if (!form.valid) {
 			return fail(400, {
 				form
 			});
 		}
+
+		console.log(form.data);
 
 		const userId = event.params.userId;
 		const { email } = form.data;
@@ -40,6 +45,13 @@ export const actions: Actions = {
 		if (!user) {
 			return fail(400, {
 				error: 'No user'
+			});
+		}
+
+		if (await userModel.exists({ email })) {
+			return fail(400, {
+				form,
+				error: 'Email already in use'
 			});
 		}
 

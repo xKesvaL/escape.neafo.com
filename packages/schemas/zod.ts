@@ -27,16 +27,17 @@ export const escapeCreateZodSchema = z.object({
 	time: z.string(),
 	address: z.string(),
 	city: z.string(),
-	postal_code: z.string(),
-	price: z.string(),
+	postal_code: z.number(),
+	price: z.number(),
 	public: z.boolean().default(true),
-	images: z.array(
-		z.object({
-			data: z.string(),
-			content_type: z.string(),
-			id: z.string(),
-		}),
-	),
+	images: z
+		.array(
+			z.object({
+				data: z.string(),
+				content_type: z.string(),
+			}),
+		)
+		.optional(),
 });
 
 export type EscapeCreation = z.infer<typeof escapeCreateZodSchema>;
