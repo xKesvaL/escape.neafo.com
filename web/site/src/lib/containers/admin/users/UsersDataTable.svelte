@@ -1,12 +1,8 @@
 <script lang="ts">
     import type {User} from "@repo/schemas/zod";
-    import { Table, TableHeader, TableRow, TableHead, TableCell, TableBody } from '$lib/components/ui/table';
+    import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '$lib/components/ui/table';
 
-    interface Props {
-        users: User[];
-    }
-
-    const { users }: Props = $props();
+    export let users: User[] = [];
 
     const HEADERS: {
         [key in keyof (typeof users)[number]]?: string;
