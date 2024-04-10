@@ -24,15 +24,11 @@ export const actions: Actions = {
 	default: async (event) => {
 		const form = await superValidate(event, zod(userEditZodSchema));
 
-		console.log(form.errors);
-
 		if (!form.valid) {
 			return fail(400, {
 				form
 			});
 		}
-
-		console.log(form.data);
 
 		const userId = event.params.userId;
 		const { email } = form.data;
