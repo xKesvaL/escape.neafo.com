@@ -1,5 +1,5 @@
-import { Schema } from "mongoose";
-import type { Escape, User } from "./zod";
+import {Schema} from "mongoose";
+import type {Escape, User} from "./zod";
 
 export const UserSchema = new Schema<User>(
 	{
@@ -117,7 +117,8 @@ export const EscapeSchema = new Schema<Escape>(
 			default: true,
 		},
 		images: {
-			type: [ImageSchema],
+			// type: [ImageSchema],
+			type: [String],
 			required: false,
 			default: [],
 		},

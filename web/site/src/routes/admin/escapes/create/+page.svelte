@@ -15,19 +15,13 @@
     import type {Locale} from "$lib/config/brand";
     import * as m from '$paraglide/messages';
     import {getI18n} from "$lib/utils/functions";
-    import {type FilePondFile, registerPlugin} from 'filepond';
-    import FilePondPluginImageExifOrientation from 'filepond-plugin-image-exif-orientation';
-    import FilePondPluginImagePreview from 'filepond-plugin-image-preview';
-    import {fileToBase64} from "@repo/utils";
     import {browser} from "$app/environment";
-    import FilePond from "$lib/components/base/FilePond.svelte";
-
-    registerPlugin(FilePondPluginImageExifOrientation, FilePondPluginImagePreview);
+    import FileInput from "$lib/components/base/FileInput.svelte";
 
     export let data;
 
     const form = superForm(data.form, {
-        validators: zodClient(escapeCreateZodSchema)
+        validators: zodClient(escapeCreateZodSchema),
     });
 
     const {form: formData, enhance} = form;
@@ -47,23 +41,6 @@
             .toLowerCase();
     }
 
-    let filePond;
-
-    const handleAddFile = async (e, file: FilePondFile) => {
-        $formData.images = [...$formData.images, {
-            content_type: file.fileType,
-            data: await fileToBase64(file.file),
-            id: file.id
-        }];
-
-        console.log($formData.images)
-    };
-
-    const handleRemoveFile = (e, file: FilePondFile) => {
-        $formData.images = $formData.images.filter((i) => i.id !== file.id);
-        console.log($formData.images)
-    };
-
 </script>
 
 <section class="container py-12 flex flex-col gap-10">
@@ -74,7 +51,7 @@
                 <Field class="w-full" {form} name="name">
                     <Control let:attrs>
                         <Label>{m.name()}</Label>
-                        <Input {...attrs} bind:value={$formData.name} on:input={(e) => handleSlug(e.target.value)}
+                        <Input {...attrs} bind:value={$formData.name} on:input={(e) => handleSlug(e.target?.value)}
                                placeholder="Cool escape game"/>
                     </Control>
                     <FieldErrors/>
@@ -83,7 +60,7 @@
                     <Control let:attrs>
                         <Label>Slug</Label>
                         <Input {...attrs} bind:value={$formData.slug} class="pointer-events-none opacity-50"
-                               placeholder="cool-escape-game" tabindex="-1"/>
+                               placeholder="cool-escape-game" tabindex={-1}/>
                     </Control>
                     <FieldErrors/>
                 </Field>
@@ -226,16 +203,18 @@
             <Button>{m.submit()}</Button>
         </div>
         <div class="flex flex-col w-full gap-2 pt-8">
-            <FilePond
-                    acceptedFileTypes="image/png, image/jpeg, image/jpg"
-                    allowMultiple={true}
-                    bind:this={filePond}
-                    class="h-full"
-                    maxFiles={5}
-                    onaddfile={handleAddFile}
-                    onremovefile={handleRemoveFile}
-                    required={true}
-            />
+            <Fieldset class="h-full" {form} name="images">
+                <Control let:attrs>
+                    <FileInput
+                            accept="image/png, image/jpeg, image/jpg"
+                            {attrs}
+                            multiple
+                            on:input={(e) => ($formData.images = Array.from(e.currentTarget.files ?? []))}
+                            required
+                    />
+
+                </Control>
+            </Fieldset>
         </div>
     </form>
     {#if browser}
@@ -245,7 +224,7 @@
 
 <style lang="postcss">
     :global(.filepond--panel-root) {
-        @apply bg-card border px-8;
+        @apply bg-card px-8;
     }
 
     :global(.filepond--drop-label) {

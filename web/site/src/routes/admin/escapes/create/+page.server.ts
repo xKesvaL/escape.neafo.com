@@ -1,13 +1,9 @@
 import { getDatabaseConnection } from "$lib/server/db";
 import { type Escape, escapeCreateZodSchema } from "@repo/schemas/zod";
-import { fail } from "@sveltejs/kit";
 import { generateId } from "lucia";
-import { superValidate } from "sveltekit-superforms";
+import { fail, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
-import type {
-	Actions,
-	PageServerLoad,
-} from "../../../../../.svelte-kit/types/src/routes/auth/register/$types";
+import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -20,11 +16,14 @@ export const actions: Actions = {
 		const form = await superValidate(event, zod(escapeCreateZodSchema), {
 			allowFiles: true,
 		});
-		if (!form.valid) {
-			return fail(400, {
-				form,
-			});
-		}
+
+		console.log(form.errors);
+
+		// if (!form.valid) {
+		// 	return fail(400, {
+		// 		form,
+		// 	});
+		// }
 
 		const {
 			name,
