@@ -1,14 +1,13 @@
 <script lang="ts">
-    import {Field, Control, Label, FieldErrors, Button} from '$lib/components/ui/form';
+    import {Button, Control, Field, FieldErrors, Label} from '$lib/components/ui/form';
     import {Input} from '$lib/components/ui/input';
-	import { userEditZodSchema } from '@repo/schemas/zod';
-	import SuperDebug, { superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
-    import { browser } from '$app/environment';
+    import {userEditZodSchema} from '@repo/schemas/zod';
+    import {superForm} from 'sveltekit-superforms';
+    import {zodClient} from 'sveltekit-superforms/adapters';
 
     const {data} = $props();
 
-    const user = data.user
+    const user = data.user;
     
     const form = superForm(data.form, {
         validators: zodClient(userEditZodSchema)
