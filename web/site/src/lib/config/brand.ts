@@ -5,4 +5,4 @@ export const BRAND = {
 
 export const LOCALES = ["en", "fr", "de"] as const;
 
-export type Locale = (typeof LOCALES)[number]
+export type Locale = (typeof LOCALES)[number];

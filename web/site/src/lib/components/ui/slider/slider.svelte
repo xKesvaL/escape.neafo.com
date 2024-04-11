@@ -1,12 +1,12 @@
 <script lang="ts">
-	import { Slider as SliderPrimitive } from 'bits-ui';
-	import { cn } from '$lib/utils/ui';
+import { Slider as SliderPrimitive } from "bits-ui";
+import { cn } from "$lib/utils/ui";
 
-	type $$Props = SliderPrimitive.Props;
+type $$Props = SliderPrimitive.Props;
 
-	let className: $$Props['class'] = undefined;
-	export let value: $$Props['value'] = [0];
-	export { className as class };
+let className: $$Props["class"] = undefined;
+export let value: $$Props["value"] = [0];
+export { className as class };
 </script>
 
 <SliderPrimitive.Root

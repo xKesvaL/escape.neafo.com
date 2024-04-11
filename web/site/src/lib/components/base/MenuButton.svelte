@@ -1,14 +1,15 @@
 <script lang="ts">
+import { page } from "$app/stores";
+import { Button } from "$lib/components/ui/button";
+import type { ComponentType } from "svelte";
 
-    import {page} from "$app/stores";
-    import {Button} from "$lib/components/ui/button";
-    import type {ComponentType} from "svelte";
+export let icon: ComponentType;
+export let href: string;
+export let startsWith = false;
 
-    export let icon: ComponentType;
-    export let href: string;
-    export let startsWith = false;
-
-    $: active = startsWith ? $page.url.pathname.startsWith(href) : $page.url.pathname === href;
+$: active = startsWith
+	? $page.url.pathname.startsWith(href)
+	: $page.url.pathname === href;
 </script>
 
 <Button

@@ -1,7 +1,4 @@
 {
-  "extends": "@repo/typescript-config/base",
-  "include": [
-    "mongo.ts",
-    "zod.ts"
-  ]
+	"extends": "@repo/typescript-config/base",
+	"include": ["mongo.ts", "zod.ts"]
 }

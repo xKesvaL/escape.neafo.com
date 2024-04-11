@@ -13,7 +13,7 @@ export const getDatabaseConnection = async (): Promise<Mongoose> => {
 	const connection = await connect("mongodb://localhost:27017", {
 		appName: `${BRAND.logName}/web`,
 		dbName: `${BRAND.logName}-web`,
-	});	
+	});
 
 	logger.info("Mongoose connection complete");
 

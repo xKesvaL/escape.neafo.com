@@ -1,4 +1,4 @@
-import * as m from '$paraglide/messages';
+import * as m from "$paraglide/messages";
 
 export const i18nKeys = Object.keys(m);
 
@@ -9,10 +9,10 @@ export type I18nKey = (typeof i18nKeys)[number];
  * @param {I18nKey} key
  * @param args
  */
-export const getI18n = (key: I18nKey, args?: { [key: string]: unknown}) => {
-    if (i18nKeys.includes((key))) {
-        return m[key as keyof typeof m](args)
-    }
+export const getI18n = (key: I18nKey, args?: { [key: string]: unknown }) => {
+	if (i18nKeys.includes(key)) {
+		return m[key as keyof typeof m](args);
+	}
 
-    return key;
-}
+	return key;
+};

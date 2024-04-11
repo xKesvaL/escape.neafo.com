@@ -1,18 +1,22 @@
 <script lang="ts">
-	import { Button, type Props, buttonVariants } from '$lib/components/ui/button/index.js';
-	import { cn } from '$lib/utils/ui';
-	import ArrowRight from 'lucide-svelte/icons/arrow-right';
-	import type { VariantProps } from 'tailwind-variants';
-	import { getEmblaContext } from './context.js';
+import {
+	Button,
+	type Props,
+	buttonVariants,
+} from "$lib/components/ui/button/index.js";
+import { cn } from "$lib/utils/ui";
+import ArrowRight from "lucide-svelte/icons/arrow-right";
+import type { VariantProps } from "tailwind-variants";
+import { getEmblaContext } from "./context.js";
 
-	type $$Props = Props;
+type $$Props = Props;
 
-	let className: $$Props['class'] = undefined;
-	export { className as class };
-	export let variant: VariantProps<typeof buttonVariants>['variant'] = 'outline';
-	export let size: VariantProps<typeof buttonVariants>['size'] = 'icon';
-	const { orientation, canScrollNext, scrollNext, handleKeyDown } =
-		getEmblaContext('<Carousel.Next/>');
+let className: $$Props["class"] = undefined;
+export { className as class };
+export let variant: VariantProps<typeof buttonVariants>["variant"] = "outline";
+export let size: VariantProps<typeof buttonVariants>["size"] = "icon";
+const { orientation, canScrollNext, scrollNext, handleKeyDown } =
+	getEmblaContext("<Carousel.Next/>");
 </script>
 
 <Button

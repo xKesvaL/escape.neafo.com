@@ -1,5 +1,5 @@
 import { superValidate } from "sveltekit-superforms";
-import {type User, userRegisterZodSchema} from "@repo/schemas/zod";
+import { type User, userRegisterZodSchema } from "@repo/schemas/zod";
 import { zod } from "sveltekit-superforms/adapters";
 import type { PageServerLoad, Actions } from "./$types.js";
 import { lucia } from "$lib/server/auth";

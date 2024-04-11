@@ -1,14 +1,14 @@
 <script lang="ts">
-	import { ContextMenu as ContextMenuPrimitive } from 'bits-ui';
-	import Circle from 'lucide-svelte/icons/circle';
-	import { cn } from '$lib/utils/ui';
+import { ContextMenu as ContextMenuPrimitive } from "bits-ui";
+import Circle from "lucide-svelte/icons/circle";
+import { cn } from "$lib/utils/ui";
 
-	type $$Props = ContextMenuPrimitive.RadioItemProps;
-	type $$Events = ContextMenuPrimitive.RadioItemEvents;
+type $$Props = ContextMenuPrimitive.RadioItemProps;
+type $$Events = ContextMenuPrimitive.RadioItemEvents;
 
-	let className: $$Props['class'] = undefined;
-	export let value: ContextMenuPrimitive.RadioItemProps['value'];
-	export { className as class };
+let className: $$Props["class"] = undefined;
+export let value: ContextMenuPrimitive.RadioItemProps["value"];
+export { className as class };
 </script>
 
 <ContextMenuPrimitive.RadioItem

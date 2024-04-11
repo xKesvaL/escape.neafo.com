@@ -1,7 +1,7 @@
 <script lang='ts'>
-    import * as Tabs from "$lib/components/ui/tabs";
-    import { goto } from '$app/navigation';
-	import { route } from '$lib/ROUTES.js';
+import * as Tabs from "$lib/components/ui/tabs";
+import { goto } from "$app/navigation";
+import { route } from "$lib/ROUTES.js";
 </script>
 
 <section class="grid grid-cols-[3fr,2fr] gap-8 container p-8">

@@ -1,5 +1,5 @@
 <script lang="ts">
-  import { BRAND } from '$lib/config/brand';
+import { BRAND } from "$lib/config/brand";
 </script>
 
 <footer class="bg-background/50 p-8 shadow backdrop-blur-3xl backdrop-saturate-200 border-t border-primary">

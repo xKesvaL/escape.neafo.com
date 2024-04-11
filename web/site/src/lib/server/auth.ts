@@ -2,7 +2,7 @@ import { Lucia } from "lucia";
 import { dev } from "$app/environment";
 import { MongodbAdapter } from "@lucia-auth/adapter-mongodb";
 import { getDatabaseConnection } from "./db";
-import type {User} from "@repo/schemas/zod";
+import type { User } from "@repo/schemas/zod";
 
 const mongoose = await getDatabaseConnection();
 
@@ -20,7 +20,7 @@ export const lucia = new Lucia(adapter, {
 	},
 	getUserAttributes: (attributes) => {
 		return {
-			email: attributes.email
+			email: attributes.email,
 		};
 	},
 });

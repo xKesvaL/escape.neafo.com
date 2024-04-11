@@ -1,18 +1,18 @@
 <script>
-    import { route } from "$lib/ROUTES";
-    import MenuButton from "$lib/components/base/MenuButton.svelte";
-    import { IconPuzzle, IconUsers } from "@tabler/icons-svelte";
-    import {
-        Breadcrumb,
-        BreadcrumbItem,
-        BreadcrumbLink,
-        BreadcrumbList,
-        BreadcrumbSeparator
-    } from "$lib/components/ui/breadcrumb/index";
-    import { page } from "$app/stores";
-    import { getI18n } from "$lib/utils/functions";
+import { route } from "$lib/ROUTES";
+import MenuButton from "$lib/components/base/MenuButton.svelte";
+import { IconPuzzle, IconUsers } from "@tabler/icons-svelte";
+import {
+	Breadcrumb,
+	BreadcrumbItem,
+	BreadcrumbLink,
+	BreadcrumbList,
+	BreadcrumbSeparator,
+} from "$lib/components/ui/breadcrumb/index";
+import { page } from "$app/stores";
+import { getI18n } from "$lib/utils/functions";
 
-    const crumbs = ['home', ...$page.url.pathname.split('/').filter(Boolean)]
+const crumbs = ["home", ...$page.url.pathname.split("/").filter(Boolean)];
 </script>
 
 <!-- Height is 100dvh minus header -->

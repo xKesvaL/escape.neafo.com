@@ -1,15 +1,15 @@
 <script lang="ts">
-    import type {HTMLAttributes} from 'svelte/elements';
-    import {cn} from '$lib/utils/ui';
-    import {IconDots} from '@tabler/icons-svelte';
+import type { HTMLAttributes } from "svelte/elements";
+import { cn } from "$lib/utils/ui";
+import { IconDots } from "@tabler/icons-svelte";
 
-    type $$Props = HTMLAttributes<HTMLSpanElement> & {
-        el?: HTMLSpanElement;
-    };
+type $$Props = HTMLAttributes<HTMLSpanElement> & {
+	el?: HTMLSpanElement;
+};
 
-    export let el: $$Props['el'] = undefined;
-    let className: $$Props['class'] = undefined;
-    export {className as class};
+export let el: $$Props["el"] = undefined;
+let className: $$Props["class"] = undefined;
+export { className as class };
 </script>
 
 <span

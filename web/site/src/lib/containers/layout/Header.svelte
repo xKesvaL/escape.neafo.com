@@ -1,12 +1,21 @@
 <script>
-    import { route } from '$lib/ROUTES';
-    import { Popover, PopoverContent, PopoverTrigger } from '$lib/components/ui/popover/index';
-    import { Button } from '$lib/components/ui/button/index';
-    import { IconMenu2, IconServerCog, IconUser, IconUserCog } from '@tabler/icons-svelte';
-    import * as m from '$paraglide/messages';
-    import { BRAND } from '$lib/config/brand';
-    import { Separator } from "$lib/components/ui/separator/index";
-    import HeaderMenuButton from "$lib/components/base/MenuButton.svelte";
+import { route } from "$lib/ROUTES";
+import {
+	Popover,
+	PopoverContent,
+	PopoverTrigger,
+} from "$lib/components/ui/popover/index";
+import { Button } from "$lib/components/ui/button/index";
+import {
+	IconMenu2,
+	IconServerCog,
+	IconUser,
+	IconUserCog,
+} from "@tabler/icons-svelte";
+import * as m from "$paraglide/messages";
+import { BRAND } from "$lib/config/brand";
+import { Separator } from "$lib/components/ui/separator/index";
+import HeaderMenuButton from "$lib/components/base/MenuButton.svelte";
 </script>
 
 <header

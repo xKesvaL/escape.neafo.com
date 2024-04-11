@@ -1,15 +1,22 @@
 <script lang="ts">
-    import type {User} from "@repo/schemas/zod";
-    import {Table, TableBody, TableCell, TableHead, TableHeader, TableRow} from '$lib/components/ui/table';
+import type { User } from "@repo/schemas/zod";
+import {
+	Table,
+	TableBody,
+	TableCell,
+	TableHead,
+	TableHeader,
+	TableRow,
+} from "$lib/components/ui/table";
 
-    export let users: User[] = [];
+export let users: User[] = [];
 
-    const HEADERS: {
-        [key in keyof (typeof users)[number]]?: string;
-    } = {
-        _id: "id",
-        email: 'email',
-    } as const;
+const HEADERS: {
+	[key in keyof (typeof users)[number]]?: string;
+} = {
+	_id: "id",
+	email: "email",
+} as const;
 </script>
 
 <div class="rounded-xl border overflow-hidden">

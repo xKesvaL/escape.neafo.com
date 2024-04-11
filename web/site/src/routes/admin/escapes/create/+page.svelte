@@ -1,44 +1,50 @@
 <script lang="ts">
-    import {Button, Control, Field, FieldErrors, Fieldset, Label} from '$lib/components/ui/form';
-    import {Input} from '$lib/components/ui/input';
-    import {Textarea} from "$lib/components/ui/textarea";
-    import {Switch} from "$lib/components/ui/switch";
-    import {escapeCreateZodSchema} from '@repo/schemas/zod';
-    import {superForm} from 'sveltekit-superforms';
-    import {zodClient} from 'sveltekit-superforms/adapters';
-    import {Checkbox} from "$lib/components/ui/checkbox";
-    import {availableLanguageTags} from '$paraglide/runtime';
-    import {ESCAPE} from '@repo/global-config';
-    import replaceSpecialCharacter from 'replace-special-characters'
-    import type {Locale} from "$lib/config/brand";
-    import * as m from '$paraglide/messages';
-    import {getI18n} from "$lib/utils/functions";
-    import FileInput from "$lib/components/base/FileInput.svelte";
-    import Form from "$lib/components/base/Form.svelte";
+import {
+	Button,
+	Control,
+	Field,
+	FieldErrors,
+	Fieldset,
+	Label,
+} from "$lib/components/ui/form";
+import { Input } from "$lib/components/ui/input";
+import { Textarea } from "$lib/components/ui/textarea";
+import { Switch } from "$lib/components/ui/switch";
+import { escapeCreateZodSchema } from "@repo/schemas/zod";
+import { superForm } from "sveltekit-superforms";
+import { zodClient } from "sveltekit-superforms/adapters";
+import { Checkbox } from "$lib/components/ui/checkbox";
+import { availableLanguageTags } from "$paraglide/runtime";
+import { ESCAPE } from "@repo/global-config";
+import replaceSpecialCharacter from "replace-special-characters";
+import type { Locale } from "$lib/config/brand";
+import * as m from "$paraglide/messages";
+import { getI18n } from "$lib/utils/functions";
+import FileInput from "$lib/components/base/FileInput.svelte";
+import Form from "$lib/components/base/Form.svelte";
 
-    export let data;
+export let data;
 
-    const form = superForm(data.form, {
-        validators: zodClient(escapeCreateZodSchema),
-    });
+const form = superForm(data.form, {
+	validators: zodClient(escapeCreateZodSchema),
+});
 
-    const {form: formData, enhance} = form;
+const { form: formData, enhance } = form;
 
-    function addItem(id: Locale) {
-        $formData.langs = [...$formData.langs, id];
-    }
+function addItem(id: Locale) {
+	$formData.langs = [...$formData.langs, id];
+}
 
-    function removeItem(id: string) {
-        $formData.langs = $formData.langs.filter((i) => i !== id);
-    }
+function removeItem(id: string) {
+	$formData.langs = $formData.langs.filter((i) => i !== id);
+}
 
-    function handleSlug(name: string) {
-        $formData.slug = replaceSpecialCharacter(name)
-            .replace(/^\s+|\s+$|\s+(?=\s)/g, "")
-            .replaceAll(" ", "-")
-            .toLowerCase();
-    }
-
+function handleSlug(name: string) {
+	$formData.slug = replaceSpecialCharacter(name)
+		.replace(/^\s+|\s+$|\s+(?=\s)/g, "")
+		.replaceAll(" ", "-")
+		.toLowerCase();
+}
 </script>
 
 <section class="container py-12 flex flex-col gap-10">

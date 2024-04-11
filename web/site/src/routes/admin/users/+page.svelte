@@ -1,9 +1,9 @@
 <script lang="ts">
-    import UsersDataTable from '$lib/containers/admin/users/UsersDataTable.svelte';
+import UsersDataTable from "$lib/containers/admin/users/UsersDataTable.svelte";
 
-    export let data;
+export let data;
 
-    const users = data.users
+const users = data.users;
 </script>
 
 <section class="container">

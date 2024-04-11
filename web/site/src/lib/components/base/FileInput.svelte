@@ -1,92 +1,91 @@
 <svelte:options accessors/>
 
 <script lang="ts">
-    import {clsx} from "clsx";
-    import {Input} from "$lib/components/ui/input";
-    import * as m from '$paraglide/messages';
-    import type {ChangeEventHandler} from "svelte/elements";
-    import {generateId} from "lucia";
-    import {fileToBase64} from "@repo/utils";
-    import {Button} from "$lib/components/ui/button";
-    import {IconX} from "@tabler/icons-svelte";
-    import {fly, scale} from 'svelte/transition';
-    import {createEventDispatcher} from "svelte";
+import { clsx } from "clsx";
+import { Input } from "$lib/components/ui/input";
+import * as m from "$paraglide/messages";
+import type { ChangeEventHandler } from "svelte/elements";
+import { generateId } from "lucia";
+import { fileToBase64 } from "@repo/utils";
+import { Button } from "$lib/components/ui/button";
+import { IconX } from "@tabler/icons-svelte";
+import { fly, scale } from "svelte/transition";
+import { createEventDispatcher } from "svelte";
 
-    const dispatch = createEventDispatcher();
-    let input: HTMLInputElement;
+const dispatch = createEventDispatcher();
+let input: HTMLInputElement;
 
-    // base props for use on file input
-    let klass: string | undefined = undefined;
-    export {klass as class};
-    export let required: boolean = false;
-    export let capture: string | undefined = undefined;
-    export let accept: string | undefined = undefined;
-    export let attrs: any;
+// base props for use on file input
+let klass: string | undefined = undefined;
+export { klass as class };
+export let required: boolean = false;
+export let capture: string | undefined = undefined;
+export let accept: string | undefined = undefined;
+export let attrs: any;
 
-    interface CustomFile {
-        file: File;
-        base64: string;
-        id: string;
-    }
+interface CustomFile {
+	file: File;
+	base64: string;
+	id: string;
+}
 
-    let image: CustomFile | undefined = undefined;
+let image: CustomFile | undefined = undefined;
 
-    const handleChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
-        if (!e.target) {
-            return;
-        }
+const handleChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
+	if (!e.target) {
+		return;
+	}
 
-        const imagesList = (e.target as HTMLInputElement).files;
+	const imagesList = (e.target as HTMLInputElement).files;
 
-        if (!imagesList) {
-            return;
-        }
+	if (!imagesList) {
+		return;
+	}
 
-        const file = imagesList[0];
+	const file = imagesList[0];
 
-        if (!file) {
-            return;
-        }
+	if (!file) {
+		return;
+	}
 
-        image = {
-            file,
-            base64: await fileToBase64(file),
-            id: generateId(8)
-        } satisfies CustomFile;
-        // reset file input
-    };
+	image = {
+		file,
+		base64: await fileToBase64(file),
+		id: generateId(8),
+	} satisfies CustomFile;
+	// reset file input
+};
 
-    const handleRemoveFile = () => {
-        image = undefined;
-        input.value = '';
-        dispatch('input', {
-            currentTarget: input
-        })
-    };
+const handleRemoveFile = () => {
+	image = undefined;
+	input.value = "";
+	dispatch("input", {
+		currentTarget: input,
+	});
+};
 
-    const handleDrop = async (e: DragEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
+const handleDrop = async (e: DragEvent) => {
+	e.preventDefault();
+	e.stopPropagation();
 
-        const files = e.dataTransfer?.files;
-        const file = files?.[0];
+	const files = e.dataTransfer?.files;
+	const file = files?.[0];
 
-        if (!file) {
-            return;
-        }
+	if (!file) {
+		return;
+	}
 
+	image = {
+		file,
+		base64: await fileToBase64(file),
+		id: generateId(8),
+	} satisfies CustomFile;
+};
 
-        image = {
-            file,
-            base64: await fileToBase64(file),
-            id: generateId(8)
-        } satisfies CustomFile;
-    };
-
-    const handleDragOver = (e: DragEvent) => {
-        e.preventDefault();
-        e.stopPropagation();
-    }
+const handleDragOver = (e: DragEvent) => {
+	e.preventDefault();
+	e.stopPropagation();
+};
 </script>
 
 <div

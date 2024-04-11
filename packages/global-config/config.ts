@@ -9,6 +9,10 @@ export const CONFIG = {
 } as const;
 
 export const ESCAPE = {
-	difficulties: ["easy", "medium", "hard"] satisfies Array<EscapeCreation['difficulty']>,
-	puzzle: ["beginner", "intermediate", "advanced", "expert"] satisfies Array<EscapeCreation['puzzle']>
+	difficulties: ["easy", "medium", "hard"] satisfies Array<
+		EscapeCreation["difficulty"]
+	>,
+	puzzle: ["beginner", "intermediate", "advanced", "expert"] satisfies Array<
+		EscapeCreation["puzzle"]
+	>,
 } as const;

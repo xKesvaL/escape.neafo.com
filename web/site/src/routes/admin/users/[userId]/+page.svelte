@@ -1,7 +1,7 @@
 <script lang="ts">
-    export let data;
+export let data;
 
-    const user = data.user
+const user = data.user;
 </script>
 
 <div>

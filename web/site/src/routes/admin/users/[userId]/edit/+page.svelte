@@ -1,19 +1,25 @@
 <script lang="ts">
-    import {Button, Control, Field, FieldErrors, Label} from '$lib/components/ui/form';
-    import {Input} from '$lib/components/ui/input';
-    import {userEditZodSchema} from '@repo/schemas/zod';
-    import {superForm} from 'sveltekit-superforms';
-    import {zodClient} from 'sveltekit-superforms/adapters';
+import {
+	Button,
+	Control,
+	Field,
+	FieldErrors,
+	Label,
+} from "$lib/components/ui/form";
+import { Input } from "$lib/components/ui/input";
+import { userEditZodSchema } from "@repo/schemas/zod";
+import { superForm } from "sveltekit-superforms";
+import { zodClient } from "sveltekit-superforms/adapters";
 
-    export let data;
+export let data;
 
-    const user = data.user;
-    
-    const form = superForm(data.form, {
-        validators: zodClient(userEditZodSchema)
-    });
+const user = data.user;
 
-    const {form: formData, enhance} = form;
+const form = superForm(data.form, {
+	validators: zodClient(userEditZodSchema),
+});
+
+const { form: formData, enhance } = form;
 </script>
 
 <section class="container">
