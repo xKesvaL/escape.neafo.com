@@ -6,8 +6,6 @@
     import Footer from '$lib/containers/layout/Footer.svelte';
     import {setupViewTransition} from 'sveltekit-view-transition';
 
-    const {data} = $props();
-
     setupViewTransition();
 
 </script>
