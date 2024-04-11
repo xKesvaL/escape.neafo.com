@@ -20,3 +20,8 @@ export const fileToBase64 = async (file: File) => {
 		reader.readAsDataURL(file);
 	});
 };
+
+export const fileToBase64Server = async (file: File) => {
+	const buffer = Buffer.from(await file.arrayBuffer());
+	return `data:${file.type};base64,${buffer?.toString("base64")}`;
+};

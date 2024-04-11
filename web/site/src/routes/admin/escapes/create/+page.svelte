@@ -201,15 +201,17 @@
             <Button>{m.submit()}</Button>
         </div>
         <div class="flex flex-col w-full gap-2 pt-8">
-            <Fieldset class="h-full" {form} name="images">
+            <Fieldset class="h-full" {form} name="image">
                 <Control let:attrs>
                     <FileInput
                             accept="image/png, image/jpeg, image/jpg"
                             {attrs}
-                            on:input={(e) => ($formData.images = Array.from(e.currentTarget.files ?? []))}
+                            on:input={(e) => {
+                                const files = e.currentTarget?.files || e.detail?.currentTarget?.files || [];
+                                $formData.image = Array.from(files)[0]
+                            }}
                             required
                     />
-
                 </Control>
             </Fieldset>
         </div>

@@ -37,15 +37,23 @@ export const escapeCreateZodSchema = z.object({
 	postal_code: z.string(),
 	price: z.string(),
 	public: z.boolean().default(true),
-	images: z
+	image: z
 		.instanceof(File, { message: "Please upload a file." })
-		.refine((f) => f.size < 1_000_000, "Max 1 mB upload size.")
-		.array(),
+		.refine((f) => f.size < 1_000_000, "Max 1 mB upload size."),
 });
 
 export type EscapeCreation = z.infer<typeof escapeCreateZodSchema>;
 
+export const customImageZodSchema = z.object({
+	content_type: z.string(),
+	id: z.string(),
+	data: z.string(),
+});
+
+export type CustomImage = z.infer<typeof customImageZodSchema>;
+
 export const escapeZodSchema = escapeCreateZodSchema.extend({
+	image: customImageZodSchema,
 	_id: z.string(),
 	created_at: z.date(),
 	updated_at: z.date(),

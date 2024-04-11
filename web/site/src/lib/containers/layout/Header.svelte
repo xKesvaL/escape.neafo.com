@@ -45,12 +45,14 @@
                     <HeaderMenuButton
                             href={route('/profile')}
                             icon={IconUserCog}
+                            startsWith={true}
                     >
                         {m.profile()}
                     </HeaderMenuButton>
                     <HeaderMenuButton
                             href={route('/admin')}
                             icon={IconServerCog}
+                            startsWith={true}
                     >
                         {m.admin()}
                     </HeaderMenuButton>
