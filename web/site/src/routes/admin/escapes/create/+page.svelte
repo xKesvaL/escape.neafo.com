@@ -1,12 +1,10 @@
 <script lang="ts">
-    import 'filepond/dist/filepond.css';
-    import 'filepond-plugin-image-preview/dist/filepond-plugin-image-preview.css';
     import {Button, Control, Field, FieldErrors, Fieldset, Label} from '$lib/components/ui/form';
     import {Input} from '$lib/components/ui/input';
     import {Textarea} from "$lib/components/ui/textarea";
     import {Switch} from "$lib/components/ui/switch";
     import {escapeCreateZodSchema} from '@repo/schemas/zod';
-    import SuperDebug, {superForm} from 'sveltekit-superforms';
+    import {superForm} from 'sveltekit-superforms';
     import {zodClient} from 'sveltekit-superforms/adapters';
     import {Checkbox} from "$lib/components/ui/checkbox";
     import {availableLanguageTags} from '$paraglide/runtime';
@@ -15,8 +13,8 @@
     import type {Locale} from "$lib/config/brand";
     import * as m from '$paraglide/messages';
     import {getI18n} from "$lib/utils/functions";
-    import {browser} from "$app/environment";
     import FileInput from "$lib/components/base/FileInput.svelte";
+    import Form from "$lib/components/base/Form.svelte";
 
     export let data;
 
@@ -45,7 +43,7 @@
 
 <section class="container py-12 flex flex-col gap-10">
     <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Admin - Escape - Creation</h1>
-    <form class="flex flex-row gap-8" enctype="multipart/form-data" method="POST" use:enhance>
+    <Form {formData} {enhance} class="flex flex-row gap-8" enctype="multipart/form-data" method="POST">
         <div class="flex flex-col gap-4 w-full">
             <div class="flex flex-row gap-4">
                 <Field class="w-full" {form} name="name">
@@ -208,7 +206,6 @@
                     <FileInput
                             accept="image/png, image/jpeg, image/jpg"
                             {attrs}
-                            multiple
                             on:input={(e) => ($formData.images = Array.from(e.currentTarget.files ?? []))}
                             required
                     />
@@ -216,27 +213,6 @@
                 </Control>
             </Fieldset>
         </div>
-    </form>
-    {#if browser}
-        <SuperDebug data={$formData}/>
-    {/if}
+    </Form>
 </section>
-
-<style lang="postcss">
-    :global(.filepond--panel-root) {
-        @apply bg-card px-8;
-    }
-
-    :global(.filepond--drop-label) {
-        @apply text-muted-foreground;
-    }
-
-    :global(.filepond--item) {
-        @apply mx-4;
-    }
-
-    :global(.filepond--image-preview-wrapper) {
-        @apply border border-primary;
-    }
-</style>
 

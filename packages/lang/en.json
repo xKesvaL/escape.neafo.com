@@ -30,5 +30,6 @@
 	"page_admin_title": "Admin",
 	"page_escapes_title": "Escapes",
 	"page_users_title": "Users",
-	"page_create_title": "Create"
+	"page_create_title": "Create",
+	"drag_and_drop": "Drag and drop a file here or <span class=\"underline\">browse</span>"
 }

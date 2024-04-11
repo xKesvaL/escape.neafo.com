@@ -65,7 +65,8 @@
 		"svelte-headless-table": "^0.18.2",
 		"@repo/global-config": "*",
 		"replace-special-characters": "^1.2.7",
-		"postcss-import": "^16.1.0"
+		"postcss-import": "^16.1.0",
+		"@formkit/auto-animate": "^0.8.2"
 	},
 	"dependencies": {
 		"lucide-svelte": "0.364.0"
