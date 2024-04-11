@@ -5,7 +5,7 @@
     import {superForm} from 'sveltekit-superforms';
     import {zodClient} from 'sveltekit-superforms/adapters';
 
-    const {data} = $props();
+    export let data;
 
     const user = data.user;
     
