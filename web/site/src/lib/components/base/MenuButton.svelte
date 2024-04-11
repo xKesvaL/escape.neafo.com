@@ -13,7 +13,7 @@
 </script>
 
 <Button
-        class="gap-2 font-normal justify-start hover:bg-muted {$page.url.pathname === href ? 'bg-muted' : ''}"
+        class="gap-2 font-normal justify-start transition hover:bg-muted hover:text-foreground {$page.url.pathname === href ? 'bg-muted text-foreground' : 'text-muted-foreground'}"
         {href}
         variant="ghost"
 >

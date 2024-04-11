@@ -6,11 +6,11 @@
     import * as m from '$paraglide/messages';
     import { BRAND } from '$lib/config/brand';
     import { Separator } from "$lib/components/ui/separator/index";
-    import HeaderMenuButton from "$lib/containers/layout/HeaderMenuButton.svelte";
+    import HeaderMenuButton from "$lib/components/base/MenuButton.svelte";
 </script>
 
 <header
-        class="bg-background/50 sticky left-0 right-0 top-0 flex h-20 items-center justify-between p-4 shadow backdrop-blur-3xl backdrop-saturate-200"
+        class="bg-background/50 sticky left-0 right-0 top-0 flex h-20 z-30 items-center justify-between p-4 shadow-lg backdrop-blur-3xl backdrop-saturate-200"
         style:view-transition-name="header"
 >
     <a href={route('/')}>
