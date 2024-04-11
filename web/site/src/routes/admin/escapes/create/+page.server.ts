@@ -1,3 +1,4 @@
+import { route } from "$lib/ROUTES";
 import { getDatabaseConnection } from "$lib/server/db";
 import {
 	type CustomImage,
@@ -6,7 +7,6 @@ import {
 } from "@repo/schemas/zod";
 import { fileToBase64Server } from "@repo/utils";
 import { redirect } from "@sveltejs/kit";
-import { route } from "app/src/lib/ROUTES";
 import { generateId } from "lucia";
 import { fail, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
