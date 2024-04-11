@@ -1,5 +1,12 @@
 import { getDatabaseConnection } from "$lib/server/db";
-import { type Escape, escapeCreateZodSchema } from "@repo/schemas/zod";
+import {
+	type CustomImage,
+	type Escape,
+	escapeCreateZodSchema,
+} from "@repo/schemas/zod";
+import { fileToBase64Server } from "@repo/utils";
+import { redirect } from "@sveltejs/kit";
+import { route } from "app/src/lib/ROUTES";
 import { generateId } from "lucia";
 import { fail, superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
@@ -17,13 +24,11 @@ export const actions: Actions = {
 			allowFiles: true,
 		});
 
-		console.log(form.errors);
-
-		// if (!form.valid) {
-		// 	return fail(400, {
-		// 		form,
-		// 	});
-		// }
+		if (!form.valid) {
+			return fail(400, {
+				form,
+			});
+		}
 
 		const {
 			name,
@@ -37,7 +42,7 @@ export const actions: Actions = {
 			city,
 			postal_code,
 			price,
-			images,
+			image: imageFile,
 		} = form.data;
 
 		const escapeId = generateId(40);
@@ -52,7 +57,13 @@ export const actions: Actions = {
 			});
 		}
 
-		console.log(form.data);
+		const image = {
+			data: await fileToBase64Server(imageFile),
+			content_type: imageFile.type,
+			id: generateId(8),
+		} satisfies CustomImage;
+
+		console.log(image);
 
 		const escapeGame = new escapeModel({
 			_id: escapeId,
@@ -67,13 +78,16 @@ export const actions: Actions = {
 			city,
 			postal_code,
 			price,
-			images,
+			image,
 		});
 
-		// await escapeGame.save();
+		await escapeGame.save();
 
-		// return redirect(302, route("/escapes/[slug]", {
-		//     slug
-		// }));
+		return redirect(
+			302,
+			route("/escapes/[slug]", {
+				slug,
+			}),
+		);
 	},
 };
