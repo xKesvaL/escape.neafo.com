@@ -16,3 +16,7 @@ export const ESCAPE = {
 		EscapeCreation["puzzle"]
 	>,
 } as const;
+
+export const PWA_MESSAGES_TYPES = ["SKIP_WAITING"] as const;
+
+export type PwaMessage = (typeof PWA_MESSAGES_TYPES)[number];

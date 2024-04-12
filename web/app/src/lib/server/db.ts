@@ -1,7 +1,7 @@
-import {BRAND} from "$lib/config/brand";
-import {connect, type Mongoose} from "mongoose";
-import {EscapeSchema, SessionSchema, UserSchema} from "@repo/schemas";
-import {logger} from "@repo/utils";
+import { BRAND } from "$lib/config/brand";
+import { EscapeSchema, SessionSchema, UserSchema } from "@repo/schemas";
+import { logger } from "@repo/utils";
+import { type Mongoose, connect } from "mongoose";
 
 let con: null | Mongoose = null;
 
