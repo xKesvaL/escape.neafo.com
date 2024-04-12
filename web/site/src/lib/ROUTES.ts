@@ -30,7 +30,8 @@ const PAGES = {
   "/legal/privacy-policy": `/legal/privacy-policy`,
   "/legal/terms-and-conditions": `/legal/terms-and-conditions`,
   "/profile": `/profile`,
-  "/team-building": `/team-building`
+  "/team-building": `/team-building`,
+  "/terms": `/terms`
 }
 
 /**
@@ -159,7 +160,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin': never, '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/faq': never, '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/profile': never, '/team-building': never }
+  PAGES: { '/': never, '/admin': never, '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/faq': never, '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/profile': never, '/team-building': never, '/terms': never }
   SERVERS: Record<string, never>
   ACTIONS: { 'default /admin/escapes/create': never, 'default /admin/users/[userId]/edit': 'userId', 'default /auth/login': never, 'default /auth/register': never }
   LINKS: Record<string, never>
