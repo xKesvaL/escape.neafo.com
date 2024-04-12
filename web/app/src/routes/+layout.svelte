@@ -1,9 +1,12 @@
-<script>
-import { ParaglideJS } from "@inlang/paraglide-js-adapter-sveltekit";
-import "../app.pcss";
-import { i18n } from "$lib/config/i18n";
+<script lang="ts">
+	import {ParaglideJS} from "@inlang/paraglide-js-adapter-sveltekit";
+	import "../app.pcss";
+	import {i18n} from "$lib/config/i18n";
+	import {setupViewTransition} from "sveltekit-view-transition";
+
+	setupViewTransition();
 </script>
 
 <ParaglideJS {i18n}>
-	<slot />
+	<slot/>
 </ParaglideJS>
