@@ -9,21 +9,23 @@
 
 </script>
 
-<section class="container flex flex-row">
+<section class="container flex flex-row items-start gap-4 self-start">
     <div class="flex flex-col gap-4">
         <h1 class="text-5xl font-extrabold">{title}</h1>
         <span class="text-lg text-muted-foreground">{update}</span>
-            <div class="flex flex-col gap-4 ">
+            <div class="flex flex-col gap-12 ">
                 {#each conditions as condition}
-                    <span class="text-white font-semibold text-3xl pb-2">{condition.title}</span>
+                <div class="flex flex-col gap-4">
+                    <span id={condition.title} class="text-white font-semibold text-3xl pb-2">{condition.title}</span>
                     <div class="text-base font-normal"> {condition.description} </div>
+                </div>
                 {/each}
             </div>
     </div>
 
-    <div class="flex flex-col gap-3 p-3">
+    <div class="sticky top-20 flex flex-col gap-3 p-3 max-w-80 w-full">
         {#each conditions as condition}
-            <span>{condition.title}</span>
+        <a class="hover:text-primary" href=#{condition.title}>{condition.title} </a>
         {/each}
     </div>
 
