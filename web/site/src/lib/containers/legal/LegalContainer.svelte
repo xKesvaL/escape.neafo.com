@@ -1,6 +1,8 @@
 <script lang="ts">
     import type { LegalProps } from '$lib/utils/types';
+    import LegalNav from '$lib/components/legal/LegalNav.svelte'
 
+    
     export let conditions: Array<LegalProps> = [];
 
     export let title: string;    
@@ -9,7 +11,7 @@
 
 </script>
 
-<section class="container flex flex-row items-start gap-4 self-start">
+<section class="container flex flex-row  items-start gap-4 self-start">
     <div class="flex flex-col gap-4">
         <h1 class="text-5xl font-extrabold">{title}</h1>
         <span class="text-lg text-muted-foreground">{update}</span>
@@ -23,10 +25,7 @@
             </div>
     </div>
 
-    <div class="sticky top-20 flex flex-col gap-3 p-3 max-w-80 w-full">
-        {#each conditions as condition}
-        <a class="hover:text-primary" href=#{condition.title}>{condition.title} </a>
-        {/each}
-    </div>
+
+    <LegalNav conditions={conditions}/>
 
 </section>
