@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import type { CustomImage, Escape, User } from "./zod";
+import type { CustomImage, Escape, User, Contact } from "./zod";
 
 export const UserSchema = new Schema<User>(
 	{
@@ -58,6 +58,25 @@ export const ImageSchema = new Schema<CustomImage>({
 	data: String,
 	content_type: String,
 	id: String,
+});
+
+export const ContactSchema = new Schema<Contact>({
+	_id: {
+		type: String,
+		required: true,
+	},
+	name: {
+		type: String,
+		required: true,
+	},
+	email: {
+		type: String,
+		required: true,
+	},
+	message: {
+		type: String,
+		required: true,
+	},
 });
 
 export const EscapeSchema = new Schema<Escape>(
