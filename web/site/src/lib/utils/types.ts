@@ -20,3 +20,15 @@ export interface LegalProps {
 	title: string;
 	description: string;
 }
+
+
+export interface Steps {
+    title: string;
+    description: string;
+    iconPath: string;
+}
+
+export interface TeambuildingText{
+    title: string;
+    text: string;
+}
