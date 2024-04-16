@@ -15,6 +15,18 @@ export interface TeambuildingText{
     text: string;
 }
 
+
+export interface Steps {
+    title: string;
+    description: string;
+    iconPath: string;
+}
+
+export interface TeambuildingText{
+    title: string;
+    text: string;
+}
+
 export interface LegalProps{
     title: string;
     description: string;
