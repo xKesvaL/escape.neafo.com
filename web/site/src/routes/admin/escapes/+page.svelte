@@ -1,7 +1,7 @@
 <script lang="ts">
-    import EscapeCard from '$lib/components/admin/EscapeCard.svelte'
+    import EscapeCard from '$lib/components/admin/EscapeCard.svelte' ;
 
-    const {data} = $props();
+    export let data: { escapes: never[] };
 
     const escapes = data.escapes;
 </script>

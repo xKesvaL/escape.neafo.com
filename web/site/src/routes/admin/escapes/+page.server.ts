@@ -1,4 +1,4 @@
-import type {PageServerLoad} from "../../../../.svelte-kit/types/src/routes/auth/login/$types";
+import type {PageServerLoad} from "./$types";
 import {getDatabaseConnection} from "$lib/server/db";
 import type {Escape} from "@repo/schemas/zod";
 
