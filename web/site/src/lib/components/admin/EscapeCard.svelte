@@ -22,7 +22,7 @@
         </div>
     </div>
     <div class="flex gap-6 w-full">
-        <Button href={`/admin/escapes/edit/${escape.slug}`} class="w-full">Edit</Button>
+        <Button href={`/admin/escapes/${escape.slug}/edit`} class="w-full">Edit</Button>
         <AlertDialog.Root>
             <AlertDialog.Trigger asChild let:builder>
                 <Button class="w-full" builders={[builder]} variant="destructive">Disable</Button>
@@ -36,7 +36,7 @@
                 </AlertDialog.Header>
                 <AlertDialog.Footer>
                     <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                    <AlertDialog.Action on:click={() => goto("/admin/escapes/delete/" + escape.slug)}>Continue</AlertDialog.Action>
+                    <AlertDialog.Action on:click={() => goto("/admin/escapes/" + escape.slug + "/delete/")}>Continue</AlertDialog.Action>
                 </AlertDialog.Footer>
             </AlertDialog.Content>
         </AlertDialog.Root>
