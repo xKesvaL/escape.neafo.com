@@ -2,6 +2,17 @@
     import {IconMapPin} from "@tabler/icons-svelte";
     import Button from "$lib/components/ui/button/button.svelte"
     import {goto} from '$app/navigation';
+    import {
+        AlertDialog,
+        AlertDialogAction,
+        AlertDialogCancel,
+        AlertDialogContent,
+        AlertDialogDescription,
+        AlertDialogFooter,
+        AlertDialogHeader,
+        AlertDialogTitle,
+        AlertDialogTrigger
+    } from "$lib/components/ui/alert-dialog/index.js";
     import type {Escape} from "@repo/schemas/zod";
     import {route} from "$lib/ROUTES";
 
@@ -23,22 +34,22 @@
     </div>
     <div class="flex gap-6 w-full">
         <Button href={`/admin/escapes/${escape.slug}/edit`} class="w-full">Edit</Button>
-        <AlertDialog.Root>
-            <AlertDialog.Trigger asChild let:builder>
+        <AlertDialog>
+            <AlertDialogTrigger asChild let:builder>
                 <Button class="w-full" builders={[builder]} variant="destructive">Disable</Button>
-            </AlertDialog.Trigger>
-            <AlertDialog.Content>
-                <AlertDialog.Header>
-                    <AlertDialog.Title>Are you absolutely sure?</AlertDialog.Title>
-                    <AlertDialog.Description>
+            </AlertDialogTrigger>
+            <AlertDialogContent>
+                <AlertDialogHeader>
+                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogDescription>
                         This action cannot be undone. This will permanently delete the escape game.
-                    </AlertDialog.Description>
-                </AlertDialog.Header>
-                <AlertDialog.Footer>
-                    <AlertDialog.Cancel>Cancel</AlertDialog.Cancel>
-                    <AlertDialog.Action on:click={() => goto(route("/admin/escapes/[slug]/delete", { slug: escape.slug }))}>Continue</AlertDialog.Action>
-                </AlertDialog.Footer>
-            </AlertDialog.Content>
-        </AlertDialog.Root>
+                    </AlertDialogDescription>
+                </AlertDialogHeader>
+                <AlertDialogFooter>
+                    <AlertDialogCancel>Cancel</AlertDialogCancel>
+                    <AlertDialogAction on:click={() => goto(route("/admin/escapes/[slug]/delete", { slug: escape.slug }))}>Continue</AlertDialogAction>
+                </AlertDialogFooter>
+            </AlertDialogContent>
+        </AlertDialog>
     </div>
 </div>
