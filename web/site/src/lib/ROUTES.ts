@@ -11,6 +11,13 @@
 const PAGES = {
   "/": `/`,
   "/admin": `/admin`,
+  "/admin/escapes": `/admin/escapes`,
+  "/admin/escapes/[slug]/delete": (params: { slug: (string | number) }) => {
+    return `/admin/escapes/${params.slug}/delete`
+  },
+  "/admin/escapes/[slug]/edit": (params: { slug: (string | number) }) => {
+    return `/admin/escapes/${params.slug}/edit`
+  },
   "/admin/escapes/create": `/admin/escapes/create`,
   "/admin/users": `/admin/users`,
   "/admin/users/[userId]": (params: { userId: (string | number) }) => {
@@ -46,6 +53,9 @@ const SERVERS = {
  * ACTIONS
  */
 const ACTIONS = {
+  "default /admin/escapes/[slug]/edit": (params: { slug: (string | number) }) => {
+    return `/admin/escapes/${params.slug}/edit`
+  },
   "default /admin/escapes/create": `/admin/escapes/create`,
   "default /admin/users/[userId]/edit": (params: { userId: (string | number) }) => {
     return `/admin/users/${params.userId}/edit`
@@ -161,9 +171,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/admin': never, '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/faq': never, '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/policy': never, '/profile': never, '/team-building': never, '/terms': never }
+  PAGES: { '/': never, '/admin': never, '/admin/escapes': never, '/admin/escapes/[slug]/delete': 'slug', '/admin/escapes/[slug]/edit': 'slug', '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/faq': never, '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/profile': never, '/team-building': never }
   SERVERS: Record<string, never>
-  ACTIONS: { 'default /admin/escapes/create': never, 'default /admin/users/[userId]/edit': 'userId', 'default /auth/login': never, 'default /auth/register': never }
+  ACTIONS: { 'default /admin/escapes/[slug]/edit': 'slug', 'default /admin/escapes/create': never, 'default /admin/users/[userId]/edit': 'userId', 'default /auth/login': never, 'default /auth/register': never }
   LINKS: Record<string, never>
-  Params: { userId: never, slug: never }
+  Params: { slug: never, userId: never }
 }
