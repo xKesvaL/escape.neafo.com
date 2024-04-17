@@ -170,5 +170,5 @@ export type KIT_ROUTES = {
   SERVERS: Record<string, never>
   ACTIONS: { 'default /admin/escapes/create': never, 'default /admin/users/[userId]/edit': 'userId', 'default /auth/login': never, 'default /auth/register': never, 'default /contact': never }
   LINKS: Record<string, never>
-  Params: { slug: never, userId: never }
+  Params: { userId: never, slug: never }
 }
