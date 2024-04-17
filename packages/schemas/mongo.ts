@@ -1,5 +1,5 @@
 import { Schema } from "mongoose";
-import type { CustomImage, Escape, User, Contact } from "./zod";
+import type { CustomImage, Escape, User } from "./zod";
 
 export const UserSchema = new Schema<User>(
 	{

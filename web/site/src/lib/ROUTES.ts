@@ -36,8 +36,10 @@ const PAGES = {
   "/faq": `/faq`,
   "/legal/privacy-policy": `/legal/privacy-policy`,
   "/legal/terms-and-conditions": `/legal/terms-and-conditions`,
+  "/policy": `/policy`,
   "/profile": `/profile`,
-  "/team-building": `/team-building`
+  "/team-building": `/team-building`,
+  "/terms": `/terms`
 }
 
 /**
