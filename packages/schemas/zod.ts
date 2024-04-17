@@ -60,3 +60,12 @@ export const escapeZodSchema = escapeCreateZodSchema.extend({
 });
 
 export type Escape = z.infer<typeof escapeZodSchema>;
+
+export const contactZodSchema = z.object({
+	_id: z.string(),
+	name: z.string(),
+	email: z.string().email(),
+	message: z.string(),
+});
+
+export type Contact = z.infer<typeof contactZodSchema>;

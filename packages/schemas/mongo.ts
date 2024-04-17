@@ -54,10 +54,34 @@ export const SessionSchema = new Schema(
 	},
 );
 
-export const ImageSchema = new Schema<CustomImage>({
-	data: String,
-	content_type: String,
-	id: String,
+export const ImageSchema = new Schema<CustomImage>(
+	{
+		data: String,
+		content_type: String,
+		id: String,
+	} as const,
+	{
+	_id: false,
+	},
+);
+
+export const ContactSchema = new Schema<Contact>({
+	_id: {
+		type: String,
+		required: true,
+	},
+	name: {
+		type: String,
+		required: true,
+	},
+	email: {
+		type: String,
+		required: true,
+	},
+	message: {
+		type: String,
+		required: true,
+	},
 });
 
 export const EscapeSchema = new Schema<Escape>(
