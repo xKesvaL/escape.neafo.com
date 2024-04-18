@@ -17,6 +17,8 @@ export const actions: Actions = {
     default: async (event) => {
         const form = await superValidate(event, zod(contactTeambuildingZodSchema));
 
+        console.log("salut")
+
         if (!form.valid) {
             return fail(400, {
                 form,
@@ -43,7 +45,7 @@ export const actions: Actions = {
             message,
         });
 
-        await contactTeambuilding.save();
+        await contactTeambuilding.save();   
 
         return redirect(302, route("/"));
     },
