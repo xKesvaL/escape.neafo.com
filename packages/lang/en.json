@@ -32,5 +32,8 @@
 	"page_users_title": "Users",
 	"page_create_title": "Create",
 	"drag_and_drop": "Drag and drop a file here or <span class=\"underline\">browse</span>",
-	"contact_message": "Your message"
+	"contact_message": "Your message",
+	"escape_puzzle_difficulty": "Puzzle ~ {difficulty}",
+	"escape_difficulty": "{difficulty} Difficulty",
+	"escape_time": "~{time} hours"
 }

@@ -2,8 +2,13 @@
     import type { PageData } from './$types';
     import {
         IconHeart,
-        IconShare
+        IconShare,
+        IconPuzzle,
+        IconAntennaBars5,
+        IconClock
     } from "@tabler/icons-svelte";
+    import * as m from '$paraglide/messages';
+    import {getI18n} from "$lib/utils/functions";
 
     export let data: PageData;
 
@@ -19,11 +24,34 @@
                 <div class="flex flex-row justify-between items-center">
                     <h1 class="text-3xl font-bold">{escape.name}</h1>
                     <div class="flex flex-row gap-4">
-                        <IconShare class="text-muted-foreground"/>
-                        <IconHeart class="text-muted-foreground"/>
+                        <IconShare class="text-muted-foreground" stroke="1.5"/>
+                        <IconHeart class="text-muted-foreground" stroke="1.5"/>
                     </div>
                 </div>
-                <p></p>
+                <p>{escape.description}</p>
+            </div>
+            <hr>
+            <div class="flex flex-col gap-4">
+                <h2 class="font-bold text-xl">More about the escape</h2>
+                <div class="flex flex-row gap-4">
+                    <div class="px-4 py-3 bg-muted rounded-lg">
+                        {#each escape.langs as lang}
+                            <p>{lang}</p>
+                        {/each}
+                    </div>
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center">
+                        <IconPuzzle class="text-primary" stroke="1.5"/>
+                        <p>{m.escape_puzzle_difficulty({ difficulty: getI18n(escape.puzzle) })}</p>
+                    </div>
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center">
+                        <IconAntennaBars5 class="text-primary" stroke="1.5"/>
+                        <p>{m.escape_difficulty({ difficulty: getI18n(escape.difficulty) })}</p>
+                    </div>
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center">
+                        <IconClock class="text-primary" stroke="1.5"/>
+                        <p>{m.escape_time({ time: escape.time })}</p>
+                    </div>
+                </div>
             </div>
         </div>
         <div class="flex flex-col">
