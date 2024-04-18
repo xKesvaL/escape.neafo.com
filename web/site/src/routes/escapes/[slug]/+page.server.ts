@@ -1,17 +1,23 @@
 import type {PageServerLoad} from "./$types";
 import {getDatabaseConnection} from "$lib/server/db";
 import type {Escape} from "@repo/schemas/zod";
-import {redirect} from "@sveltejs/kit";
-import {route} from "$lib/ROUTES";
+import {fail} from "@sveltejs/kit";
 
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, locals }) => {
     const mongoose = await getDatabaseConnection();
     const {slug} = params;
     const escapeModel = mongoose.model<Escape>("Escape");
-    const escapes = await escapeModel.deleteOne({slug});
-    return redirect(
-        302,
-        route("/admin/escapes"),
-    );
+    const escape = await escapeModel.findOne({ slug }).lean();
+
+    if (!escape) {
+        return fail(404, {
+            slug
+        })
+    }
+
+    return {
+        escape,
+        user: locals.user
+    };
 };
