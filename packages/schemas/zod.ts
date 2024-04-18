@@ -69,3 +69,14 @@ export const contactZodSchema = z.object({
 });
 
 export type Contact = z.infer<typeof contactZodSchema>;
+
+
+export const contactTeambuildingZodSchema = z.object({
+	_id: z.string(),
+	companyName: z.string(),
+	place: z.string(),
+	email: z.string().email(),
+	message: z.string(),
+});
+
+export type ContactTeambuilding = z.infer<typeof contactTeambuildingZodSchema>;

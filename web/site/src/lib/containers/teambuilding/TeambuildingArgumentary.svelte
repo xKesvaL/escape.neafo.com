@@ -1,8 +1,8 @@
 <script lang="ts">
-	import Argumentary from '$lib/components/teambuilding/Argumentary.svelte';
+
 	import type { TeambuildingText } from '$lib/utils/types';
 
-	const argumentary = [
+	const argumentarys = [
 		{
 			title: 'PROMOTING COMMUNICATION',
 			text:
@@ -24,11 +24,18 @@
 	] satisfies Array<TeambuildingText>;
 </script>
 
-<div class="flex flex-col w-full border-t-2 border-primary gap-14">
-
+<div class="flex flex-col w-full border-t-2 border-primary gap-12">
+ 
     <h3 class="text-3xl font-semibold">Why team-building <span class="text-primary">with us ?</span></h3>
 
-	<div class="flex flex-col gap-14">
-		<Argumentary argumentarys={argumentary} />
+	<div class="flex flex-col gap-12">
+		{#each argumentarys as argumentary}
+			<div class="flex flex-col gap-2">
+				<span class="text-xl text-white">{argumentary.title}</span>
+				<div class="text-base font-normal">
+					{argumentary.text}
+				</div>
+			</div>
+		{/each}
 	</div>
 </div>
