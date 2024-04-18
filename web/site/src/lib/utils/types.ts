@@ -5,6 +5,13 @@ export interface FAQ {
     answer: string;
 }
 
+
+export interface Steps {
+    title: string;
+    description: string;
+    iconPath: string;
+}
+
 export interface Steps {
     title: string;
     description: string;
