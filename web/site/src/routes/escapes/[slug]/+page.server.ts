@@ -1,7 +1,9 @@
 import type {PageServerLoad} from "./$types";
 import {getDatabaseConnection} from "$lib/server/db";
-import type {Escape} from "@repo/schemas/zod";
+import {bookingZodSchema, type Escape} from "@repo/schemas/zod";
 import {fail} from "@sveltejs/kit";
+import {superValidate} from "sveltekit-superforms";
+import {zod} from "sveltekit-superforms/adapters";
 
 
 export const load: PageServerLoad = async ({ params, locals }) => {
@@ -18,6 +20,7 @@ export const load: PageServerLoad = async ({ params, locals }) => {
 
     return {
         escape,
-        user: locals.user
+        user: locals.user,
+        form: await superValidate(zod(bookingZodSchema)),
     };
 };

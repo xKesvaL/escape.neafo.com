@@ -1,5 +1,6 @@
 import { Schema } from "mongoose";
-import type { ContactTeambuilding, CustomImage, Escape, User } from "./zod";
+import type { ContactTeambuilding, CustomImage, Escape, User, Booking } from "./zod";
+import {z} from "zod";
 
 export const UserSchema = new Schema<User>(
 	{
@@ -61,7 +62,7 @@ export const ImageSchema = new Schema<CustomImage>(
 		id: String,
 	} as const,
 	{
-	_id: false,
+		_id: false,
 	},
 );
 
@@ -81,6 +82,12 @@ export const ContactSchema = new Schema<Contact>({
 	message: {
 		type: String,
 		required: true,
+	},
+} as const, {
+	_id: false,
+	timestamps: {
+		createdAt: "created_at",
+		updatedAt: "updated_at",
 	},
 });
 
@@ -104,6 +111,12 @@ export const ContactTeambuildingSchema = new Schema<ContactTeambuilding>({
 	message: {
 		type: String,
 		required: true,
+	},
+} as const, {
+	_id: false,
+	timestamps: {
+		createdAt: "created_at",
+		updatedAt: "updated_at",
 	},
 });
 
@@ -176,3 +189,29 @@ export const EscapeSchema = new Schema<Escape>(
 		},
 	},
 );
+
+export const BookingSchema = new Schema<Booking>({
+	_id: {
+		type: String,
+		required: true
+	},
+	escape_id: {
+		type: String,
+		required: true
+	},
+	people_number: {
+		type: Number,
+		required: true
+	},
+	date: {
+		type: Date,
+		required: true
+	},
+},
+	{
+		_id: false,
+		timestamps: {
+			createdAt: "created_at",
+			updatedAt: "updated_at",
+		},
+	})

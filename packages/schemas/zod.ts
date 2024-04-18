@@ -80,3 +80,12 @@ export const contactTeambuildingZodSchema = z.object({
 });
 
 export type ContactTeambuilding = z.infer<typeof contactTeambuildingZodSchema>;
+
+export const bookingZodSchema = z.object({
+	_id: z.string(),
+	escape_id: z.string(),
+	people_number: z.number().default(1),
+	date: z.date(),
+})
+
+export type Booking = z.infer<typeof bookingZodSchema>;

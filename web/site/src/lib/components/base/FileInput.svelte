@@ -15,7 +15,7 @@ import { createEventDispatcher } from "svelte";
 const dispatch = createEventDispatcher();
 let input: HTMLInputElement;
 
-// base props for use on file input
+// base props for use on file counter
 let klass: string | undefined = undefined;
 export { klass as class };
 export let required: boolean = false;
@@ -53,7 +53,7 @@ const handleChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
 		base64: await fileToBase64(file),
 		id: generateId(8),
 	} satisfies CustomFile;
-	// reset file input
+	// reset file counter
 };
 
 const handleRemoveFile = () => {

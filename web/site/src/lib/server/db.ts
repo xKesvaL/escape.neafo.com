@@ -1,6 +1,6 @@
 import { BRAND } from "$lib/config/brand";
 import { connect, type Mongoose } from "mongoose";
-import { UserSchema, SessionSchema, EscapeSchema, ContactSchema, ContactTeambuildingSchema  } from "@repo/schemas";
+import { UserSchema, SessionSchema, EscapeSchema, ContactSchema, ContactTeambuildingSchema, BookingSchema } from "@repo/schemas";
 import { logger } from "@repo/utils";
 
 let con: null | Mongoose = null;
@@ -21,8 +21,9 @@ export const getDatabaseConnection = async (): Promise<Mongoose> => {
 		connection.model("User", UserSchema);
 		connection.model("Session", SessionSchema);
 		connection.model("Escape", EscapeSchema);
-		connection.model("Contact", ContactSchema); 
+		connection.model("Contact", ContactSchema);
 		connection.model("ContactTeambuilding", ContactTeambuildingSchema);
+		connection.model("Booking", BookingSchema);
 	}
 
 	con = connection;
