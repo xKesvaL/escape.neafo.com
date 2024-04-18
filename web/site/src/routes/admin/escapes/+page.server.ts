@@ -7,6 +7,7 @@ export const load: PageServerLoad = async () => {
     const mongoose = await getDatabaseConnection();
     const escapeModel = mongoose.model<Escape>("Escape");
     const escapes = await escapeModel.find().lean();
+
     return {
         escapes
     };

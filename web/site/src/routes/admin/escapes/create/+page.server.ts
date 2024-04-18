@@ -63,8 +63,6 @@ export const actions: Actions = {
 			id: generateId(8),
 		} satisfies CustomImage;
 
-		console.log(image);
-
 		const escapeGame = new escapeModel({
 			_id: escapeId,
 			name,
