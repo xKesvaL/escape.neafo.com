@@ -1,3 +1,5 @@
+import type { ComponentType } from "svelte";
+
 export interface FAQ {
     question: string;
     answer: string;
@@ -6,7 +8,7 @@ export interface FAQ {
 export interface Steps {
     title: string;
     description: string;
-    iconPath: string;
+    icon: ComponentType;
 }
 
 export interface TeambuildingText{

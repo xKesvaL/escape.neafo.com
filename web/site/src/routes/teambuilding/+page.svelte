@@ -1,9 +1,9 @@
 <script lang="ts">
-	import Button from '$lib/components/ui/button/button.svelte';
-	import StepContainer from '$lib/containers/teambuilding/StepContainer.svelte';
-	import ArgumentaryTeambuilding from '$lib/containers/teambuilding/ArgumentaryTeambuilding.svelte';
-	import LogoCompanyContainer from '$lib/containers/teambuilding/LogoCompanyContainer.svelte';
-	import { Control, Field, FieldErrors, Label } from '$lib/components/ui/form';
+	import { Button as NormalButton } from '$lib/components/ui/button';
+	import StepContainer from '$lib/containers/teambuilding/TeambuildingSteps.svelte';
+	import ArgumentaryTeambuilding from '$lib/containers/teambuilding/TeambuildingArgumentary.svelte';
+	import LogoCompanyContainer from '$lib/containers/teambuilding/TeambuildingCompanies.svelte';
+	import { Control, Field, FieldErrors, Label, Button } from '$lib/components/ui/form';
 	import { Input } from '$lib/components/ui/input';
 	import { superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
@@ -22,9 +22,9 @@
 </script>
 
 <section class="container flex flex-col items-center gap-24">
-	<div class="hero flex flex-row items-center justify-between gap-5">
-		<div class="left flex max-w-[600px] flex-col justify-between gap-6">
-			<h1 class="text-5xl font-extrabold leading-[48px]">
+	<div class="hero flex flex-row items-center justify-between gap-4">
+		<div class="left flex flex-col justify-between gap-6">
+			<h1 class="text-5xl font-extrabold leading-tight">
 				Find your escape-game for your <span class="text-primary">Teambuilding</span>
 			</h1>
 
@@ -32,17 +32,15 @@
 				Need a <span class="text-primary">team-building activity?</span> Our escapes games are for you
 			</h3>
 
-			<div class="flex flex-row gap-7">
-				<Button class="text-xl ">Get started</Button>
-				<Button class="bg-background border-primary text-primary border-2 text-xl"
-					>Contact Us</Button
-				>
-			</div>
+			<div class="flex flex-row gap-4">
+				<NormalButton>Get started</NormalButton>
+				<NormalButton variant="secondary">Contact Us</NormalButton>
+			</div>	
 		</div>
 
 		<div class="h-72 overflow-hidden rounded-xl">
 			<enhanced:img
-				class="h-[100%] object-cover"
+				class="h-full object-cover"
 				src="/src/assets/teambuilding/team-building-hero.png"
 				alt="team-building_hero_img"
 			>
@@ -50,7 +48,7 @@
 		</div>
 	</div>
 
-	<div class="flex max-w-[900px] flex-col items-center gap-7">
+	<div class="flex flex-col items-center gap-4">
 		<h2 class="text-center text-3xl font-semibold">
 			Simple, transparent and remarkably <span class="text-primary">effective</span>.
 		</h2>
