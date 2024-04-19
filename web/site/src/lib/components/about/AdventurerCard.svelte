@@ -9,21 +9,23 @@
 <div class="p-6 flex flex-col gap-6 border border-primary rounded-lg">
     <div class="flex flex-col gap-1">
         <h1 class="text-2xl font-bold">{profile.name}</h1>
-        <div class="flex flex-row gap-1 items-center">
-            <IconPuzzle size="20" stroke="1.5" class="text-primary"/>
-            <p>{profile.role}</p>
+        <div class="flex flex-row gap-2 items-start">
+            <IconPuzzle size={20} class="flex-shrink-0 text-primary" stroke="1.5"/>
+            <p class="text-sm">{profile.role}</p>
         </div>
     </div>
     <svelte:component this={profile.image} />
     <div class="flex flex-col gap-3">
-        <div class="flex flex-row gap-2 items-center">
-            <IconBuilding stroke="1.5" size="20"/>
-            <p>{profile.job}</p>
+        <div class="flex flex-row gap-2 items-start">
+            <IconBuilding stroke="1.5" size={20} class="flex-shrink-0"/>
+            <p class="text-sm">{profile.job}</p>
         </div>
-        <div class="flex flex-row gap-2 items-center">
-            <IconDeviceLaptop stroke="1.5" size="20"/>
-            <p class="occupation">{@html profile.occupation}</p>
-        </div>
+        {#if profile.occupation !== ""}
+            <div class="flex flex-row gap-2 items-start">
+                <IconDeviceLaptop stroke="1.5" size={20} class="flex-shrink-0"/>
+                <p class="occupation text-sm">{@html profile.occupation}</p>
+            </div>
+        {/if}
     </div>
 </div>
 
