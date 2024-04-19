@@ -27,3 +27,11 @@ export interface LegalProps{
     title: string;
     description: string;
 }
+
+export interface AboutUsProfile{
+    name: string;
+    role: string;
+    image: ComponentType;
+    job: string;
+    occupation: string;
+}

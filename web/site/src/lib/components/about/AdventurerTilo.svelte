@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/about/tilo.png?w=400" alt="Tilo" />
