@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/about/adventurer/Sasha.jpg?w=400" alt="Sasha" />

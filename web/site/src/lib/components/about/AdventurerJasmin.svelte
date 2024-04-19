@@ -1,1 +1,0 @@
-<enhanced:img src="$assets/about/Jasmin.jpg?w=400" alt="Jasmin" />

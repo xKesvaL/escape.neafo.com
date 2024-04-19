@@ -1,1 +1,0 @@
-<enhanced:img src="$assets/about/Thilo.jpg?w=400" alt="Thilo" />

@@ -35,3 +35,8 @@ export interface AboutUsProfile{
     job: string;
     occupation: string;
 }
+
+export interface AboutUsEscape{
+    image: ComponentType;
+    date: string;
+}

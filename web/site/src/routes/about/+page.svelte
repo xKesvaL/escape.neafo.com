@@ -1,16 +1,19 @@
 <script lang="ts">
-    import AdventurerCard from "$lib/components/about/AdventurerCard.svelte"
-    import type {AboutUsProfile} from "$lib/utils/types";
-    import AdventurerThilo from "$lib/components/about/AdventurerThilo.svelte";
-    import AdventurerMelina from "$lib/components/about/AdventurerMelina.svelte";
-    import AdventurerMiriam from "$lib/components/about/AdventurerMiriam.svelte";
-    import AdventurerJasmin from "$lib/components/about/AdventurerJasmin.svelte";
-    import AdventurerSasha from "$lib/components/about/AdventurerSasha.svelte";
-    import AdventurerAlessandro from "$lib/components/about/AdventurerAlessandro.svelte";
-    import AdventurerSarah from "$lib/components/about/AdventurerSarah.svelte";
-    import AdventurerSilvia from "$lib/components/about/AdventurerSilvia.svelte";
-    import LineLeft from "$lib/components/about/LineLeft.svelte"
-    import LineRight from "$lib/components/about/LineRight.svelte"
+    import AdventurerCard from "$lib/components/about/adventurer/AdventurerCard.svelte"
+    import type {AboutUsProfile, AboutUsEscape} from "$lib/utils/types";
+    import AdventurerThilo from "$lib/components/about/adventurer/AdventurerThilo.svelte";
+    import AdventurerMelina from "$lib/components/about/adventurer/AdventurerMelina.svelte";
+    import AdventurerMiriam from "$lib/components/about/adventurer/AdventurerMiriam.svelte";
+    import AdventurerJasmin from "$lib/components/about/adventurer/AdventurerJasmin.svelte";
+    import AdventurerSasha from "$lib/components/about/adventurer/AdventurerSasha.svelte";
+    import AdventurerAlessandro from "$lib/components/about/adventurer/AdventurerAlessandro.svelte";
+    import AdventurerSarah from "$lib/components/about/adventurer/AdventurerSarah.svelte";
+    import AdventurerSilvia from "$lib/components/about/adventurer/AdventurerSilvia.svelte";
+    import LineLeft from "$lib/components/about/LineLeft.svelte";
+    import LineRight from "$lib/components/about/LineRight.svelte";
+    import EscapeCardAbout from "$lib/components/about/escape/EscapeCardAbout.svelte";
+    import EscapeInVino from "$lib/components/about/escape/EscapeInVino.svelte";
+    import EscapeFluchDer9 from "$lib/components/about/escape/EscapeFluchDer9.svelte";
     import * as Popover from "$lib/components/ui/popover/index.js";
     import { Button } from "$lib/components/ui/button/index.js";
     import { IconArrowNarrowDown } from "@tabler/icons-svelte";
@@ -73,6 +76,16 @@
             occupation: ""
         }
     ] satisfies Array<AboutUsProfile>
+    let escapes = [
+        {
+            image: EscapeInVino,
+            date: "March 2021"
+        },
+        {
+            image: EscapeFluchDer9,
+            date: "March 2021"
+        }
+    ] satisfies Array<AboutUsEscape>
 </script>
 
 <div class="container flex flex-col gap-24 py-12">
@@ -123,7 +136,9 @@
                     <LineLeft/>
                     <p class="text-2xl">Adventure development.</p>
                     <div class="grid grid-cols-2 gap-2">
-
+                        {#each escapes as escape}
+                            <EscapeCardAbout {escape}/>
+                        {/each}
                     </div>
                 </div>
             </div>
