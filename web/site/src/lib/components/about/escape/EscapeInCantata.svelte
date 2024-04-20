@@ -1,0 +1,1 @@
+<enhanced:img class="rounded-t-xl" src="$assets/about/escape/inCantata.jpg?w=300" alt="Alessandro" />

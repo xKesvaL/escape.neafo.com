@@ -14,9 +14,11 @@
     import EscapeCardAbout from "$lib/components/about/escape/EscapeCardAbout.svelte";
     import EscapeInVino from "$lib/components/about/escape/EscapeInVino.svelte";
     import EscapeFluchDer9 from "$lib/components/about/escape/EscapeFluchDer9.svelte";
+    import BuchDerSiegel from "$lib/components/about/escape/EscapeBuchDerSiegel.svelte";
+    import InCantata from "$lib/components/about/escape/EscapeInCantata.svelte";
     import * as Popover from "$lib/components/ui/popover/index.js";
     import { Button } from "$lib/components/ui/button/index.js";
-    import { IconArrowNarrowDown } from "@tabler/icons-svelte";
+    import { IconArrowNarrowDown, IconPlus } from "@tabler/icons-svelte";
 
     let profiles = [
         {
@@ -84,8 +86,18 @@
         {
             image: EscapeFluchDer9,
             date: "March 2021"
+        },
+        {
+            image: BuchDerSiegel,
+            date: "April-June 2021"
         }
     ] satisfies Array<AboutUsEscape>
+
+    let escapeInCantata = {
+        image: InCantata,
+        date: "April 2022"
+    } satisfies AboutUsEscape
+
 </script>
 
 <div class="container flex flex-col gap-24 py-12">
@@ -140,6 +152,25 @@
                             <EscapeCardAbout {escape}/>
                         {/each}
                     </div>
+                </div>
+            </div>
+            <div class="flex flex-col gap-1">
+                <div class="gap-2 flex flex-col">
+                    <h1 class="text-3xl font-bold">December 2021</h1>
+                    <LineLeft/>
+                    <div class="flex flex-row gap-2 items-center">
+                        <IconPlus class="text-primary flex-shrink-0" stroke="1.5"/>
+                        <p class="text-2xl">6 new employees.</p>
+                    </div>
+                    <enhanced:img class="rounded-t-xl" src="$assets/about/job.png?w=300" alt="Fluch der 9" />
+                </div>
+            </div>
+            <div class="flex flex-col gap-1">
+                <div class="gap-2 flex flex-col">
+                    <h1 class="text-3xl font-bold">December 2021</h1>
+                    <LineLeft/>
+                    <p class="text-2xl">Adventure development.</p>
+                    <enhanced:img class="rounded-t-xl" src="$assets/about/job.png?w=300" alt="Fluch der 9" />
                 </div>
             </div>
         </div>

@@ -3,6 +3,7 @@
 
 
     export let escape: AboutUsEscape;
+
 </script>
 
 <div class="flex flex-col bg-muted rounded-xl text-center ">
