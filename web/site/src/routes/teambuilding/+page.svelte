@@ -1,21 +1,21 @@
 <script lang="ts">
-	import { Button as NormalButton } from '$lib/components/ui/button';
+	import {Button as NormalButton} from '$lib/components/ui/button';
 	import StepContainer from '$lib/containers/teambuilding/TeambuildingSteps.svelte';
 	import ArgumentaryTeambuilding from '$lib/containers/teambuilding/TeambuildingArgumentary.svelte';
 	import LogoCompanyContainer from '$lib/containers/teambuilding/TeambuildingCompanies.svelte';
-	import { Control, Field, FieldErrors, Label, Button } from '$lib/components/ui/form';
-	import { Input } from '$lib/components/ui/input';
-	import { superForm } from 'sveltekit-superforms';
-	import { zodClient } from 'sveltekit-superforms/adapters';
-	import { contactTeambuildingZodSchema } from '@repo/schemas/zod';
-	import { Textarea } from '$lib/components/ui/textarea';
+	import {Button, Control, Field, FieldErrors, Label} from '$lib/components/ui/form';
+	import {Input} from '$lib/components/ui/input';
+	import {superForm} from 'sveltekit-superforms';
+	import {zodClient} from 'sveltekit-superforms/adapters';
+	import {contactTeamBuildingZodSchema} from '@repo/schemas/zod';
+	import {Textarea} from '$lib/components/ui/textarea';
 	import Form from '$lib/components/base/Form.svelte';
-	import { IconSend } from '@tabler/icons-svelte';
+	import {IconSend} from '@tabler/icons-svelte';
 
 	export let data;
 
 	const form = superForm(data.form, {
-		validators: zodClient(contactTeambuildingZodSchema)
+		validators: zodClient(contactTeamBuildingZodSchema)
 	});
 
 	const { form: formData, enhance } = form;

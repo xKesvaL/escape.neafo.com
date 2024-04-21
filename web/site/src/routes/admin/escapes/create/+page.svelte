@@ -1,29 +1,22 @@
 <script lang="ts">
-import {
-	Button,
-	Control,
-	Field,
-	FieldErrors,
-	Fieldset,
-	Label,
-} from "$lib/components/ui/form";
-import { Input } from "$lib/components/ui/input";
-import { Textarea } from "$lib/components/ui/textarea";
-import { Switch } from "$lib/components/ui/switch";
-import { escapeCreateZodSchema } from "@repo/schemas/zod";
-import { superForm } from "sveltekit-superforms";
-import { zodClient } from "sveltekit-superforms/adapters";
-import { Checkbox } from "$lib/components/ui/checkbox";
-import { availableLanguageTags } from "$paraglide/runtime";
-import { ESCAPE } from "@repo/global-config";
-import replaceSpecialCharacter from "replace-special-characters";
-import type { Locale } from "$lib/config/brand";
-import * as m from "$paraglide/messages";
-import { getI18n } from "$lib/utils/functions";
-import FileInput from "$lib/components/base/FileInput.svelte";
-import Form from "$lib/components/base/Form.svelte";
+    import {Button, Control, Field, FieldErrors, Fieldset, Label,} from "$lib/components/ui/form";
+    import {Input} from "$lib/components/ui/input";
+    import {Textarea} from "$lib/components/ui/textarea";
+    import {Switch} from "$lib/components/ui/switch";
+    import {escapeCreateZodSchema} from "@repo/schemas/zod";
+    import {superForm} from "sveltekit-superforms";
+    import {zodClient} from "sveltekit-superforms/adapters";
+    import {Checkbox} from "$lib/components/ui/checkbox";
+    import {availableLanguageTags} from "$paraglide/runtime";
+    import {ESCAPE} from "@repo/global-config";
+    import replaceSpecialCharacter from "replace-special-characters";
+    import type {Locale} from "$lib/config/brand";
+    import * as m from "$paraglide/messages";
+    import {getI18n} from "$lib/utils/functions";
+    import FileInput from "$lib/components/base/FileInput.svelte";
+    import Form from "$lib/components/base/Form.svelte";
 
-export let data;
+    export let data;
 
 const form = superForm(data.form, {
 	validators: zodClient(escapeCreateZodSchema),
@@ -123,7 +116,7 @@ function handleSlug(name: string) {
                                 class={`h-10 border border-[var(--bt-diff-clr)] w-full p-2 rounded-md cursor-pointer hover:bg-[var(--bt-diff-clr)] ${
                         $formData.difficulty === difficulty ? "bg-[var(--bt-diff-clr)]" : ""
                     }`}
-                                on:click={() => {
+                            on:click={() => {
                         $formData.difficulty = difficulty;
                     }}
                                 style="--bt-diff-clr: hsl(var(--{color}))"

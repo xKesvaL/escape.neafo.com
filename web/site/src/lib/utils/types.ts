@@ -1,27 +1,34 @@
 import type { ComponentType } from "svelte";
 
 export interface FAQ {
-    question: string;
-    answer: string;
+	question: string;
+	answer: string;
 }
 
 export interface Steps {
-    title: string;
-    description: string;
-    icon: ComponentType;
+	title: string;
+	description: string;
+	icon: ComponentType;
 }
 
-export interface TeambuildingText{
-    title: string;
-    text: string;
+export interface TeamBuildingText {
+	title: string;
+	text: string;
 }
 
-export interface LegalProps{
-    title: string;
-    description: string;
+export interface LegalProps {
+	title: string;
+	description: string;
 }
 
-export interface AboutUsProfile{
+export interface BookingOptions {
+	min: number;
+	max: number;
+	step: number;
+	exclude: number[];
+}
+
+export interface AboutUsProfile {
     name: string;
     role: string;
     image: ComponentType;
@@ -29,7 +36,7 @@ export interface AboutUsProfile{
     occupation: string;
 }
 
-export interface AboutUsEscape{
+export interface AboutUsEscape {
     image: ComponentType;
     date: string;
 }

@@ -25,3 +25,7 @@ export const fileToBase64Server = async (file: File) => {
 	const buffer = Buffer.from(await file.arrayBuffer());
 	return `data:${file.type};base64,${buffer?.toString("base64")}`;
 };
+
+export const formatPrice = (price: number) => {
+	return Math.round(price).toFixed(2);
+}

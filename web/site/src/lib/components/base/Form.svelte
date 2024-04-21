@@ -1,9 +1,9 @@
 <script lang="ts">
-import SuperDebug, { type SuperFormEvents } from "sveltekit-superforms";
-import type { HTMLFormAttributes } from "svelte/elements";
-import { dev } from "$app/environment";
+    import SuperDebug, {type SuperFormEvents} from "sveltekit-superforms";
+    import type {HTMLFormAttributes} from "svelte/elements";
+    import {dev as isDev} from "$app/environment";
 
-type $$Props = HTMLFormAttributes & {
+    type $$Props = HTMLFormAttributes & {
 	enhance: (
 		el: HTMLFormElement,
 		events?: SuperFormEvents<Record<string, unknown>, any>,
@@ -13,6 +13,7 @@ type $$Props = HTMLFormAttributes & {
 
 export let enhance: $$Props["enhance"];
 export let formData: $$Props["formData"];
+export let dev: boolean = isDev;
 </script>
 
 <form use:enhance {...$$restProps}>
@@ -20,5 +21,7 @@ export let formData: $$Props["formData"];
 </form>
 
 {#if dev}
-    <SuperDebug data={$formData} />
+    <div class="max-w-full">
+        <SuperDebug data={$formData} />
+    </div>
 {/if}

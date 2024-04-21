@@ -1,8 +1,8 @@
 <script lang="ts">
 
-	import type { TeambuildingText } from '$lib/utils/types';
+    import type {TeamBuildingText} from '$lib/utils/types';
 
-	const argumentarys = [
+    const argumentarys = [
 		{
 			title: 'PROMOTING COMMUNICATION',
 			text:
@@ -21,7 +21,7 @@
 				'Shared experiences of success such as those experienced by a team in our outdoor escape adventures not only promote communication and cohesion, they also form a strong basis for future success in the office.'
 		},
 
-	] satisfies Array<TeambuildingText>;
+	] satisfies Array<TeamBuildingText>;
 </script>
 
 <div class="flex flex-col w-full border-t-2 border-primary gap-12">
