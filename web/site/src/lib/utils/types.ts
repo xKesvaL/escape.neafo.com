@@ -8,12 +8,6 @@ export interface FAQ {
 export interface Steps {
 	title: string;
 	description: string;
-	iconPath: string;
-}
-
-export interface Steps {
-	title: string;
-	description: string;
 	icon: ComponentType;
 }
 
@@ -32,4 +26,17 @@ export interface BookingOptions {
 	max: number;
 	step: number;
 	exclude: number[];
+}
+
+export interface AboutUsProfile {
+    name: string;
+    role: string;
+    image: ComponentType;
+    job: string;
+    occupation: string;
+}
+
+export interface AboutUsEscape {
+    image: ComponentType;
+    date: string;
 }

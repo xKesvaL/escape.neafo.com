@@ -1,0 +1,1 @@
+<enhanced:img class="rounded-t-xl w-full object-cover" src="$assets/about/escape/inVino.jpg?w=300" alt="Alessandro" />
