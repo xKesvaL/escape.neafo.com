@@ -1,6 +1,12 @@
 import { Schema } from "mongoose";
-import type { ContactTeambuilding, CustomImage, Escape, User, Booking } from "./zod";
-import {z} from "zod";
+import type {
+	Booking,
+	Contact,
+	ContactTeamBuilding,
+	CustomImage,
+	Escape,
+	User,
+} from "./zod";
 
 export const UserSchema = new Schema<User>(
 	{
@@ -66,59 +72,65 @@ export const ImageSchema = new Schema<CustomImage>(
 	},
 );
 
-export const ContactSchema = new Schema<Contact>({
-	_id: {
-		type: String,
-		required: true,
+export const ContactSchema = new Schema<Contact>(
+	{
+		_id: {
+			type: String,
+			required: true,
+		},
+		name: {
+			type: String,
+			required: true,
+		},
+		email: {
+			type: String,
+			required: true,
+		},
+		message: {
+			type: String,
+			required: true,
+		},
+	} as const,
+	{
+		_id: false,
+		timestamps: {
+			createdAt: "created_at",
+			updatedAt: "updated_at",
+		},
 	},
-	name: {
-		type: String,
-		required: true,
-	},
-	email: {
-		type: String,
-		required: true,
-	},
-	message: {
-		type: String,
-		required: true,
-	},
-} as const, {
-	_id: false,
-	timestamps: {
-		createdAt: "created_at",
-		updatedAt: "updated_at",
-	},
-});
+);
 
-export const ContactTeambuildingSchema = new Schema<ContactTeambuilding>({
-	_id: {
-		type: String,
-		required: true,
+export const ContactTeamBuildingSchema = new Schema<ContactTeamBuilding>(
+	{
+		_id: {
+			type: String,
+			required: true,
+		},
+		companyName: {
+			type: String,
+			required: true,
+		},
+		place: {
+			type: String,
+			required: true,
+		},
+		email: {
+			type: String,
+			required: true,
+		},
+		message: {
+			type: String,
+			required: true,
+		},
+	} as const,
+	{
+		_id: false,
+		timestamps: {
+			createdAt: "created_at",
+			updatedAt: "updated_at",
+		},
 	},
-	companyName: {
-		type: String,
-		required: true,
-	},
-	place: {
-		type: String,
-		required: true,
-	},
-	email: {
-		type: String,
-		required: true,
-	},
-	message: {
-		type: String,
-		required: true,
-	},
-} as const, {
-	_id: false,
-	timestamps: {
-		createdAt: "created_at",
-		updatedAt: "updated_at",
-	},
-});
+);
 
 export const EscapeSchema = new Schema<Escape>(
 	{
@@ -176,6 +188,36 @@ export const EscapeSchema = new Schema<Escape>(
 			type: Boolean,
 			default: true,
 		},
+		min_booking_hour: {
+			type: Number,
+			required: true,
+			default: 8,
+		},
+		max_booking_hour: {
+			type: Number,
+			required: true,
+			default: 18,
+		},
+		step_booking: {
+			type: Number,
+			required: true,
+			default: 1,
+		},
+		exclude_booking: {
+			type: [Number],
+			required: true,
+			default: [12],
+		},
+		min_people: {
+			type: Number,
+			required: true,
+			default: 2,
+		},
+		max_people: {
+			type: Number,
+			required: true,
+			default: 6,
+		},
 		image: {
 			type: ImageSchema,
 			required: false,
@@ -190,28 +232,30 @@ export const EscapeSchema = new Schema<Escape>(
 	},
 );
 
-export const BookingSchema = new Schema<Booking>({
-	_id: {
-		type: String,
-		required: true
+export const BookingSchema = new Schema<Booking>(
+	{
+		_id: {
+			type: String,
+			required: true,
+		},
+		escape_id: {
+			type: String,
+			required: true,
+		},
+		people_number: {
+			type: Number,
+			required: true,
+		},
+		date: {
+			type: Date,
+			required: true,
+		},
 	},
-	escape_id: {
-		type: String,
-		required: true
-	},
-	people_number: {
-		type: Number,
-		required: true
-	},
-	date: {
-		type: Date,
-		required: true
-	},
-},
 	{
 		_id: false,
 		timestamps: {
 			createdAt: "created_at",
 			updatedAt: "updated_at",
 		},
-	})
+	},
+);

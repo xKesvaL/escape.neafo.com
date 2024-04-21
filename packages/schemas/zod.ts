@@ -31,15 +31,21 @@ export const escapeCreateZodSchema = z.object({
 	langs: z.array(z.enum(["fr", "en", "de"] as const)),
 	difficulty: z.enum(["easy", "medium", "hard"] as const),
 	puzzle: z.enum(["beginner", "intermediate", "advanced", "expert"] as const),
-	time: z.string(),
+	time: z.string().default("01:00"),
 	address: z.string(),
 	city: z.string(),
 	postal_code: z.string(),
 	price: z.string(),
 	public: z.boolean().default(true),
+	min_people: z.number().default(2),
+	max_people: z.number().default(6),
+	min_booking_hour: z.number().default(8),
+	max_booking_hour: z.number().default(18),
+	step_booking: z.number().default(1),
+	exclude_booking: z.array(z.number()).default([12]),
 	image: z
 		.instanceof(File, { message: "Please upload a file." })
-		.refine((f) => f.size < 1_000_000, "Max 1 mB upload size."),
+		.refine((f) => f.size < 10_000_000, "Max 10 mB upload size."),
 });
 
 export type EscapeCreation = z.infer<typeof escapeCreateZodSchema>;
@@ -70,8 +76,7 @@ export const contactZodSchema = z.object({
 
 export type Contact = z.infer<typeof contactZodSchema>;
 
-
-export const contactTeambuildingZodSchema = z.object({
+export const contactTeamBuildingZodSchema = z.object({
 	_id: z.string(),
 	companyName: z.string(),
 	place: z.string(),
@@ -79,13 +84,13 @@ export const contactTeambuildingZodSchema = z.object({
 	message: z.string(),
 });
 
-export type ContactTeambuilding = z.infer<typeof contactTeambuildingZodSchema>;
+export type ContactTeamBuilding = z.infer<typeof contactTeamBuildingZodSchema>;
 
 export const bookingZodSchema = z.object({
 	_id: z.string(),
 	escape_id: z.string(),
 	people_number: z.number().default(1),
-	date: z.date(),
-})
+	date: z.date().default(() => new Date()),
+});
 
 export type Booking = z.infer<typeof bookingZodSchema>;

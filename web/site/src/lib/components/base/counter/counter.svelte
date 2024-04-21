@@ -1,11 +1,11 @@
 <script lang="ts">
-import type { HTMLInputAttributes } from "svelte/elements";
-import { cn } from "$lib/utils/ui";
-import type { InputEvents } from "./index.js";
-import { IconPlus, IconMinus, IconUsers } from "@tabler/icons-svelte";
+    import type {HTMLInputAttributes} from "svelte/elements";
+    import {cn} from "$lib/utils/ui";
+    import type {InputEvents} from "./index.js";
+    import {IconMinus, IconPlus, IconUsers} from "@tabler/icons-svelte";
 
 
-type $$Props = HTMLInputAttributes & {
+    type $$Props = HTMLInputAttributes & {
 	instance?: HTMLInputElement;
     value?: number;
     max?: number;
@@ -31,7 +31,7 @@ function handlePlus(){
 
 </script>
 
-<div class="relative flex items-center gap-2 border-input border px-3 rounded-md">
+<div class="relative flex items-center gap-2 border-input border px-3 rounded-md bg-background">
     <IconUsers/>
     <input
             {...$$restProps}
@@ -49,14 +49,14 @@ function handlePlus(){
             on:input
             on:keydown
             on:keypress
-            on:keyup
+            on:keyup    
             on:mouseenter
             on:mouseleave
             on:mouseover
             on:paste
     />
     <div class="flex flex-row gap-2 absolute right-2">
-        <button class="rounded-full border p-1 {value <= (min || 0) ? 'border-muted' : 'border-foreground'}" on:click={handleMinus} disabled={value <= (min || 0)}><IconMinus size={16} stroke="1.5"/></button>
-        <button class="rounded-full border border-foreground p-1 {value >= (max || 6) ? 'border-muted' : 'border-foreground'}" on:click={handlePlus} disabled={value >= (max || 6)}><IconPlus size={16} stroke="1.5"/></button>
+        <button type="button" class="rounded-full transition border p-1 {value <= (min || 0) ? 'border-muted' : 'border-muted-foreground cursor-pointer'}" on:click={handleMinus} disabled={value <= (min || 0)}><IconMinus size={16} stroke="1.5"/></button>
+        <button type="button" class="rounded-full transition border p-1 {value >= (max || 6) ? 'border-muted' : 'border-muted-foreground cursor-pointer'}" on:click={handlePlus} disabled={value >= (max || 6)}><IconPlus size={16} stroke="1.5"/></button>
     </div>
 </div>

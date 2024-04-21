@@ -1,52 +1,52 @@
-import { superValidate } from "sveltekit-superforms";
-import{type ContactTeambuilding ,contactTeambuildingZodSchema} from "@repo/schemas/zod";
-import { zod } from "sveltekit-superforms/adapters";
-import type { PageServerLoad, Actions } from "./$types.js";
-import { getDatabaseConnection } from "$lib/server/db";
-import { fail, redirect } from "@sveltejs/kit";
 import { route } from "$lib/ROUTES";
-import {generateId} from "lucia";
+import { getDatabaseConnection } from "$lib/server/db";
+import {
+	type ContactTeamBuilding,
+	contactTeamBuildingZodSchema,
+} from "@repo/schemas/zod";
+import { fail, redirect } from "@sveltejs/kit";
+import { generateId } from "lucia";
+import { superValidate } from "sveltekit-superforms";
+import { zod } from "sveltekit-superforms/adapters";
+import type { Actions, PageServerLoad } from "./$types.js";
 
 export const load: PageServerLoad = async () => {
-    return {
-        form: await superValidate(zod(contactTeambuildingZodSchema)),
-    };
+	return {
+		form: await superValidate(zod(contactTeamBuildingZodSchema)),
+	};
 };
 
 export const actions: Actions = {
-    default: async (event) => {
-        const form = await superValidate(event, zod(contactTeambuildingZodSchema));
+	default: async (event) => {
+		const form = await superValidate(event, zod(contactTeamBuildingZodSchema));
 
-        console.log("salut")
+		console.log("salut");
 
-        if (!form.valid) {
-            return fail(400, {
-                form,
-            });
-        }
+		if (!form.valid) {
+			return fail(400, {
+				form,
+			});
+		}
 
-        const {
-            companyName,
-            email,
-            place,
-            message,
-        } = form.data;
+		const { companyName, email, place, message } = form.data;
 
-        const contactId = generateId(40);
-        const mongoose = await getDatabaseConnection();
+		const contactId = generateId(40);
+		const mongoose = await getDatabaseConnection();
 
-        const contactModel = mongoose.model<ContactTeambuilding>("ContactTeambuilding");
+		const contactModel = mongoose.model<ContactTeamBuilding>(
+			"ContactTeambuilding",
+		);
 
-        const contactTeambuilding = new contactModel({
-            _id: contactId,
-            companyName,
-            email,
-            place,
-            message,
-        });
+		const contactTeambuilding = new contactModel({
+			_id: contactId,
+			companyName,
+			email,
+			place,
+			message,
+		});
 
-        await contactTeambuilding.save();   
+		await contactTeambuilding.save();
 
-        return redirect(302, route("/"));
-    },
+		return redirect(302, route("/"));
+	},
 };
