@@ -1,5 +1,7 @@
 <script lang="ts">
     import {Calendar as CalendarPrimitive} from "bits-ui";
+    import * as Calendar from "$lib/components/ui/calendar";
+    import * as Select from "$lib/components/ui/select";
     import {DateFormatter, getLocalTimeZone, today} from "@internationalized/date";
     import {cn} from "$lib/utils/ui.js";
     import {dateEqualityByDayMonthYear} from "$lib/utils/functions";
@@ -64,7 +66,6 @@
         let:weekdays
         bind:value
         bind:placeholder
-        on:select={(e) => console.log(e)}
         preventDeselect={true}
 >
     <Calendar.Header class="pt-0">

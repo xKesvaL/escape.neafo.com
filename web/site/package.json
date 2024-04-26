@@ -67,7 +67,8 @@
 		"replace-special-characters": "^1.2.7",
 		"postcss-import": "^16.1.0",
 		"@formkit/auto-animate": "^0.8.2",
-		"svelte-radix": "^1.1.0"
+		"svelte-radix": "^1.1.0",
+		"ol": "^9.1.0"
 	},
 	"dependencies": {
 		"lucide-svelte": "0.364.0"

@@ -1,6 +1,4 @@
 import * as m from "$paraglide/messages";
-import type { Booking } from "@repo/schemas/zod";
-import { getContext, setContext } from "svelte";
 
 export const i18nKeys = Object.keys(m);
 
@@ -25,23 +23,4 @@ export const dateEqualityByDayMonthYear = (date1: Date, date2: Date) => {
 		date1.getMonth() === date2.getMonth() &&
 		date1.getFullYear() === date2.getFullYear()
 	);
-};
-
-export const getContextEscapeBooking = (escape_id: string) => {
-	return getContext<Omit<Booking, "_id">>(escape_id);
-};
-
-export const setContextEscapeBooking = (
-	escape_id: string,
-	data: Omit<Booking, "_id">,
-) => {
-	return setContext<Omit<Booking, "_id">>(escape_id, data);
-};
-
-export const updateContextEscapeBooking = (
-	escape_id: string,
-	data: Partial<Omit<Booking, "_id">>,
-) => {
-	const currentData = getContextEscapeBooking(escape_id);
-	setContextEscapeBooking(escape_id, { ...currentData, ...data });
 };

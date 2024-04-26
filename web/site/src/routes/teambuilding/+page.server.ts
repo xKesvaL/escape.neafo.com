@@ -20,8 +20,6 @@ export const actions: Actions = {
 	default: async (event) => {
 		const form = await superValidate(event, zod(contactTeamBuildingZodSchema));
 
-		console.log("salut");
-
 		if (!form.valid) {
 			return fail(400, {
 				form,

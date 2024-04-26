@@ -63,6 +63,20 @@ export const actions: Actions = {
 			id: generateId(8),
 		} satisfies CustomImage;
 
+		// @ts-ignore
+		const geolocation = (
+			await (
+				await fetch(
+					`https://api-adresse.data.gouv.fr/search/?q=${address.replace(
+						" ",
+						"+",
+					)}&postcode=${postal_code}&limit=1&autocomplete=0`,
+				)
+			).json()
+		).features[0].geometry.coordinates as [number, number];
+
+		const [lng, lat] = geolocation;
+
 		const escapeGame = new escapeModel({
 			_id: escapeId,
 			name,
@@ -77,6 +91,8 @@ export const actions: Actions = {
 			postal_code,
 			price,
 			image,
+			longitude: lng,
+			latitude: lat,
 		});
 
 		await escapeGame.save();

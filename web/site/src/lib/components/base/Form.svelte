@@ -5,15 +5,16 @@
 
     type $$Props = HTMLFormAttributes & {
 	enhance: (
-		el: HTMLFormElement,
-		events?: SuperFormEvents<Record<string, unknown>, any>,
-	) => ReturnType<typeof kitEnhance>;
-	formData: SuperFormData<Record<string, unknown>>;
-};
+            el: HTMLFormElement,
+            events?: SuperFormEvents<Record<string, unknown>, any>,
+        ) => ReturnType<typeof kitEnhance>;
+        formData: SuperFormData<Record<string, unknown>>;
+        dev: boolean;
+    };
 
 export let enhance: $$Props["enhance"];
 export let formData: $$Props["formData"];
-export let dev: boolean = isDev;
+export let dev: $$Props["dev"] = isDev;
 </script>
 
 <form use:enhance {...$$restProps}>

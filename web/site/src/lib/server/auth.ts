@@ -1,8 +1,8 @@
-import { Lucia } from "lucia";
 import { dev } from "$app/environment";
 import { MongodbAdapter } from "@lucia-auth/adapter-mongodb";
-import { getDatabaseConnection } from "./db";
 import type { User } from "@repo/schemas/zod";
+import { Lucia } from "lucia";
+import { getDatabaseConnection } from "./db";
 
 const mongoose = await getDatabaseConnection();
 

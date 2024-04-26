@@ -1,32 +1,47 @@
+import { route } from "$lib/ROUTES";
 import { getDatabaseConnection } from "$lib/server/db";
 import { type Booking, type Escape, bookingZodSchema } from "@repo/schemas/zod";
-import { fail } from "@sveltejs/kit";
+import { fail, redirect } from "@sveltejs/kit";
 import { superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
 import type { Actions, PageServerLoad } from "./$types";
 
 export const load: PageServerLoad = async ({ params, locals }) => {
 	const mongoose = await getDatabaseConnection();
-	const { slug } = params;
+
 	const escapeModel = mongoose.model<Escape>("Escape");
-	const escape = await escapeModel.findOne({ slug }).lean();
+	const escape = await escapeModel
+		.findOne({
+			slug: params.slug,
+		})
+		.lean();
 
 	if (!escape) {
 		return fail(404, {
-			slug,
+			slug: params.slug,
 		});
 	}
 
 	const bookingModel = mongoose.model<Booking>("Booking");
-	const bookings = await bookingModel.find({ escape_id: escape._id }).lean();
+	const booking = await bookingModel
+		.findOne({ user_id: locals.user?.id, escape_id: escape._id })
+		.lean();
 
-	const form = await superValidate(zod(bookingZodSchema));
+	if (!booking) {
+		return redirect(302, route("/escapes"));
+	}
+
+	const form = await superValidate(booking, zod(bookingZodSchema));
+
+	const existingBookings = await bookingModel
+		.find({ escape_id: escape._id })
+		.lean();
 
 	return {
+		booking,
 		escape,
-		bookings,
-		user: locals.user,
 		form,
+		existingBookings,
 	};
 };
 

@@ -16,6 +16,9 @@ const PAGES = {
   "/admin/escapes/[slug]/delete": (params: { slug: (string | number) }) => {
     return `/admin/escapes/${params.slug}/delete`
   },
+  "/admin/escapes/[slug]/edit": (params: { slug: (string | number) }) => {
+    return `/admin/escapes/${params.slug}/edit`
+  },
   "/admin/escapes/create": `/admin/escapes/create`,
   "/admin/users": `/admin/users`,
   "/admin/users/[userId]": (params: { userId: (string | number) }) => {
@@ -30,6 +33,9 @@ const PAGES = {
   "/escapes": `/escapes`,
   "/escapes/[slug]": (params: { slug: (string | number) }) => {
     return `/escapes/${params.slug}`
+  },
+  "/escapes/[slug]/book": (params: { slug: (string | number) }) => {
+    return `/escapes/${params.slug}/book`
   },
   "/faq": `/faq`,
   "/jobs": `/jobs`,
@@ -59,6 +65,9 @@ const ACTIONS = {
   "default /auth/login": `/auth/login`,
   "default /auth/register": `/auth/register`,
   "default /contact": `/contact`,
+  "default /escapes/[slug]": (params: { slug: (string | number) }) => {
+    return `/escapes/${params.slug}`
+  },
   "default /escapes/[slug]/book": (params: { slug: (string | number) }) => {
     return `/escapes/${params.slug}/book`
   },
@@ -172,9 +181,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/about': never, '/admin': never, '/admin/escapes': never, '/admin/escapes/[slug]/delete': 'slug', '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/faq': never, '/jobs': never, '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/policy': never, '/profile': never, '/teambuilding': never, '/terms': never }
+  PAGES: { '/': never, '/about': never, '/admin': never, '/admin/escapes': never, '/admin/escapes/[slug]/delete': 'slug', '/admin/escapes/[slug]/edit': 'slug', '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/escapes/[slug]/book': 'slug', '/faq': never, '/jobs': never, '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/policy': never, '/profile': never, '/teambuilding': never, '/terms': never }
   SERVERS: Record<string, never>
-  ACTIONS: { 'default /admin/escapes/create': never, 'default /admin/users/[userId]/edit': 'userId', 'default /auth/login': never, 'default /auth/register': never, 'default /contact': never, 'default /escapes/[slug]/book': 'slug', 'default /teambuilding': never }
+  ACTIONS: { 'default /admin/escapes/create': never, 'default /admin/users/[userId]/edit': 'userId', 'default /auth/login': never, 'default /auth/register': never, 'default /contact': never, 'default /escapes/[slug]': 'slug', 'default /escapes/[slug]/book': 'slug', 'default /teambuilding': never }
   LINKS: Record<string, never>
   Params: { slug: never, userId: never }
 }

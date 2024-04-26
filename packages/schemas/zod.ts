@@ -12,6 +12,7 @@ export const userZodSchema = z.object({
 	email: z.string().email(),
 	firstname: z.string().optional(),
 	lastname: z.string().optional(),
+	role: z.enum(["user", "admin"]).default("user"),
 	hashed_password: z.string().optional(),
 });
 
@@ -19,6 +20,7 @@ export type User = z.infer<typeof userZodSchema>;
 
 export const userEditZodSchema = userZodSchema.omit({
 	_id: true,
+	role: true,
 	hashed_password: true,
 });
 
@@ -60,6 +62,8 @@ export type CustomImage = z.infer<typeof customImageZodSchema>;
 
 export const escapeZodSchema = escapeCreateZodSchema.extend({
 	image: customImageZodSchema,
+	latitude: z.number().optional(),
+	longitude: z.number().optional(),
 	_id: z.string(),
 	created_at: z.date(),
 	updated_at: z.date(),
@@ -89,8 +93,10 @@ export type ContactTeamBuilding = z.infer<typeof contactTeamBuildingZodSchema>;
 export const bookingZodSchema = z.object({
 	_id: z.string(),
 	escape_id: z.string(),
-	people_number: z.number().default(1),
-	date: z.date().default(() => new Date()),
+	user_id: z.string(),
+	people_number: z.number().default(2),
+	draft: z.boolean().default(true),
+	date: z.string().default(() => new Date().toISOString()),
 });
 
 export type Booking = z.infer<typeof bookingZodSchema>;

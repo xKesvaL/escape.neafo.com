@@ -16,8 +16,8 @@ type $$Events = InputEvents;
 let className: $$Props["class"] = undefined;
 
 export let max: $$Props['max'] = 6;
-export let min: $$Props['min'] = 1;
-export let value: $$Props["value"] = min || 1;
+export let min: $$Props['min'] = 2;
+export let value: $$Props["value"] = min || 2;
 export let instance: $$Props["instance"] = undefined;
 export { className as class };
 

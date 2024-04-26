@@ -27,6 +27,11 @@ export const UserSchema = new Schema<User>(
 			type: String,
 			required: false,
 		},
+		role: {
+			type: String,
+			required: true,
+			default: "user",
+		},
 		hashed_password: {
 			type: String,
 			required: false,
@@ -222,6 +227,14 @@ export const EscapeSchema = new Schema<Escape>(
 			type: ImageSchema,
 			required: false,
 		},
+		latitude: {
+			type: Number,
+			required: false,
+		},
+		longitude: {
+			type: Number,
+			required: false,
+		},
 	} as const,
 	{
 		_id: false,
@@ -242,12 +255,21 @@ export const BookingSchema = new Schema<Booking>(
 			type: String,
 			required: true,
 		},
+		user_id: {
+			type: String,
+			required: true,
+		},
 		people_number: {
 			type: Number,
 			required: true,
 		},
+		draft: {
+			type: Boolean,
+			required: true,
+			default: true,
+		},
 		date: {
-			type: Date,
+			type: String,
 			required: true,
 		},
 	},

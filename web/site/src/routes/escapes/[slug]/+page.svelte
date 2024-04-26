@@ -1,18 +1,26 @@
 <script lang="ts">
     import type {PageData} from './$types';
-    import {IconAntennaBars5, IconClock, IconDiscount, IconHeart, IconPuzzle, IconShare} from "@tabler/icons-svelte";
+    import {
+        IconAntennaBars5,
+        IconClock,
+        IconDiscount,
+        IconEdit,
+        IconHeart,
+        IconPuzzle,
+        IconShare
+    } from "@tabler/icons-svelte";
     import {CalendarDate, DateFormatter, getLocalTimeZone, today} from "@internationalized/date";
     import {Separator} from '$lib/components/ui/separator';
     import * as m from '$paraglide/messages';
-    import {getI18n, setContextEscapeBooking} from "$lib/utils/functions";
+    import {getI18n} from "$lib/utils/functions";
     import {TimeSlotDatePicker} from "$lib/components/base/time-slot-date-picker/index.js";
     import CalendarIcon from "svelte-radix/Calendar.svelte";
     import {Popover, PopoverContent, PopoverTrigger} from "$lib/components/ui/popover/index.js";
     import {Button} from "$lib/components/ui/button/index.js";
     import {cn} from "$lib/utils/ui.js";
     import {Counter} from "$lib/components/base/counter/index";
-    import {Control, Field, FieldErrors, Label} from "$lib/components/ui/form";
-    import {superForm} from "sveltekit-superforms";
+    import {Control, Field, FieldErrors, Label, Button as FormButton} from "$lib/components/ui/form";
+    import {dateProxy, superForm} from "sveltekit-superforms";
     import {zodClient} from "sveltekit-superforms/adapters";
     import {bookingZodSchema} from "@repo/schemas/zod";
     import Form from '$lib/components/base/Form.svelte';
@@ -20,6 +28,9 @@
     import {formatPrice} from '@repo/utils';
     import {languageTag} from "$paraglide/runtime";
     import {onMount} from "svelte";
+    import Map from "$lib/components/base/Map.svelte";
+    import {Input} from "$lib/components/ui/input";
+    import { route } from '$lib/ROUTES';
 
     const df = new DateFormatter(languageTag(), {
         dateStyle: "long"
@@ -27,7 +38,7 @@
 
     export let data: PageData;
 
-    const { escape, form: dataForm, bookings } = data;
+    const { escape, form: dataForm, bookings, user } = data;
 
     // Form
     const form = superForm(dataForm, {
@@ -50,11 +61,6 @@
     let selectedHour = 8;
 
     $: isDiscount = $formData.people_number >= 5;
-    $: setContextEscapeBooking(escape._id, {
-        date: $formData.date,
-        people_number: $formData.people_number,
-        escape_id: escape._id
-    });
 
     onMount(() => {
         selectedHour = Math.round(new Date().getHours() / bookingOptions.step) * bookingOptions.step;
@@ -64,20 +70,26 @@
         } else if (selectedHour > bookingOptions.max) {
             selectedHour = bookingOptions.max;
         }
-    })
+    });
+
 </script>
 
 {#if escape}
-    <img class="w-full h-80 object-cover opacity-50" src={escape.image?.data} alt="escape_image" style:view-transition-name="escape-img" />
-    <div class="container grid grid-cols-[12fr,5fr] gap-8 -translate-y-20 z-10">
+    <img class="w-full h-80 object-cover opacity-50" src={escape.image?.data} alt="escape_image" />
+    <div class="container container-lg grid grid-cols-[12fr,5fr] gap-8 -translate-y-20 z-10">
         <div class="flex flex-col bg-card rounded-2xl p-4 gap-8">
             <img class="w-full h-80 rounded-lg object-cover" src={escape.image?.data} alt="escape_image" style:view-transition-name="escape-img" />
             <div class="flex flex-col gap-4">
                 <div class="flex flex-row justify-between items-center">
                     <h1 class="text-3xl font-bold">{escape.name}</h1>
                     <div class="flex flex-row gap-4">
-                        <IconShare class="text-muted-foreground" stroke="1.5"/>
-                        <IconHeart class="text-muted-foreground" stroke="1.5"/>
+                        {#if user?.role === 'admin'}
+                            <a href={route('/admin/escapes/[slug]/edit', { slug: escape.slug })}>
+                                <IconEdit class="text-muted-foreground" stroke="1.5"/>
+                            </a>
+                        {/if}
+<!--                        <IconShare class="text-muted-foreground" stroke="1.5"/>-->
+<!--                        <IconHeart class="text-muted-foreground" stroke="1.5"/>-->
                     </div>
                 </div>
                 <p>{escape.description}</p>
@@ -106,9 +118,12 @@
                 </div>
             </div>
             <Separator />
-            <div class="flex flex-col gap-4">
-                <h2 class="font-bold text-xl">Location of the escape game</h2>
-            </div>
+            {#if escape.latitude && escape.longitude}
+                <div class="flex flex-col gap-4">
+                    <h2 class="font-bold text-xl">Location of the escape game</h2>
+                    <Map latitude={escape.latitude} longitude={escape.longitude} />
+                </div>
+            {/if}
         </div>
         <div class="flex flex-col gap-4">
             <div class="bg-card p-4 rounded-2xl flex flex-col gap-4">
@@ -118,8 +133,9 @@
                         <Field {form} name="date">
                             <Control let:attrs>
                                 <Label>Date and time</Label>
+                                <Input type="hidden" bind:value={$formData.date} {...attrs} />
                                 <Popover>
-                                    <PopoverTrigger asChild let:builder>
+                                    <PopoverTrigger {...attrs} asChild let:builder>
                                         <Button
                                                 variant="outline"
                                                 class={cn(
@@ -129,11 +145,11 @@
                                                 builders={[builder]}
                                         >
                                             <CalendarIcon class="mr-2 h-4 w-4" />
-                                            {$formData.date ? df.format($formData.date) : "Pick a date"}
+                                            {$formData.date ? `${df.format(new Date($formData.date))} - ${selectedHour}h00` : "Pick a date"}
                                         </Button>
                                     </PopoverTrigger>
                                     <PopoverContent class="w-auto p-0 rounded-xl" align="start" sideOffset={8}>
-                                        <TimeSlotDatePicker bind:date={$formData.date} {bookings} bind:selectedDate bind:selectedHour />
+                                        <TimeSlotDatePicker bind:date={$formData.date} {bookings} bind:selectedDate bind:selectedHour {escape} />
                                     </PopoverContent>
                                 </Popover>
                             </Control>
@@ -165,7 +181,7 @@
                             <p>{formatPrice((price * $formData.people_number) - (isDiscount ? price * $formData.people_number * 0.10 : 0))}€</p>
                         </div>
                     </div>
-                    <Button>Book now</Button>
+                    <FormButton>Book now</FormButton>
                 </Form>
             </div>
             <div class="flex flex-col gap-3 bg-primary rounded-xl p-4">
