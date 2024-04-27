@@ -1,43 +1,43 @@
 {
-	"name": "escape.neafo.com",
-	"repository": {
-		"type": "git",
-		"url": "https://github.com/xKesvaL/escape.neafo.com"
-	},
-	"devDependencies": {
-		"@repo/eslint-config": "*",
-		"@repo/typescript-config": "*",
-		"@vercel/style-guide": "^6.0.0",
-		"czg": "^1.9.0",
-		"dotenv-cli": "^7.4.1",
-		"prettier": "^3.2.5",
-		"semantic-release": "^23.0.5",
-		"turbo": "^1.13.0",
-		"@biomejs/biome": "^1.7.1"
-	},
-	"engines": {
-		"node": ">=18"
-	},
-	"packageManager": "bun@1.1.5",
-	"prettier": "@vercel/style-guide/prettier",
-	"private": true,
-	"scripts": {
-		"dev": "dotenv -- turbo run dev",
-		"build": "dotenv -- turbo run build",
-		"preview": "dotenv -- turbo run preview",
-		"lint": "turbo run lint",
-		"format": "turbo run format",
-		"test": "dotenv -- turbo run test",
-		"commit": "czg",
-		"dev:site": "dotenv -- turbo run dev --filter=site",
-		"dev:app": "dotenv -- turbo run dev --filter=app"
-	},
-	"workspaces": ["web/*", "packages/*"],
-	"trustedDependencies": [
-		"@biomejs/biome",
-		"@sveltejs/kit",
-		"esbuild",
-		"sharp",
-		"svelte-preprocess"
-	]
+  "name": "escape.neafo.com",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/xKesvaL/escape.neafo.com"
+  },
+  "devDependencies": {
+    "@biomejs/biome": "^1.7.1",
+    "@repo/eslint-config": "*",
+    "@repo/typescript-config": "*",
+    "@vercel/style-guide": "^6.0.0",
+    "czg": "^1.9.0",
+    "dotenv-cli": "^7.4.1",
+    "prettier": "^3.2.5",
+    "semantic-release": "^23.0.5",
+    "turbo": "^1.13.3"
+  },
+  "engines": {
+    "node": ">=18"
+  },
+  "packageManager": "bun@1.1.5",
+  "prettier": "@vercel/style-guide/prettier",
+  "private": true,
+  "scripts": {
+    "dev": "dotenv -- turbo run dev",
+    "build": "dotenv -- turbo run build",
+    "preview": "dotenv -- turbo run preview",
+    "lint": "turbo run lint",
+    "format": "turbo run format",
+    "test": "dotenv -- turbo run test",
+    "commit": "czg",
+    "dev:site": "dotenv -- turbo run dev --filter=site",
+    "dev:app": "dotenv -- turbo run dev --filter=app"
+  },
+  "workspaces": ["web/*", "packages/*"],
+  "trustedDependencies": [
+    "@biomejs/biome",
+    "@sveltejs/kit",
+    "esbuild",
+    "sharp",
+    "svelte-preprocess"
+  ]
 }

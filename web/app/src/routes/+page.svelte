@@ -17,22 +17,21 @@ import { ALLOW_GUESTS_APP } from "@repo/global-config";
         <p class="text-lg text-primary">
             Welcome to Kaiserstuhl escape
         </p>
-        <h1 class="text-4xl font-black text-white">
+        <h1 class="text-4xl font-black">
             Let's unlock your adventure!
         </h1>
     </div>
 
     <div class="flex flex-col gap-4">
         {#if ALLOW_GUESTS_APP}
-            <Button class="rounded-full w-full" href={route('/home')}>
-                Login as Guest (MMI)
+            <Button class="rounded-full bg-purple-800 w-full" href={route('/home')}>
+                Guest (MMI)
             </Button>
-        {:else}
+        {/if}
         <Button class="rounded-full w-full" href={route('/login')}>
             Login
         </Button>
-        {/if}
-        <Button variant="secondary" class="bg-white text-foreground hover:bg-white/90 hover:text-foreground/90 rounded-full w-full gap-2" href="https://escape.kesval.com">
+        <Button variant="secondary" class="rounded-full w-full gap-2" href="https://escape.kesval.com">
             Book an escape game <IconArrowUpRight stroke="1.5" />
         </Button>
     </div>
