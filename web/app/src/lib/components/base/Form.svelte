@@ -1,18 +1,20 @@
 <script lang="ts">
     import SuperDebug, {type SuperFormEvents} from "sveltekit-superforms";
     import type {HTMLFormAttributes} from "svelte/elements";
-    import {dev} from "$app/environment";
+    import {dev as isDev} from "$app/environment";
 
     type $$Props = HTMLFormAttributes & {
-	enhance: (
-		el: HTMLFormElement,
-		events?: SuperFormEvents<Record<string, unknown>, any>,
-	) => ReturnType<typeof kitEnhance>;
-	formData: SuperFormData<Record<string, unknown>>;
-};
+        enhance: (
+            el: HTMLFormElement,
+            events?: SuperFormEvents<Record<string, unknown>, any>,
+        ) => ReturnType<typeof kitEnhance>;
+        formData: SuperFormData<Record<string, unknown>>;
+        dev: boolean;
+    };
 
-export let enhance: $$Props["enhance"];
-export let formData: $$Props["formData"];
+    export let enhance: $$Props["enhance"];
+    export let formData: $$Props["formData"];
+    export let dev: $$Props["dev"] = isDev;
 </script>
 
 <form use:enhance {...$$restProps}>
@@ -20,5 +22,7 @@ export let formData: $$Props["formData"];
 </form>
 
 {#if dev}
-    <SuperDebug data={$formData} />
+    <div class="max-w-full">
+        <SuperDebug data={$formData} />
+    </div>
 {/if}
