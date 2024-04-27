@@ -11,6 +11,8 @@
 	import {Textarea} from '$lib/components/ui/textarea';
 	import Form from '$lib/components/base/Form.svelte';
 	import {IconSend} from '@tabler/icons-svelte';
+	import {getI18n} from "$lib/utils/functions";
+	import * as m from "$paraglide/messages";
 
 	export let data;
 
@@ -25,16 +27,22 @@
 	<div class="hero flex flex-col-reverse md:flex-row items-center justify-between gap-4">
 		<div class="left flex flex-col justify-between gap-6">
 			<h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
-				Find your escape-game for your <span class="text-primary">Teambuilding</span>
+				<div class="parent">
+					{@html m.h1_teambuilding()}
+					<span class="enfant">
+				 </div>
 			</h1>
 
 			<h3 class="text-2xl">
-				Need a <span class="text-primary">team-building activity?</span> Our escapes games are for you
+				<div class="parent">
+					{@html m.need_teambuilding()}
+					<span class="enfant">
+				 </div>
 			</h3>
 
 			<div class="flex flex-row gap-4">
-				<NormalButton>Get started</NormalButton>
-				<NormalButton variant="secondary">Contact Us</NormalButton>
+				<NormalButton>{m.get_started()}</NormalButton>
+				<NormalButton variant="secondary">{m.contact_us()}</NormalButton>
 			</div>	
 		</div>
 
@@ -50,7 +58,10 @@
 
 	<div class="flex flex-col items-center gap-4">
 		<h2 class="text-center text-3xl font-semibold">
-			Simple, transparent and remarkably <span class="text-primary">effective</span>.
+			<div class="parent">
+				{@html m.teambuilding_argument()}
+				<span class="enfant">
+			 </div>
 		</h2>
 
 		<StepContainer />
@@ -58,8 +69,10 @@
 
 	<div class="flex w-full flex-col items-center gap-8">
 		<h3 class="text-3xl font-semibold">
-			A typical <span class="text-primary">teambuilding</span>
-			day with us
+			<div class="parent">
+				{@html m.typical_teambuilding_day()}
+				<span class="enfant">
+			 </div>
 		</h3>
 
 		<div class="h-[200px] md:h-[550px] w-full">
@@ -81,15 +94,20 @@
 
 <div class="w-full gap-6 flex flex-col">
 	<div>
-	<h3 class="text-3xl font-semibold"><span class="text-primary">Join us</span> for your teambuilding</h3>
-	<p class="text-xl">Lets get in touch and talk about it</p>
+	<h3 class="text-3xl font-semibold">
+		<div class="parent">
+			{@html m.teambuilding_join_us()}
+			<span class="enfant">
+		 </div>
+	</h3>
+	<p class="text-xl">{m.get_in_touch()}</p>
 </div>
 	<Form class="flex flex-col gap-6" method="POST" {enhance} {formData}>
 		<div class="flex w-full flex-col md:flex-row gap-4">
 			<div class="w-full">
 				<Field {form} name="companyName">
 					<Control let:attrs>
-						<Label>Name of your company</Label>
+						<Label>{m.name_of_company()}</Label>
 						<Input {...attrs} bind:value={$formData.companyName} placeholder="Name of your Company" />
 					</Control>
 					<FieldErrors />
@@ -98,7 +116,7 @@
 			<div class="w-full">
 				<Field {form} name="email">
 					<Control let:attrs>
-						<Label>Email</Label>
+						<Label>{m.email()}</Label>
 						<Input {...attrs} bind:value={$formData.email} placeholder="Email" />
 					</Control>
 					<FieldErrors />
@@ -107,7 +125,7 @@
 			<div class="w-full">
 				<Field {form} name="place">
 					<Control let:attrs>
-						<Label>Place</Label>
+						<Label>{m.place()}</Label>
 						<Input {...attrs} bind:value={$formData.place} placeholder="Place" />
 					</Control>
 					<FieldErrors />
@@ -117,7 +135,7 @@
 		<div>
 			<Field {form} name="message">
 				<Control let:attrs>
-					<Label>Your message</Label>
+					<Label>{m.your_message()}</Label>
 					<Textarea
 						{...attrs}
 						bind:value={$formData.message}
@@ -126,10 +144,10 @@
 				</Control>
 				<FieldErrors />
 			</Field>
-			<p class="text-muted-foreground text-sm">Your message will be copied to support team.</p>
+			<p class="text-muted-foreground text-sm">{m.message_support_team()}</p>
 		</div>
 		<div class="ml-auto grid w-full md:items-end md:justify-items-end">
-			<Button class="flex flex-row gap-2">Send your message <IconSend stroke="1.5" /></Button>
+			<Button class="flex flex-row gap-2">{m.send_message()} <IconSend stroke="1.5" /></Button>
 		</div>
 	</Form>
 </div>
@@ -137,3 +155,11 @@
 <!-- Group of the company in partnership -->
 	<LogoCompanyContainer />
 </section>
+
+<style lang="postcss">
+
+:global(.parent .enfant) {
+	@apply text-primary;
+ }
+</style>
+

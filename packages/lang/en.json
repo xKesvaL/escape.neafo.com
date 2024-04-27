@@ -48,5 +48,21 @@
 	"credit_debit_card": "Credit card / Debit card",
 	"pay_total_price_now": "Pay the total price now ({price}€).",
 	"klarna_payment": "Pay in 3 times with Klarna",
-	"pay_3_times": "3 payments of {price}€."
+	"pay_3_times": "3 payments of {price}€.",
+	"h1_teambuilding": "Find your escape-game for your <span class=\"text-primary\">Teambuilding</span>",
+	"need_teambuilding":"Need a <span class=\"text-primary\">team-building activity?</span> Our escapes games are for you",
+	"get_started":"Get started",
+	"contact_us":"Contact us",
+	"teambuilding_argument":"Simple, transparent and remarkably <span class=\"text-primary\">effective</span>.",
+	"teambuilding_steps_text":"Tired of struggling with the endless details that go into any successful team building event? Then let it go. We’re built to handle even the most complex productions. So you can relax, knowing every need has been anticipated. Go ahead – give yourself permission to have fun at your own team event for a change. It’s about time.",
+	"typical_teambuilding_day":"A typical <span class=\"text-primary\">teambuilding</span>day with us",
+	"get_in_touch":"Lets get in touch and talk about it",
+	"message_support_team":"Your message will be copied to support team.",
+	"send_message":"Send your message",
+	"teambuilding_company":" These company celebrate their teambuilding with us",
+	"teambuilding_join_us":"Join us <span class=\"text-primary\">for your teambuilding</span>",
+	"name_of_company":"Name of your Company",
+	"email":"Email",
+	"place":"Place",
+	"your_message":"Your message"
 }

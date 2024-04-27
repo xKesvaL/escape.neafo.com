@@ -1,6 +1,9 @@
 <script lang="ts">
 	import type { Steps } from '$lib/utils/types';
 	import { IconLasso, IconWheel, IconPuzzle, IconRocket } from '@tabler/icons-svelte';
+	import {getI18n} from "$lib/utils/functions";
+	import * as m from "$paraglide/messages";
+
 
 	const steps = [
 		{
@@ -33,10 +36,7 @@
 
 <div class="flex flex-col items-center gap-8">
 	<p class="text-muted-foreground text-center max-w-[100ch]">
-		Tired of struggling with the endless details that go into any successful team building event?
-		Then let it go. We’re built to handle even the most complex productions. So you can relax,
-		knowing every need has been anticipated. Go ahead – give yourself permission to have fun at your
-		own team event for a change. It’s about time.
+		{m.teambuilding_steps_text()}
 	</p>
 	<div class="grid md:grid-cols-2 items-center justify-between gap-8">
 		{#each steps as step}
