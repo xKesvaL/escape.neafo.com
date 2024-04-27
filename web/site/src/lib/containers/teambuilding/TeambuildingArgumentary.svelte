@@ -26,7 +26,7 @@
 
 <div class="flex flex-col w-full border-t-2 border-primary gap-12">
  
-    <h3 class="text-3xl font-semibold">Why team-building <span class="text-primary">with us ?</span></h3>
+    <h3 class="text-3xl font-semibold whitespace-break-spaces">Why team-building <span class="text-primary">with us ?</span></h3>
 
 	<div class="flex flex-col gap-12">
 		{#each argumentarys as argumentary}
