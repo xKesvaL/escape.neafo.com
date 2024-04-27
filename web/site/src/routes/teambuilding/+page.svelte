@@ -22,9 +22,9 @@
 </script>
 
 <section class="container flex flex-col items-center gap-24">
-	<div class="hero flex flex-row items-center justify-between gap-4">
+	<div class="hero flex flex-col-reverse md:flex-row items-center justify-between gap-4">
 		<div class="left flex flex-col justify-between gap-6">
-			<h1 class="text-5xl font-extrabold leading-tight">
+			<h1 class="text-4xl md:text-5xl font-extrabold leading-tight">
 				Find your escape-game for your <span class="text-primary">Teambuilding</span>
 			</h1>
 
@@ -62,7 +62,7 @@
 			day with us
 		</h3>
 
-		<div class="h-[550px] w-full">
+		<div class="h-[200px] md:h-[550px] w-full">
 			<iframe
 				class="h-[100%] w-[100%] object-cover"
 				src="https://www.youtube.com/embed/_DpNZgiwCEY"
@@ -85,7 +85,7 @@
 	<p class="text-xl">Lets get in touch and talk about it</p>
 </div>
 	<Form class="flex flex-col gap-6" method="POST" {enhance} {formData}>
-		<div class="flex w-full flex-row gap-4">
+		<div class="flex w-full flex-col md:flex-row gap-4">
 			<div class="w-full">
 				<Field {form} name="companyName">
 					<Control let:attrs>
@@ -128,7 +128,7 @@
 			</Field>
 			<p class="text-muted-foreground text-sm">Your message will be copied to support team.</p>
 		</div>
-		<div class="ml-auto grid w-full items-end justify-items-end">
+		<div class="ml-auto grid w-full md:items-end md:justify-items-end">
 			<Button class="flex flex-row gap-2">Send your message <IconSend stroke="1.5" /></Button>
 		</div>
 	</Form>

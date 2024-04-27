@@ -38,7 +38,7 @@
 		knowing every need has been anticipated. Go ahead – give yourself permission to have fun at your
 		own team event for a change. It’s about time.
 	</p>
-	<div class="grid grid-cols-2 items-center justify-between gap-8">
+	<div class="grid md:grid-cols-2 items-center justify-between gap-8">
 		{#each steps as step}
 			<div class="flex items-start gap-2">
 				<div class="flex-shrink-0">
@@ -47,7 +47,7 @@
 				<div class="flex flex-col gap-4">
 					<span class="text-lg font-semibold text-white">{step.title}</span>
 					<div class="text-base font-normal">
-						{step.description}/>
+						{step.description}
 					</div>
 				</div>
 			</div>
