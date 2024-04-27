@@ -20,3 +20,5 @@ export const ESCAPE = {
 export const PWA_MESSAGES_TYPES = ["SKIP_WAITING"] as const;
 
 export type PwaMessage = (typeof PWA_MESSAGES_TYPES)[number];
+
+export const ALLOW_GUESTS_APP = true;
