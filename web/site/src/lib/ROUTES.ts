@@ -39,12 +39,10 @@ const PAGES = {
   },
   "/faq": `/faq`,
   "/jobs": `/jobs`,
-  "/legal/privacy-policy": `/legal/privacy-policy`,
-  "/legal/terms-and-conditions": `/legal/terms-and-conditions`,
-  "/policy": `/policy`,
+  "/privacy-policy": `/privacy-policy`,
   "/profile": `/profile`,
   "/teambuilding": `/teambuilding`,
-  "/terms": `/terms`
+  "/terms-and-conditions": `/terms-and-conditions`
 }
 
 /**
@@ -181,7 +179,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/about': never, '/admin': never, '/admin/escapes': never, '/admin/escapes/[slug]/delete': 'slug', '/admin/escapes/[slug]/edit': 'slug', '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/escapes/[slug]/book': 'slug', '/faq': never, '/jobs': never, '/legal/privacy-policy': never, '/legal/terms-and-conditions': never, '/policy': never, '/profile': never, '/teambuilding': never, '/terms': never }
+  PAGES: { '/': never, '/about': never, '/admin': never, '/admin/escapes': never, '/admin/escapes/[slug]/delete': 'slug', '/admin/escapes/[slug]/edit': 'slug', '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]': 'userId', '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/escapes/[slug]/book': 'slug', '/faq': never, '/jobs': never, '/privacy-policy': never, '/profile': never, '/teambuilding': never, '/terms-and-conditions': never }
   SERVERS: Record<string, never>
   ACTIONS: { 'default /admin/escapes/create': never, 'default /admin/users/[userId]/edit': 'userId', 'default /auth/login': never, 'default /auth/register': never, 'default /contact': never, 'default /escapes/[slug]': 'slug', 'default /escapes/[slug]/book': 'slug', 'default /teambuilding': never }
   LINKS: Record<string, never>
