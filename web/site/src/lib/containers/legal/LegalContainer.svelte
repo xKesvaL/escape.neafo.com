@@ -11,7 +11,7 @@
 
 </script>
 
-<section class="container flex flex-row  items-start gap-4 self-start">
+<section class="container flex flex-row items-start gap-4 self-start">
     <div class="flex flex-col gap-4">
         <h1 class="text-5xl font-extrabold">{title}</h1>
         <span class="text-lg text-muted-foreground">{update}</span>
