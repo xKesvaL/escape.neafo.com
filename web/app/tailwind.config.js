@@ -24,6 +24,7 @@ const config = {
 					DEFAULT: "hsl(var(--primary) / <alpha-value>)",
 					foreground: "hsl(var(--primary-foreground) / <alpha-value>)",
 				},
+
 				secondary: {
 					DEFAULT: "hsl(var(--secondary) / <alpha-value>)",
 					foreground: "hsl(var(--secondary-foreground) / <alpha-value>)",
@@ -47,6 +48,14 @@ const config = {
 				card: {
 					DEFAULT: "hsl(var(--card) / <alpha-value>)",
 					foreground: "hsl(var(--card-foreground) / <alpha-value>)",
+				},
+				success: {
+					DEFAULT: "hsl(var(--success) / <alpha-value>)",
+					foreground: "hsl(var(--success-foreground) / <alpha-value>)",
+				},
+				info: {
+					DEFAULT: "hsl(var(--info) / <alpha-value>)",
+					foreground: "hsl(var(--info-foreground) / <alpha-value>)",
 				},
 			},
 			borderRadius: {
