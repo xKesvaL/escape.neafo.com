@@ -20,45 +20,45 @@
  const { form: formData, enhance } = form;
 </script>
 
-<div class="relative container py-24 w-full flex flex-row">
+<div class="relative container py-24 w-full flex flex-col md:flex-row gap-4">
     <div class="absolute w-72 h-72 rounded-full opacity-5 bg-primary filter blur-3xl left-1/3">
 
     </div>
     <div class="flex w-full flex-col gap-8">
         <div class="flex flex-col">
-            <h1 class="text-6xl font-black">Let's <span class="text-primary">talk</span></h1>
-            <p class="text-2xl">Ask us anything or just say hi,</p>
+            <h1 class="text-6xl font-black">{@html m.lets_talk()}</h1>
+            <p class="text-2xl">{m.ask_anything()}</p>
         </div>
         <div class="flex flex-col gap-4">
             <div class="flex flex-row items-center gap-4">
                 <div class="w-11 h-11">
                     <IconBrandFacebook />
                 </div>
-                <p class="text-xl -ml-1">Facebook</p>
+                <p class="md:text-xl -ml-1">{m.facebook()}</p>
             </div>
             <div class="flex flex-row items-center gap-4">
                 <div class="w-11 h-11">
                     <IconBrandInstagram />
                 </div>
-                <p class="text-xl -ml-1">Instagram</p>
+                <p class="md:text-xl -ml-1">{m.instagram()}</p>
             </div>
             <div class="flex flex-row items-center gap-4">
                 <div class="rounded-lg bg-primary w-10 h-10 flex items-center justify-center">
                     <IconPhone stroke="1.5" />
                 </div>
-                <p class="text-xl">07668 996660</p>
+                <p class="md:text-xl">07668 996660</p>
             </div>
             <div class="flex flex-row items-center gap-4 ">
                 <div class="rounded-lg bg-primary w-10 h-10 flex items-center justify-center">
                     <IconMail stroke="1.5" />
                 </div>
-                <p class="text-xl">booking@we-escape.de</p>
+                <p class="md:text-xl">booking@we-escape.de</p>
             </div>
         </div>
     </div>
-    <section class="container w-full">
+    <section class="container w-full px-0">
         <Form class="flex flex-col gap-6" method="POST" {enhance} {formData}>
-            <div class="flex flex-row w-full gap-4">
+            <div class="flex flex-col md:flex-row w-full gap-4">
                 <div class="w-full">
                     <Field {form} name="name">
                         <Control let:attrs>
@@ -71,7 +71,7 @@
                 <div class="w-full">
                     <Field {form} name="email">
                         <Control let:attrs>
-                            <Label>Email</Label>
+                            <Label>{m.email()}</Label>
                             <Input {...attrs} bind:value={$formData.email} placeholder="Email"/>
                         </Control>
                         <FieldErrors/>
@@ -86,10 +86,10 @@
                     </Control>
                     <FieldErrors/>
                 </Field>
-                <p class="text-muted-foreground text-sm">Your message will be copied to support team.</p>
+                <p class="text-muted-foreground text-sm">{m.message_support_team()}</p>
             </div>
             <div class="grid w-full justify-items-end items-end ml-auto">
-                <Button class="flex flex-row gap-2">Send your message  <IconSend stroke="1.5"/></Button>
+                <Button class="w-full md:w-fit flex flex-row gap-2">{m.send_message()}<IconSend stroke="1.5"/></Button>
             </div>
         </Form>
     </section>

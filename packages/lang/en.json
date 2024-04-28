@@ -48,5 +48,12 @@
 	"credit_debit_card": "Credit card / Debit card",
 	"pay_total_price_now": "Pay the total price now ({price}€).",
 	"klarna_payment": "Pay in 3 times with Klarna",
-	"pay_3_times": "3 payments of {price}€."
+	"pay_3_times": "3 payments of {price}€.",
+	"email":"email",
+	"lets_talk":"Let's <span class=\"text-primary\">talk</span>",
+	"ask_anything":"Ask us anything or just say hi,",
+	"facebook":"Facebook",
+	"instagram":"Instagram",
+	"message_support_team":"Your message will be copied to support team.",
+	"send_message":"Send your message "
 }
