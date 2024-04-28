@@ -21,7 +21,7 @@
 			</p>
 			<div class="flex flex-row gap-4">
 				<Button>{m.book_your_escape()}</Button>
-				<Button class="w-fit bg-white text-black">{m.virtual_visit()}</Button>
+				<Button variant="secondary">{m.virtual_visit()}</Button>
 			</div>
 		</div>
 		<div class="h-full max-h-[350px] md:max-h-[450px] overflow-hidden rounded-2xl">
