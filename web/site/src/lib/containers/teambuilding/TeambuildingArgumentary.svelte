@@ -1,32 +1,27 @@
 <script lang="ts">
+	import type { TeamBuildingText } from '$lib/utils/types';
+	import * as m from '$paraglide/messages';
 
-    import type {TeamBuildingText} from '$lib/utils/types';
-
-    const argumentarys = [
+	const argumentarys = [
 		{
-			title: 'PROMOTING COMMUNICATION',
-			text:
-				'Outdoor escape adventures require strong communication between team members. Participants have to solve puzzles and develop strategies to complete tasks together. This promotes effective communication.'
+			title: m.teambuilding_argumentary_0_title(),
+			text: m.teambuilding_argumentary_0_text()
 		},
 		{
-
-			title: 'STRENGTHEN CO-OPERATION',
-			text:
-				'The nature of escape adventures requires teamwork and co-operation. Skills and strengths must be combined to overcome challenges. This shows how important it is to trust and utilise these to achieve common goals.'
+			title: m.teambuilding_argumentary_1_title(),
+			text: m.teambuilding_argumentary_1_text()
 		},
 		{
-	
-			title: 'INCREASE SUCCESS',
-			text:
-				'Shared experiences of success such as those experienced by a team in our outdoor escape adventures not only promote communication and cohesion, they also form a strong basis for future success in the office.'
-		},
-
+			title: m.teambuilding_argumentary_2_title(),
+			text: m.teambuilding_argumentary_2_text()
+		}
 	] satisfies Array<TeamBuildingText>;
 </script>
 
-<div class="flex flex-col w-full border-t-2 border-primary gap-12">
- 
-    <h3 class="text-3xl font-semibold whitespace-break-spaces">Why team-building <span class="text-primary">with us ?</span></h3>
+<div class="border-primary flex w-full flex-col gap-12 border-t-2">
+	<h3 class="whitespace-break-spaces text-3xl font-semibold">
+		Why team-building <span class="text-primary">with us ?</span>
+	</h3>
 
 	<div class="flex flex-col gap-12">
 		{#each argumentarys as argumentary}
