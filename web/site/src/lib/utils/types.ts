@@ -42,6 +42,7 @@ export interface AboutUsEscape {
 }
 
 export interface Review {
+	stars: number;
     title:string;
     date: string;
 	text:string;

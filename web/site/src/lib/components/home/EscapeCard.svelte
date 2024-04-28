@@ -1,20 +1,6 @@
 <script lang="ts">
     import {IconMapPin} from "@tabler/icons-svelte";
-    import Button from "$lib/components/ui/button/button.svelte"
-    import {goto} from '$app/navigation';
-    import {
-        AlertDialog,
-        AlertDialogAction,
-        AlertDialogCancel,
-        AlertDialogContent,
-        AlertDialogDescription,
-        AlertDialogFooter,
-        AlertDialogHeader,
-        AlertDialogTitle,
-        AlertDialogTrigger
-    } from "$lib/components/ui/alert-dialog/index.js";
     import type {Escape} from "@repo/schemas/zod";
-    import {route} from "$lib/ROUTES";
 
     export let escape: Escape;
 
@@ -31,25 +17,5 @@
             <IconMapPin />
             <p class=" text-l">{escape.city}</p>
         </div>
-    </div>
-    <div class="flex gap-6 w-full">
-        <Button href={`/admin/escapes/${escape.slug}/edit`} class="w-full">Edit</Button>
-        <AlertDialog>
-            <AlertDialogTrigger asChild let:builder>
-                <Button class="w-full" builders={[builder]} variant="destructive">Disable</Button>
-            </AlertDialogTrigger>
-            <AlertDialogContent>
-                <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
-                    <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete the escape game.
-                    </AlertDialogDescription>
-                </AlertDialogHeader>
-                <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction on:click={() => goto(route("/admin/escapes/[slug]/delete", { slug: escape.slug }))}>Continue</AlertDialogAction>
-                </AlertDialogFooter>
-            </AlertDialogContent>
-        </AlertDialog>
     </div>
 </div>

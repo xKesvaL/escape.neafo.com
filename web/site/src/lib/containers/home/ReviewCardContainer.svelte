@@ -1,49 +1,48 @@
 <script lang="ts">
-	import type { Review } from '$lib/utils/types';
-	import Avatar from '$assets/home/review/Avatar.svelte';
-	import * as m from "$paraglide/messages";
+import type { Review } from "$lib/utils/types";
+import Avatar from "$assets/home/review/Avatar.svelte";
+import * as m from "$paraglide/messages";
+import Star from "$assets/home/review/Star.svelte";
 
-	const reviews = [
-		{
-			icon: Avatar,
-			name: m.review_card_name_0(),
-			date: m.review_card_date_0(),
-			title: m.review_card_title_0(),
-			text: m.review_card_text_0()
-		},
-		
-		{
-			icon: Avatar,
-			name: m.review_card_name_0(),
-			date: m.review_card_date_0(),
-			title: m.review_card_title_0(),
-			text: m.review_card_text_0()
-		},
-		
-		{
-			icon: Avatar,
-			name: m.review_card_name_0(),
-			date: m.review_card_date_0(),
-			title: m.review_card_title_0(),
-			text: m.review_card_text_0()
-		},
-		
-		{
-			icon: Avatar,
-			name: m.review_card_name_0(),
-			date: m.review_card_date_0(),
-			title: m.review_card_title_0(),
-			text: m.review_card_text_0()
-		},
-		
-	] satisfies Array<Review>;
+const reviews = [
+	{
+		icon: Avatar,
+		stars: 5,
+		name: m.review_card_name_0(),
+		date: m.review_card_date_0(),
+		title: m.review_card_title_0(),
+		text: m.review_card_text_0(),
+	},
+
+	{
+		icon: Avatar,
+		stars: 2,
+		name: m.review_card_name_0(),
+		date: m.review_card_date_0(),
+		title: m.review_card_title_0(),
+		text: m.review_card_text_0(),
+	},
+
+	{
+		icon: Avatar,
+		stars: 3,
+		name: m.review_card_name_0(),
+		date: m.review_card_date_0(),
+		title: m.review_card_title_0(),
+		text: m.review_card_text_0(),
+	},
+] satisfies Array<Review>;
 </script>
 
-<div class="flex flex-row gap-4 self-stretch overflow-x-scroll scrollbar-hide">
+<div class="flex flex-row gap-4 self-stretch">
 	{#each reviews as review}
 		<div class="bg-muted flex flex-col gap-4 p-4 border-2 border-primary rounded-2xl min-w-[320px] w-full ">
 			<div class="flex flex-row justify-between">
-				<p>étoiles</p>
+				<div class="flex flex-row gap-1 items-center">
+				{#each Array(review.stars) as _}
+					<Star/>
+				{/each}
+			</div>
 				<enhanced:img src="$assets/auth/google_logo.svg" alt="google_logo">
 			</div>
 			<div class="flex flex-col gap-1">
@@ -68,14 +67,3 @@
 </div>
 
 
-<style>
-		.scrollbar-hide::-webkit-scrollbar {
-		display: none;
-	}
-
-	/* For IE, Edge and Firefox */
-	.scrollbar-hide {
-		-ms-overflow-style: none;  /* IE and Edge */
-		scrollbar-width: none;  /* Firefox */
-	}
-</style>
