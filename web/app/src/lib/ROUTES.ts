@@ -9,7 +9,14 @@
  * PAGES
  */
 const PAGES = {
-  "/": `/`
+  "/": `/`,
+  "/home": `/home`,
+  "/play": `/play`,
+  "/play/album": `/play/album`,
+  "/play/quizz/[slug]": (params: { slug: (string | number) }) => {
+    return `/play/quizz/${params.slug}`
+  },
+  "/login": `/login`
 }
 
 /**
@@ -23,7 +30,7 @@ const SERVERS = {
  * ACTIONS
  */
 const ACTIONS = {
-  
+  "default /login": `/login`
 }
 
 /**
@@ -133,9 +140,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never }
+  PAGES: { '/': never, '/home': never, '/play': never, '/play/album': never, '/play/quizz/[slug]': 'slug', '/login': never }
   SERVERS: { 'GET /manifest.webmanifest': never }
-  ACTIONS: Record<string, never>
+  ACTIONS: { 'default /login': never }
   LINKS: Record<string, never>
-  Params: Record<string, never>
+  Params: { slug: never }
 }

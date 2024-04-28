@@ -1,7 +1,7 @@
 export const BRAND = {
 	name: "Kaiserstuhl Escape",
 	logName: "kaiserstuhl-escape",
-	url: "http://",
+	url: "https://app.escape.kesval.com",
 	colors: {
 		primary: "yellow",
 	},
