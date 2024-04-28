@@ -5,6 +5,7 @@
     "url": "https://github.com/xKesvaL/escape.neafo.com"
   },
   "devDependencies": {
+    "@biomejs/biome": "^1.7.1",
     "@repo/eslint-config": "*",
     "@repo/typescript-config": "*",
     "@vercel/style-guide": "^6.0.0",
@@ -12,13 +13,12 @@
     "dotenv-cli": "^7.4.1",
     "prettier": "^3.2.5",
     "semantic-release": "^23.0.5",
-    "turbo": "^1.13.0",
-    "@biomejs/biome": "^1.6.3"
+    "turbo": "^1.13.3"
   },
   "engines": {
     "node": ">=18"
   },
-  "packageManager": "bun@1.0.33",
+  "packageManager": "bun@1.1.5",
   "prettier": "@vercel/style-guide/prettier",
   "private": true,
   "scripts": {
