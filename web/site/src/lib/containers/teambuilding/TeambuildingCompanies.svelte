@@ -1,11 +1,11 @@
 <script lang="ts">
-    
+    	import * as m from "$paraglide/messages";
 </script>
 
 
 <div class="flex flex-col items-center gap-8">
     <h3 class="text-3xl font-semibold">
-        These company celebrate their teambuilding with us
+       {m.teambuilding_company()}
     </h3>
 
     <div class="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 items-center justify-center gap-10">

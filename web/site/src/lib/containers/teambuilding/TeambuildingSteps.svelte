@@ -1,57 +1,50 @@
 <script lang="ts">
 	import type { Steps } from '$lib/utils/types';
 	import { IconLasso, IconWheel, IconPuzzle, IconRocket } from '@tabler/icons-svelte';
+	import * as m from '$paraglide/messages';
 
 	const steps = [
 		{
 			icon: IconLasso,
-			title: '1.Select',
-			description:
-				'Choose your event or a series of events to fit your goals, budget and calendar. We’re always happy to help with this important first step.'
+			title: m.teambuilding_steps_0_title(),
+			description: m.teambuilding_steps_0_text()
 		},
 		{
 			icon: IconWheel,
-			title: '2.Customize',
-			description:
-				'There’s real power in strategically tailoring a team event. Customizing around company culture, location, etc. can make all the difference.'
+			title: m.teambuilding_steps_1_title(),
+			description: m.teambuilding_steps_1_text()
 		},
 		{
 			icon: IconPuzzle,
-			title: '3. Organize',
-			description:
-				'Every event has at least 4 zillion important details. Our event managers are really good at coordinating all of them, so you don’t have to.'
+			title: m.teambuilding_steps_2_title(),
+			description: m.teambuilding_steps_2_text()
 		},
 
 		{
 			icon: IconRocket,
-			title: '4. Game Day',
-			description:
-				'Your facilitator and onsite staff deliver an energetic, engaging program. Everyone has fun. Goals are achieved. You get to be the hero.'
+			title: m.teambuilding_steps_3_title(),
+			description: m.teambuilding_steps_3_text()
 		}
 	] satisfies Array<Steps>;
 </script>
 
 <div class="flex flex-col items-center gap-8">
-	<p class="text-muted-foreground text-center max-w-[100ch]">
-		Tired of struggling with the endless details that go into any successful team building event?
-		Then let it go. We’re built to handle even the most complex productions. So you can relax,
-		knowing every need has been anticipated. Go ahead – give yourself permission to have fun at your
-		own team event for a change. It’s about time.
+	<p class="text-muted-foreground max-w-[100ch] text-center">
+		{m.teambuilding_steps_text()}
 	</p>
-	<div class="grid grid-cols-2 items-center justify-between gap-8">
+	<div class="grid items-center justify-between gap-8 md:grid-cols-2">
 		{#each steps as step}
 			<div class="flex items-start gap-2">
 				<div class="flex-shrink-0">
-					<svelte:component this={step.icon} stroke="1.5" class="stroke-primary"  />
+					<svelte:component this={step.icon} stroke="1.5" class="stroke-primary" />
 				</div>
 				<div class="flex flex-col gap-4">
 					<span class="text-lg font-semibold text-white">{step.title}</span>
 					<div class="text-base font-normal">
-						{step.description}/>
+						{step.description}
 					</div>
 				</div>
 			</div>
 		{/each}
-
 	</div>
 </div>
