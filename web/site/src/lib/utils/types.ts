@@ -40,3 +40,11 @@ export interface AboutUsEscape {
     image: ComponentType;
     date: string;
 }
+
+export interface Review {
+    title:string;
+    date: string;
+	text:string;
+	name:string;
+	icon: ComponentType 
+}
