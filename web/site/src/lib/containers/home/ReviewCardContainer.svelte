@@ -34,9 +34,9 @@ const reviews = [
 ] satisfies Array<Review>;
 </script>
 
-<div class="flex flex-row gap-4 self-stretch">
+<div class="flex flex-col lg:flex-row gap-4 self-stretch ">
 	{#each reviews as review}
-		<div class="bg-muted flex flex-col gap-4 p-4 border-2 border-primary rounded-2xl min-w-[320px] w-full ">
+		<div class="bg-muted flex flex-col gap-4 p-4 border-2 border-primary rounded-2xl w-full ">
 			<div class="flex flex-row justify-between">
 				<div class="flex flex-row gap-1 items-center">
 				{#each Array(review.stars) as _}
