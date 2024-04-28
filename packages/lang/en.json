@@ -55,8 +55,6 @@
 	"facebook":"Facebook",
 	"instagram":"Instagram",
 	"message_support_team":"Your message will be copied to support team.",
-	"send_message":"Send your message "
-	"pay_3_times": "3 payments of {price}€.",
 	"h1_home":"Break out of your normal escapes. Go outside.<span class=\"text-primary\">Touch grass.</span>",
 	"hero_home_text":"Where mystery meets the great outdoors, Kaiserstuhl Escape lets you unleash your inner explorer.",
 	"book_your_escape":"Book your escape",
@@ -69,6 +67,26 @@
 	"review_card_name_0":"Guillaume BABAR",
 	"review_card_date_0":"14th of February, 2024",
 	"review_card_title_0":"The greatest escape game",
-	"review_card_text_0":"The escape was really good, I especially love the part were there was women. I love women, and I think they should do more jobs where they are close to us like this."
-
+	"review_card_text_0":"The escape was really good, I especially love the part were there was women. I love women, and I think they should do more jobs where they are close to us like this.",
+	"send_message":"Send your message ",
+	"about_profile_thilo_role": "The key maker",
+	"about_profile_thilo_job": "Development Manager",
+	"about_profile_thilo_occupation": "<span>UX/UI</span> Development",
+	"about_profile_melina_role": "Game-Boss",
+	"about_profile_melina_job": "Head of Escape",
+	"about_profile_melina_occupation": "Event development",
+	"about_profile_miriam_role": "Advertising ninja",
+	"about_profile_miriam_job": "Head of Marketing",
+	"about_profile_miriam_occupation": "Marketing",
+	"about_profile_jasmin_role": "Organisation Genius",
+	"about_profile_jasmin_job": "Accounting & Management",
+	"about_profile_sasha_role": "Design princess",
+	"about_profile_sasha_job": "Head of Design",
+	"about_profile_sasha_occupation": "Print specialist | Graphic design",
+	"about_profile_alessandro_role": "Moving image all-rounder",
+	"about_profile_alessandro_job": "Head of Moving Image",
+	"about_profile_sarah_role": "Design and mindfulness fairy",
+	"about_profile_sarah_job": "Head of We Balance & Creativity",
+	"about_profile_silvia_role": "Material adventurer",
+	"about_profile_silvia_job": "Head of Products"
 }
