@@ -20,7 +20,7 @@
 
 <div class="border-primary flex w-full flex-col gap-12 border-t-2">
 	<h3 class="whitespace-break-spaces text-3xl font-semibold">
-		Why team-building <span class="text-primary">with us ?</span>
+		{@html m.teambuilding_argumentary_h3()}
 	</h3>
 
 	<div class="flex flex-col gap-12">
