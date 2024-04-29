@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/quizz/TailorBuilding.jpg" alt="Tailor_building"/>

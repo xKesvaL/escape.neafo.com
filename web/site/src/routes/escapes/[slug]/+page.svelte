@@ -76,7 +76,7 @@
 
 {#if escape}
     <img class="w-full h-80 object-cover opacity-50" src={escape.image?.data} alt="escape_image" />
-    <div class="container container-lg grid grid-cols-[12fr,5fr] gap-8 -translate-y-20 z-10">
+    <div class="container container-lg grid grid-cols-[12fr,5fr] max-sm:grid-cols-1 gap-8 -translate-y-20 z-10">
         <div class="flex flex-col bg-card rounded-2xl p-4 gap-8">
             <img class="w-full h-80 rounded-lg object-cover" src={escape.image?.data} alt="escape_image" style:view-transition-name="escape-img" />
             <div class="flex flex-col gap-4">
@@ -96,22 +96,22 @@
             </div>
             <Separator />
             <div class="flex flex-col gap-4">
-                <h2 class="font-bold text-xl">More about the escape</h2>
-                <div class="flex flex-row gap-4">
-                    <div class="px-4 py-3 bg-muted rounded-lg flex flex-row gap-3">
+                <h2 class="font-bold text-xl">{m.escape_details_more()}</h2>
+                <div class="flex flex-row gap-4 max-sm:grid max-sm:grid-cols-4">
+                    <div class="px-4 py-3 bg-muted rounded-lg flex flex-row gap-3 max-sm:col-span-1">
                         {#each escape.langs as lang}
                             <p>{lang}</p>
                         {/each}
                     </div>
-                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center">
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center max-sm:col-span-3">
                         <IconPuzzle class="text-primary" stroke="1.5"/>
                         <p>{m.escape_details_puzzle_difficulty({ difficulty: getI18n(escape.puzzle) })}</p>
                     </div>
-                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center">
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center max-sm:col-span-2">
                         <IconAntennaBars5 class="text-primary" stroke="1.5"/>
                         <p>{m.escape_details_difficulty({ difficulty: getI18n(escape.difficulty) })}</p>
                     </div>
-                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center">
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center max-sm:col-span-2">
                         <IconClock class="text-primary" stroke="1.5"/>
                         <p>{m.escape_time({ time: escape.time })}</p>
                     </div>
@@ -120,19 +120,19 @@
             <Separator />
             {#if escape.latitude && escape.longitude}
                 <div class="flex flex-col gap-4">
-                    <h2 class="font-bold text-xl">Location of the escape game</h2>
+                    <h2 class="font-bold text-xl">{m.escape_details_location()}</h2>
                     <Map latitude={escape.latitude} longitude={escape.longitude} />
                 </div>
             {/if}
         </div>
         <div class="flex flex-col gap-4">
             <div class="bg-card p-4 rounded-2xl flex flex-col gap-4">
-                <p class="text-3xl font-bold">{price}€ <span class="text-xl font-light text-muted-foreground">/ person</span></p>
+                <p class="text-3xl font-bold">{price}€ <span class="text-xl font-light text-muted-foreground">{m.escape_details_book_person()}</span></p>
                 <Form class="flex flex-col gap-4" method="POST" {enhance} {formData} dev={false}>
                     <div class="flex flex-col gap-2">
                         <Field {form} name="date">
                             <Control let:attrs>
-                                <Label>Date and time</Label>
+                                <Label>{m.escape_details_book_date()}</Label>
                                 <Input type="hidden" bind:value={$formData.date} {...attrs} />
                                 <Popover>
                                     <PopoverTrigger {...attrs} asChild let:builder>
@@ -157,39 +157,39 @@
                         </Field>
                         <Field {form} name="people_number">
                             <Control let:attrs>
-                                <Label>Number of people</Label>
+                                <Label>{m.escape_details_book_people()}</Label>
                                 <Counter min={2} {...attrs} bind:value={$formData.people_number}/>
                             </Control>
                             <FieldErrors/>
                         </Field>
                     </div>
                     <div class="flex flex-col gap-3 p-3 border-input rounded-lg border" use:autoAnimate>
-                        <p>You won't be charged yet</p>
+                        <p>{m.escape_details_book_charge()}</p>
                         <div class="flex flex-row justify-between">
                             <p class="text-muted-foreground">{formatPrice(price)}€ x {$formData.people_number}</p>
                             <p>{formatPrice(price * $formData.people_number)}€</p>
                         </div>
                         {#if isDiscount}
                             <div class="flex flex-row justify-between">
-                                <p class="text-muted-foreground">{$formData.people_number} peoples discount</p>
+                                <p class="text-muted-foreground">{$formData.people_number} {m.escape_details_book_discount()}</p>
                                 <p>-{formatPrice(price * $formData.people_number * 0.10)}€ (10%)</p>
                             </div>
                         {/if}
                         <hr class="h-[2px] bg-muted-foreground opacity-25">
                         <div class="flex flex-row justify-between">
-                            <p>Total before taxes</p>
+                            <p>{m.escape_details_book_taxes()}</p>
                             <p>{formatPrice((price * $formData.people_number) - (isDiscount ? price * $formData.people_number * 0.10 : 0))}€</p>
                         </div>
                     </div>
-                    <FormButton>Book now</FormButton>
+                    <FormButton>{m.escape_details_book_submit()}</FormButton>
                 </Form>
             </div>
             <div class="flex flex-col gap-3 bg-primary rounded-xl p-4">
                 <div class="flex flex-row gap-2 items-center">
                     <IconDiscount stroke="1.5"/>
-                    <h2 class="text-lg font-bold">Save 15% for groups 5+</h2>
+                    <h2 class="text-lg font-bold">{m.escape_details_book_discount_title()}</h2>
                 </div>
-                <p>Special offer from us for groups of 5 or more people, get a 15% discount!</p>
+                <p>{m.escape_details_book_discount_description()}</p>
             </div>
         </div>
     </div>

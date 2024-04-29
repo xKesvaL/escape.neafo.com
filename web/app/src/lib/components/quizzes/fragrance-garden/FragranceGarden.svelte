@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/quizz/FragranceGarden.png" alt="Fragrance_garden"/>
