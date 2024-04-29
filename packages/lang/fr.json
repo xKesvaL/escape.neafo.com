@@ -285,5 +285,10 @@
 	"jobs_job_3_title": "C'est un bon travail, nous ne vous tuerons pas.",
 	"jobs_job_3_text": "Mulhouse, France",
 	"jobs_job_4_title": "C'est un bon travail, nous ne vous tuerons pas.",
-	"jobs_job_4_text": "Mulhouse, France"
+	"jobs_job_4_text": "Mulhouse, France",
+	"escape_creation_description": "Description de l'escape...",
+	"escape_creation_name": "Escape game cool",
+	"escape_creation_address": "18 rue du boulevard",
+	"escape_creation_city": "Ville",
+	"escape_creation_slug": "escape-game-cool"
 }

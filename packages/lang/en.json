@@ -285,6 +285,11 @@
 	"jobs_job_3_title": "This is a good job, we won’t kill you",
 	"jobs_job_3_text": "Mulhouse, France",
 	"jobs_job_4_title": "This is a good job, we won’t kill you",
-	"jobs_job_4_text": "Mulhouse, France"
+	"jobs_job_4_text": "Mulhouse, France",
+	"escape_creation_description": "Description of the escape...",
+	"escape_creation_name": "Cool escape game",
+	"escape_creation_address": "18 street of street",
+	"escape_creation_city": "City",
+	"escape_creation_slug": "cool-escape-game"
 
 }
