@@ -15,6 +15,7 @@
     } from "$lib/components/ui/alert-dialog/index.js";
     import type {Escape} from "@repo/schemas/zod";
     import {route} from "$lib/ROUTES";
+    import * as m from "$paraglide/messages";
 
     export let escape: Escape;
 
@@ -33,21 +34,21 @@
         </div>
     </div>
     <div class="flex gap-6 w-full">
-        <Button href={`/admin/escapes/${escape.slug}/edit`} class="w-full">Edit</Button>
+        <Button href={`/admin/escapes/${escape.slug}/edit`} class="w-full">{m.admin_escape_card_edit()}</Button>
         <AlertDialog>
             <AlertDialogTrigger asChild let:builder>
-                <Button class="w-full" builders={[builder]} variant="destructive">Disable</Button>
+                <Button class="w-full" builders={[builder]} variant="destructive">{m.admin_escape_card_delete()}</Button>
             </AlertDialogTrigger>
             <AlertDialogContent>
                 <AlertDialogHeader>
-                    <AlertDialogTitle>Are you absolutely sure?</AlertDialogTitle>
+                    <AlertDialogTitle>{m.admin_escape_card_alert_title()}</AlertDialogTitle>
                     <AlertDialogDescription>
-                        This action cannot be undone. This will permanently delete the escape game.
+                        {m.admin_escape_card_alert_description()}
                     </AlertDialogDescription>
                 </AlertDialogHeader>
                 <AlertDialogFooter>
-                    <AlertDialogCancel>Cancel</AlertDialogCancel>
-                    <AlertDialogAction on:click={() => goto(route("/admin/escapes/[slug]/delete", { slug: escape.slug }))}>Continue</AlertDialogAction>
+                    <AlertDialogCancel>{m.admin_escape_card_alert_cancel()}</AlertDialogCancel>
+                    <AlertDialogAction on:click={() => goto(route("/admin/escapes/[slug]/delete", { slug: escape.slug }))}>{m.admin_escape_card_alert_continue()}</AlertDialogAction>
                 </AlertDialogFooter>
             </AlertDialogContent>
         </AlertDialog>

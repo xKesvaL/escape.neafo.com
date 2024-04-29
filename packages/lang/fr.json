@@ -290,5 +290,12 @@
 	"escape_creation_name": "Escape game cool",
 	"escape_creation_address": "18 rue du boulevard",
 	"escape_creation_city": "Ville",
-	"escape_creation_slug": "escape-game-cool"
+	"escape_creation_slug": "escape-game-cool",
+	"admin_escape_title": "Liste",
+	"admin_escape_card_edit": "Modifier",
+	"admin_escape_card_delete": "Supprimer",
+	"admin_escape_card_alert_title": "Êtes-vous absolument sûr ?",
+	"admin_escape_card_alert_description": "Cette action ne peut être annulée. Elle supprimera définitivement l'escape game.",
+	"admin_escape_card_alert_cancel": "Annuler",
+	"admin_escape_card_alert_continue": "Continuer"
 }

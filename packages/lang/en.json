@@ -290,6 +290,13 @@
 	"escape_creation_name": "Cool escape game",
 	"escape_creation_address": "18 street of street",
 	"escape_creation_city": "City",
-	"escape_creation_slug": "cool-escape-game"
+	"escape_creation_slug": "cool-escape-game",
+	"admin_escape_title": "List",
+	"admin_escape_card_edit": "Edit",
+	"admin_escape_card_delete": "Delete",
+	"admin_escape_card_alert_title": "Are you absolutely sure?",
+	"admin_escape_card_alert_description": "This action cannot be undone. This will permanently delete the escape game.",
+	"admin_escape_card_alert_cancel": "Cancel",
+	"admin_escape_card_alert_continue": "Continue"
 
 }
