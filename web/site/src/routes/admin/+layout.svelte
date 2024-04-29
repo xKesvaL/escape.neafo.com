@@ -11,23 +11,24 @@ import {
 } from "$lib/components/ui/breadcrumb/index";
 import { page } from "$app/stores";
 import { getI18n } from "$lib/utils/functions";
+import * as m from "$paraglide/messages";
 
 const crumbs = ["home", ...$page.url.pathname.split("/").filter(Boolean)];
 </script>
 
 <!-- Height is 100dvh minus header -->
-<aside class="px-4 py-5 top-20 bg-card fixed h-[calc(100dvh-5rem)] w-60 border-r flex flex-col gap-2 z-10">
+<aside class="px-4 py-5 top-20 bg-card fixed h-[calc(100dvh-5rem)] w-60 border-r flex flex-col gap-2 z-10 max-sm:hidden">
     <MenuButton
             href={route('/admin/users')}
             icon={IconUsers}
     >
-        Users
+        {m.page_aside_users_title()}
     </MenuButton>
     <MenuButton
             href={route('/admin/escapes/create')}
             icon={IconPuzzle}
     >
-        Escapes
+        {m.page_aside_escapes_title()}
     </MenuButton>
 </aside>
 

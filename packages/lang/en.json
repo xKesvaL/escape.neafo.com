@@ -31,6 +31,8 @@
 	"page_escapes_title": "Escapes",
 	"page_users_title": "Users",
 	"page_create_title": "Create",
+	"page_aside_users_title": "Users",
+	"page_aside_escapes_title": "Escapes",
 	"drag_and_drop": "Drag and drop a file here or <span class=\"underline\">browse</span>",
 	"contact_message": "Your message",
 	"escape_details_puzzle_difficulty": "Puzzle ~ {difficulty}",
