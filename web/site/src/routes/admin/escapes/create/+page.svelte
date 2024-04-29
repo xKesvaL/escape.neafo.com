@@ -42,14 +42,14 @@ function handleSlug(name: string) {
 
 <section class="container py-12 flex flex-col gap-10">
     <h1 class="scroll-m-20 text-4xl font-extrabold tracking-tight lg:text-5xl">Admin - Escape - Creation</h1>
-    <Form {formData} {enhance} class="flex flex-row gap-8" enctype="multipart/form-data" method="POST">
+    <Form {formData} {enhance} class="flex flex-row gap-8 max-sm:flex-col" enctype="multipart/form-data" method="POST">
         <div class="flex flex-col gap-4 w-full">
             <div class="flex flex-row gap-4">
                 <Field class="w-full" {form} name="name">
                     <Control let:attrs>
                         <Label>{m.name()}</Label>
                         <Input {...attrs} bind:value={$formData.name} on:input={(e) => handleSlug(e.target?.value)}
-                               placeholder="Cool escape game"/>
+                               placeholder={m.escape_creation_name()}/>
                     </Control>
                     <FieldErrors/>
                 </Field>
@@ -57,7 +57,7 @@ function handleSlug(name: string) {
                     <Control let:attrs>
                         <Label>Slug</Label>
                         <Input {...attrs} bind:value={$formData.slug} class="pointer-events-none opacity-50"
-                               placeholder="cool-escape-game" tabindex={-1}/>
+                               placeholder={m.escape_creation_slug()} tabindex={-1}/>
                     </Control>
                     <FieldErrors/>
                 </Field>
@@ -65,7 +65,7 @@ function handleSlug(name: string) {
             <Field {form} name="description">
                 <Control let:attrs>
                     <Label>{m.description()}</Label>
-                    <Textarea {...attrs} bind:value={$formData.description} placeholder="Description of the escape..."/>
+                    <Textarea {...attrs} bind:value={$formData.description} placeholder={m.escape_creation_description()}/>
                 </Control>
                 <FieldErrors/>
             </Field>
@@ -86,7 +86,7 @@ function handleSlug(name: string) {
                                     }
                                   }}
                                 />
-                                <Label class="text-sm font-normal">
+                                <Label class="text-sm max-sm:text-xl font-normal">
                                     <div class="flex">
                                         <!--<svelte:component this={lang === 'en' ? EnglishIcon : FrenchIcon} />!-->
                                         {getI18n(`locale_${lang}`)}
@@ -148,15 +148,15 @@ function handleSlug(name: string) {
                     {/each}
                 </div>
             </div>
-            <div class="flex flex-row gap-4 items-center">
-                <Field class="w-full" {form} name="time">
+            <div class="flex flex-row max-sm:grid max-sm:grid-cols-3 gap-4 items-center">
+                <Field class="w-full max-sm:order-last max-sm:col-span-3" {form} name="time">
                     <Control let:attrs>
                         <Label>{m.time()}</Label>
                         <Input {...attrs} bind:value={$formData.time} class="input-time" type="time"/>
                     </Control>
                     <FieldErrors/>
                 </Field>
-                <Field class="w-full" {form} name="price">
+                <Field class="w-full max-sm:col-span-2" {form} name="price">
                     <Control let:attrs>
                         <Label>{m.price()}</Label>
                         <Input {...attrs} bind:value={$formData.price} type="number"/>
@@ -169,27 +169,26 @@ function handleSlug(name: string) {
                             <Switch {...attrs} bind:checked={$formData.public}/>
                             <Label>{m.public_()}</Label>
                         </div>
-
                     </Control>
                     <FieldErrors/>
                 </Field>
             </div>
-            <div class="flex flex-row gap-4">
-                <Field class="w-full" {form} name="address">
+            <div class="flex flex-row gap-4 max-sm:grid max-sm:grid-cols-2">
+                <Field class="w-full max-sm:col-span-2" {form} name="address">
                     <Control let:attrs>
                         <Label>{m.address()}</Label>
-                        <Input {...attrs} bind:value={$formData.address} placeholder="18 street of street"/>
+                        <Input {...attrs} bind:value={$formData.address} placeholder={m.escape_creation_address()}/>
                     </Control>
                     <FieldErrors/>
                 </Field>
                 <Field class="w-full" {form} name="city">
                     <Control let:attrs>
                         <Label>{m.city()}</Label>
-                        <Input {...attrs} bind:value={$formData.city} placeholder="City"/>
+                        <Input {...attrs} bind:value={$formData.city} placeholder={m.escape_creation_city()}/>
                     </Control>
                     <FieldErrors/>
                 </Field>
-                <Field class="w-full max-w-24" {form} name="postal_code">
+                <Field class="w-full max-w-24 max-sm:max-w-full" {form} name="postal_code">
                     <Control let:attrs>
                         <Label>{m.postal_code()}</Label>
                         <Input {...attrs} bind:value={$formData.postal_code} placeholder="68940" type="number"/>
@@ -197,9 +196,9 @@ function handleSlug(name: string) {
                     <FieldErrors/>
                 </Field>
             </div>
-            <Button>{m.submit()}</Button>
+            <Button class="max-sm:hidden">{m.submit()}</Button>
         </div>
-        <div class="flex flex-col w-full gap-2 pt-8">
+        <div class="flex flex-col w-full gap-2 pt-8 max-sm:pt-0">
             <Fieldset class="h-full" {form} name="image">
                 <Control let:attrs>
                     <FileInput
@@ -214,6 +213,7 @@ function handleSlug(name: string) {
                 </Control>
             </Fieldset>
         </div>
+        <Button class="max-sm:visible sm:hidden">{m.submit()}</Button>
     </Form>
 </section>
 

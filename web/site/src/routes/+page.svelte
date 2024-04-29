@@ -29,9 +29,9 @@
 		</div>
 	</div>
 
-	<div class="py-16">
+	<div class="py-16 flex flex-col gap-4">
 		<h2 class="text-3xl font-extrabold md:text-5xl">{m.escapes_container_h2()}</h2>
-		<div class="grid grid-cols-[repeat(auto-fit,minmax(250px,1fr))] justify-items-center gap-4">
+		<div class="grid grid-cols-3 max-sm:grid-cols-1 justify-items-center gap-4">
 			{#each escapes as escape}
 				<EscapeCard {escape} />
 			{/each}

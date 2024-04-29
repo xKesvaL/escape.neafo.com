@@ -1,12 +1,13 @@
 <script lang="ts">
     import {IconMapPin} from "@tabler/icons-svelte";
     import type {Escape} from "@repo/schemas/zod";
+    import {route} from "$lib/ROUTES";
 
     export let escape: Escape;
 
 </script>
 
-<div class="flex rounded-2xl relative flex-col p-6 gap-6 shrink-0 max-w-96 overflow-hidden bg-card/50">
+<a class="flex rounded-2xl relative flex-col p-6 gap-6 shrink-0 max-w-96 overflow-hidden bg-card/50" href={route('/escapes/[slug]', {slug: escape.slug})}>
     <img class="absolute w-[150%] h-[150%] blur-3xl opacity-50 -z-10" src="{escape.image?.data}" alt="escape_image" style:view-transition-name="escape-img" />
     <div class="rounded-xl">
         <img class="w-full" src="{escape.image?.data}" alt="escape_image" style:view-transition-name="escape-img" />
@@ -18,4 +19,4 @@
             <p class=" text-l">{escape.city}</p>
         </div>
     </div>
-</div>
+</a>

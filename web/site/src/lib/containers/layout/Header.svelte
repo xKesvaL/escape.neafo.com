@@ -11,11 +11,17 @@ import {
 	IconServerCog,
 	IconUser,
 	IconUserCog,
+    IconUsers,
+    IconPuzzle
 } from "@tabler/icons-svelte";
 import * as m from "$paraglide/messages";
 import { BRAND } from "$lib/config/brand";
 import { Separator } from "$lib/components/ui/separator/index";
 import HeaderMenuButton from "$lib/components/base/MenuButton.svelte";
+import { page } from '$app/stores';
+import {i18n} from "$lib/config/i18n";
+
+$: currentRoute = i18n.route($page.url.pathname);
 </script>
 
 <header
@@ -23,13 +29,13 @@ import HeaderMenuButton from "$lib/components/base/MenuButton.svelte";
         style:view-transition-name="header"
 >
     <a href={route('/')}>
-        <enhanced:img alt={BRAND.name} src="$assets/logo.png?w=162" style:view-transition-name="header-img"/>
+        <enhanced:img alt={BRAND.name} src="$assets/logo.png?w=162" class="max-sm:w-[130px]" style:view-transition-name="header-img"/>
     </a>
 
-    <div class="flex gap-8 font-medium">
+    <div class="flex gap-8 font-medium max-sm:hidden">
         <a href={route('/')}> {m.home()} </a>
-        <a href=""> Escape Games </a>
-        <a href=""> Teambuilding </a>
+        <a href={route('/escapes')}> Escape Games </a>
+        <a href={route('/teambuilding')}> Teambuilding </a>
     </div>
 
     <Popover>
@@ -51,6 +57,27 @@ import HeaderMenuButton from "$lib/components/base/MenuButton.svelte";
         <PopoverContent align="end" class="mt-2 w-80">
             <div class="flex flex-col gap-4">
                 <div class="flex flex-col gap-2">
+                    <div class="flex flex-col gap-2 sm:hidden">
+                        <HeaderMenuButton
+                                href={route('/')}
+                                startsWith={true}
+                        >
+                            {m.home()}
+                        </HeaderMenuButton>
+                        <HeaderMenuButton
+                                href={route('/escapes')}
+                                startsWith={true}
+                        >
+                            Escapes Games
+                        </HeaderMenuButton>
+                        <HeaderMenuButton
+                                href={route('/teambuilding')}
+                                startsWith={true}
+                        >
+                            Teambuilding
+                        </HeaderMenuButton>
+                        <Separator/>
+                    </div>
                     <HeaderMenuButton
                             href={route('/profile')}
                             icon={IconUserCog}
@@ -65,6 +92,27 @@ import HeaderMenuButton from "$lib/components/base/MenuButton.svelte";
                     >
                         {m.admin()}
                     </HeaderMenuButton>
+                    {#if
+                        currentRoute === route("/admin/users") ||
+                        currentRoute === route("/admin/escapes/create") ||
+                        currentRoute === route("/admin/escapes")
+                    }
+                        <Separator/>
+                        <HeaderMenuButton
+                                href={route('/admin/users')}
+                                icon={IconUsers}
+                                startsWith={false}
+                        >
+                            {m.page_aside_users_title()}
+                        </HeaderMenuButton>
+                        <HeaderMenuButton
+                                href={route('/admin/escapes/create')}
+                                icon={IconPuzzle}
+                                startsWith={true}
+                        >
+                            {m.page_aside_escapes_title()}
+                        </HeaderMenuButton>
+                    {/if}
                 </div>
                 <Separator/>
                 <Button href={route('/auth/login')}>Sign In</Button>

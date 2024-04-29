@@ -1,5 +1,6 @@
 <script lang="ts">
 import { BRAND } from "$lib/config/brand";
+import * as m from "$paraglide/messages";
 </script>
 
 <footer class="bg-background/50 p-8 shadow backdrop-blur-3xl backdrop-saturate-200 border-t border-primary">
@@ -9,8 +10,8 @@ import { BRAND } from "$lib/config/brand";
     </div>
     <div class="flex justify-between items-center text-muted-foreground" style:view-transition-name="footer">
       
-      <p>Designed by MMI tkt</p>
-      <p>Kaiserstuhl Escape 2024 © All rights reserved</p>
+      <p>{m.footer_designed()}</p>
+      <p>{m.footer_rights()}</p>
     </div>
   </div>
 </footer>
