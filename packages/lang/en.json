@@ -288,5 +288,11 @@
 	"fragrance_garden_quiz_question_2_0":"Appeasing patients",
 	"fragrance_garden_quiz_question_2_1":"To beautify the neighbourhood",
 	"fragrance_garden_quiz_question_2_2":"Make a collection of flowers",
-	"fragrance_garden_quiz_question_2_3":"Enabling people to use their sense of smell as a guide"
+	"fragrance_garden_quiz_question_2_3":"Enabling people to use their sense of smell as a guide",
+	"firstname":"Firstname",
+	"lastname":"Lastname",
+	"current_password":"Current password",
+	"new_password":"New password",
+	"confirm_new_password":"Confirm new password",
+	"apply_changes":"Apply changes"
 }
