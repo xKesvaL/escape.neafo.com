@@ -355,6 +355,13 @@
 	"fragrance_garden_quiz_question_2_1":"Pour embellir le voisinage",
 	"fragrance_garden_quiz_question_2_2":"Faire une collection de fleurs",
 	"fragrance_garden_quiz_question_2_3":"Permettre aux personnes d'utiliser leur odorat comme guide",
+	"firstname":"Prénom",
+	"lastname":"Nom",
+	"current_password":"Mot de passe actuel",
+	"new_password":"Nouveau mot de passe",
+	"confirm_new_password":"Confirmer le nouveau mot de passe",
+	"apply_changes":"Appliquer les changements"
+	"fragrance_garden_quiz_question_2_3":"Permettre aux personnes d'utiliser leur odorat comme guide",
 	"personal_informations": "Informations personel",
 	"edit":"Edit",
 	"firstname":"Prénom",
