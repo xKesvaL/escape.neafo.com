@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/quizz/RalfBenner.png" alt="RalfBenner"/>

@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/quizz/CathedralMulhouse.jpg" alt="Cathedral_of_Mulhouse"/>
