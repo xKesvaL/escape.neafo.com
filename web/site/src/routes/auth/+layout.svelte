@@ -5,7 +5,7 @@
 </script>
 
 <section class="container grid-cols-[3fr,2fr] gap-8 overflow-hidden p-8 lg:grid">
-	<div class="max-w-screen absolute -left-20 -top-32 -z-10 h-screen w-full blur-3xl">
+	<div class="max-w-screen absolute -left-20 -top-32 -z-10 h-screen w-full blur-3xl overflow-hidden">
 		<div class="bg-primary relative left-[50%] top-[30%] h-[300px] w-[300px] opacity-10"></div>
 		<div class="bg-primary relative right-[20%] top-[20%] h-[300px] w-[300px] opacity-10"></div>
 		<div class="bg-primary -top-[1x 0%] relative left-[20%] h-[300px] w-[300px] opacity-10"></div>
