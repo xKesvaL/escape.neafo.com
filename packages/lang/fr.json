@@ -297,5 +297,16 @@
 	"admin_escape_card_alert_title": "Êtes-vous absolument sûr ?",
 	"admin_escape_card_alert_description": "Cette action ne peut être annulée. Elle supprimera définitivement l'escape game.",
 	"admin_escape_card_alert_cancel": "Annuler",
-	"admin_escape_card_alert_continue": "Continuer"
+	"admin_escape_card_alert_continue": "Continuer",
+	"escape_details_more": "En savoir plus sur l'escape game",
+	"escape_details_location": "Lieu de l'escape game",
+	"escape_details_book_person": "/ personne",
+	"escape_details_book_date": "Date et heure",
+	"escape_details_book_people": "Nombre de personnes",
+	"escape_details_book_charge": "Vous ne serez pas encore facturé",
+	"escape_details_book_discount": "réduction pour les personnes",
+	"escape_details_book_taxes": "Total avant impôts",
+	"escape_details_book_submit": "Réserver",
+	"escape_details_book_discount_title": "Réduction de 15 % pour les groupes de plus de 5 personnes",
+	"escape_details_book_discount_description": "Offre spéciale de notre part pour les groupes de 5 personnes ou plus, bénéficiez d'une réduction de 15% !"
 }

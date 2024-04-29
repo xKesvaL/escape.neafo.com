@@ -297,6 +297,16 @@
 	"admin_escape_card_alert_title": "Are you absolutely sure?",
 	"admin_escape_card_alert_description": "This action cannot be undone. This will permanently delete the escape game.",
 	"admin_escape_card_alert_cancel": "Cancel",
-	"admin_escape_card_alert_continue": "Continue"
-
+	"admin_escape_card_alert_continue": "Continue",
+	"escape_details_more": "More about the escape",
+	"escape_details_location": "Location of the escape game",
+	"escape_details_book_person": "/ person",
+	"escape_details_book_date": "Date and time",
+	"escape_details_book_people": "Number of people",
+	"escape_details_book_charge": "You won't be charged yet",
+	"escape_details_book_discount": "peoples discount",
+	"escape_details_book_taxes": "Total before taxes",
+	"escape_details_book_submit": "Book now",
+	"escape_details_book_discount_title": "Save 15% for groups 5+",
+	"escape_details_book_discount_description": "Special offer from us for groups of 5 or more people, get a 15% discount!"
 }
