@@ -308,5 +308,7 @@
 	"escape_details_book_taxes": "Total before taxes",
 	"escape_details_book_submit": "Book now",
 	"escape_details_book_discount_title": "Save 15% for groups 5+",
-	"escape_details_book_discount_description": "Special offer from us for groups of 5 or more people, get a 15% discount!"
+	"escape_details_book_discount_description": "Special offer from us for groups of 5 or more people, get a 15% discount!",
+	"footer_designed": "Designed by MMI",
+	"footer_rights": "Kaiserstuhl Escape 2024 © All rights reserved"
 }
