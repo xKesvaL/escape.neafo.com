@@ -13,6 +13,7 @@ export type UserRegister = z.infer<typeof userRegisterZodSchema>;
 export const userZodSchema = z.object({
 	_id: z.string(),
 	email: z.string().email(),
+	age: z.number(),
 	firstname: z.string().optional(),
 	lastname: z.string().optional(),
 	role: z.enum(["user", "admin"]).default("user"),
