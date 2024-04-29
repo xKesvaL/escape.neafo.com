@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/quizz/OldestPharmacy.jpg" alt="Oldest_pharmacy"/>
