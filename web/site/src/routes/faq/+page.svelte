@@ -175,7 +175,7 @@
 		</div>
 	</div>
 
-	<div class="flex flex-wrap justify-start md:justify-center gap-x-32 gap-y-14 self-stretch mb-10">
+	<div class="flex flex-wrap justify-center gap-x-32 gap-y-14 self-stretch mb-10">
 		{#each CATEGORIES as category}
 			<QuestionFaq faqs={faqs[category]} title={titles[category]} />
 		{/each}
