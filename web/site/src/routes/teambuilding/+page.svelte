@@ -110,7 +110,7 @@
 							<Input
 								{...attrs}
 								bind:value={$formData.companyName}
-								placeholder="Name of your Company"
+								placeholder={m.name_of_company()}
 							/>
 						</Control>
 						<FieldErrors />
@@ -120,7 +120,7 @@
 					<Field {form} name="email">
 						<Control let:attrs>
 							<Label>{m.email()}</Label>
-							<Input {...attrs} bind:value={$formData.email} placeholder="Email" />
+							<Input {...attrs} bind:value={$formData.email} placeholder={m.email()} />
 						</Control>
 						<FieldErrors />
 					</Field>
@@ -129,7 +129,7 @@
 					<Field {form} name="place">
 						<Control let:attrs>
 							<Label>{m.place()}</Label>
-							<Input {...attrs} bind:value={$formData.place} placeholder="Place" />
+							<Input {...attrs} bind:value={$formData.place} placeholder={m.place()} />
 						</Control>
 						<FieldErrors />
 					</Field>
@@ -142,7 +142,7 @@
 						<Textarea
 							{...attrs}
 							bind:value={$formData.message}
-							placeholder="Type your message here"
+							placeholder={m.type_your_message()}
 						/>
 					</Control>
 					<FieldErrors />

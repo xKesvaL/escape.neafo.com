@@ -118,7 +118,7 @@
 	"about_tree_april_2024_text_0": "5 new locations",
 	"about_tree_april_2024_text_1": "Special Event Packs",
 	"welcome_back": "Welcome back",
-	"join_us": "Join us now",
+	"join_us": "Join us",
 	"password": "Password",
 	"login": "Login",
 	"register": "Register",
@@ -259,6 +259,8 @@
 	"ask_anything": "Ask us anything or just say hi,",
 	"facebook": "Facebook",
 	"instagram": "Instagram",
+	"teambuilding_argumentary_h3":"Why team-building <span class=\"text-primary\">with us ?</span>",
+	"type_your_message":"Type your message here"
 	"jobs_hero_title": "Join us, team players. <br /> Your <span class=\"text-primary\">talents</span> make people's life shine.",
 	"jobs_hero_button_0": "Open positions",
 	"jobs_hero_button_1": "Learn more",

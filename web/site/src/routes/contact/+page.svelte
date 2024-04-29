@@ -27,7 +27,7 @@
     <div class="flex w-full flex-col gap-8">
         <div class="flex flex-col">
             <h1 class="text-6xl font-black">{@html m.lets_talk()}</h1>
-            <p class="text-2xl">{m.ask_anything()}</p>
+            <p class="text-2xl">{@html m.ask_anything()}</p>
         </div>
         <div class="flex flex-col gap-4">
             <div class="flex flex-row items-center gap-4">
@@ -63,7 +63,7 @@
                     <Field {form} name="name">
                         <Control let:attrs>
                             <Label>{m.name()}</Label>
-                            <Input {...attrs} bind:value={$formData.name} placeholder="Name"/>
+                            <Input {...attrs} bind:value={$formData.name} placeholder={m.name()}/>
                         </Control>
                         <FieldErrors/>
                     </Field>
@@ -72,7 +72,7 @@
                     <Field {form} name="email">
                         <Control let:attrs>
                             <Label>{m.email()}</Label>
-                            <Input {...attrs} bind:value={$formData.email} placeholder="Email"/>
+                            <Input {...attrs} bind:value={$formData.email} placeholder={m.email()}/>
                         </Control>
                         <FieldErrors/>
                     </Field>
@@ -82,7 +82,7 @@
                 <Field {form} name="message">
                     <Control let:attrs>
                         <Label>{m.contact_message()}</Label>
-                        <Textarea {...attrs} bind:value={$formData.message} placeholder="Type your message here"/>
+                        <Textarea {...attrs} bind:value={$formData.message} placeholder={m.type_your_message()}/>
                     </Control>
                     <FieldErrors/>
                 </Field>

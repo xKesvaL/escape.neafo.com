@@ -19,8 +19,8 @@
 	const { form: formData, enhance } = form;
 </script>
 
-<section class="container flex flex-col gap-4">
-	<div class="flex flex-row items-center gap-2">
+<section class="container flex flex-col gap-4 md:mt-0 mt-4">
+	<div class="flex flex-row items-center gap-2 text-start">
 		<img src={hand} alt="hand" />
 		<h1 class="text-3xl font-bold md:text-4xl">{m.welcome_back()}</h1>
 	</div>
@@ -48,18 +48,20 @@
 		<p class="text-muted-foreground text-end underline">{m.forgot_password()}</p>
 	</a>
 
-	<div class="flex flex-row gap-2">
+	<div class="flex flex-col gap-2">
 		<Button
 			class="flex w-full flex-row items-center justify-center gap-1 rounded-md bg-white p-2 text-center"
 		>
 			<img src={google_logo} alt="google_logo" />
 			<span class="text-base font-semibold text-black">{m.login_with_google()}</span>
 		</Button>
-		<Button class="w-fit rounded-md bg-white p-2">
-			<img src={facebook_logo} alt="facebook_logo" />
-		</Button>
-		<Button class="w-fit rounded-md bg-white p-2">
-			<img src={twitter_logo} alt="twitter_logo" />
-		</Button>
+		<div class="flex w-full flex-row gap-2">
+			<Button class="w-full rounded-md bg-white p-2">
+				<img src={facebook_logo} alt="facebook_logo" />
+			</Button>
+			<Button class="w-full rounded-md bg-white p-2">
+				<img src={twitter_logo} alt="twitter_logo" />
+			</Button>
+		</div>
 	</div>
 </section>
