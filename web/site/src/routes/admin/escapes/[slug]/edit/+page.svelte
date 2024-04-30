@@ -3,7 +3,7 @@
     import {Input} from "$lib/components/ui/input";
     import {Textarea} from "$lib/components/ui/textarea";
     import {Switch} from "$lib/components/ui/switch";
-    import {escapeCreateZodSchema} from "@repo/schemas/zod";
+    import {escapeEditZodSchema} from "@repo/schemas/zod";
     import {superForm} from "sveltekit-superforms";
     import {zodClient} from "sveltekit-superforms/adapters";
     import {Checkbox} from "$lib/components/ui/checkbox";
@@ -12,17 +12,18 @@
     import replaceSpecialCharacter from "replace-special-characters";
     import type {Locale} from "$lib/config/brand";
     import * as m from "$paraglide/messages";
-    import {getI18n} from "$lib/utils/functions";
+    import {dataURLtoFile, getI18n} from "$lib/utils/functions";
     import FileInput from "$lib/components/base/FileInput.svelte";
     import Form from "$lib/components/base/Form.svelte";
+    import {generateId} from "lucia";
 
     export let data;
 
-
     const form = superForm(data.form, {
-        validators: zodClient(escapeCreateZodSchema),
+        validators: zodClient(escapeEditZodSchema),
         dataType: "json"
     });
+
 
     const { form: formData, enhance } = form;
 
@@ -40,6 +41,13 @@
             .replaceAll(" ", "-")
             .toLowerCase();
     }
+
+    const defaultImage = {
+        file: dataURLtoFile($formData.image.data, $formData.name),
+        base64: $formData.image.data,
+        id: generateId(8)
+    };
+
 </script>
 
 <section class="container py-12 flex flex-col gap-10">
@@ -210,7 +218,8 @@
                                 const files = e.currentTarget?.files || e.detail?.currentTarget?.files || [];
                                 $formData.image = Array.from(files)[0]
                             }}
-                            required
+                            required={false}
+                            image={defaultImage}
                     />
                 </Control>
             </Fieldset>
