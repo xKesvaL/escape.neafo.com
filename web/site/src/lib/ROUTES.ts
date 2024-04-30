@@ -72,6 +72,7 @@ const ACTIONS = {
   "default /escapes/[slug]/book": (params: { slug: (string | number) }) => {
     return `/escapes/${params.slug}/book`
   },
+  "default /profile": `/profile`,
   "default /teambuilding": `/teambuilding`
 }
 

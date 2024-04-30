@@ -19,6 +19,10 @@ export const UserSchema = new Schema<User>(
 			required: true,
 			index: true,
 		},
+		age: {
+			type: Number,
+			required: true,
+		},
 		firstname: {
 			type: String,
 			required: false,
