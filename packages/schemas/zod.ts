@@ -10,6 +10,7 @@ export type UserRegister = z.infer<typeof userRegisterZodSchema>;
 export const userZodSchema = z.object({
 	_id: z.string(),
 	email: z.string().email(),
+	age: z.number(),
 	firstname: z.string().optional(),
 	lastname: z.string().optional(),
 	role: z.enum(["user", "admin"]).default("user"),
@@ -70,6 +71,18 @@ export const escapeZodSchema = escapeCreateZodSchema.extend({
 });
 
 export type Escape = z.infer<typeof escapeZodSchema>;
+
+export const escapeEditZodSchema = escapeZodSchema
+	.omit({
+		_id: true,
+		created_at: true,
+		updated_at: true,
+	})
+	.extend({
+		image: z.any(),
+	});
+
+export type EscapeEdit = z.infer<typeof escapeEditZodSchema>;
 
 export const contactZodSchema = z.object({
 	_id: z.string(),

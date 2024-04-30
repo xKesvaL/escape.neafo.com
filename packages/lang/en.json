@@ -313,6 +313,16 @@
 	"escape_details_book_discount_description": "Special offer from us for groups of 5 or more people, get a 15% discount!",
 	"footer_designed": "Designed by MMI",
 	"footer_rights": "Kaiserstuhl Escape 2024 © All rights reserved",
+	"footer_about": "About us",
+	"footer_contact": "Contact",
+	"footer_privacy": "Privacy policy",
+	"footer_terms": "Terms and condition",
+	"footer_jobs": "Jobs / Careers",
+	"footer_faq": "Questions & Answers",
+	"footer_escapes": "Escapes",
+	"footer_teambuilding": "Team building events",
+	"footer_more": "More",
+	"footer_info": "Info",
 	"center_mulhouse_quiz_question_0":"What is the name of this historic building ?",
 	"center_mulhouse_quiz_question_1":"What year was Temple of Mulhouse built ?",
 	"center_mulhouse_quiz_question_2":"What is the particularity of this pharmacy ?",
@@ -347,4 +357,10 @@
 	"fragrance_garden_quiz_question_2_3":"Enabling people to use their sense of smell as a guide",
 	"escape_list_title": "Our <span class=\"text-primary\">escapes games</span>",
 	"escape_game_card_text": "See more"
+	"firstname":"Firstname",
+	"lastname":"Lastname",
+	"current_password":"Current password",
+	"new_password":"New password",
+	"confirm_new_password":"Confirm new password",
+	"apply_changes":"Apply changes"
 }
