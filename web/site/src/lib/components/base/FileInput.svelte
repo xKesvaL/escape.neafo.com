@@ -29,7 +29,7 @@ interface CustomFile {
 	id: string;
 }
 
-let image: CustomFile | undefined = undefined;
+export let image: CustomFile | undefined = undefined;
 
 const handleChange: ChangeEventHandler<HTMLInputElement> = async (e) => {
 	if (!e.target) {
