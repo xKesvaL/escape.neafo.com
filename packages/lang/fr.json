@@ -360,10 +360,13 @@
 	"current_password":"Mot de passe actuel",
 	"new_password":"Nouveau mot de passe",
 	"confirm_new_password":"Confirmer le nouveau mot de passe",
-	"apply_changes":"Appliquer les changements"
+	"apply_changes":"Appliquer les changements",
 	"fragrance_garden_quiz_question_2_3":"Permettre aux personnes d'utiliser leur odorat comme guide",
 	"personal_informations": "Informations personel",
 	"edit":"Edit",
 	"firstname":"Prénom",
-	"age":"Age"
+	"age":"Age",
+	"fragrance_garden_quiz_question_2_3":"Permettre aux personnes d'utiliser leur odorat comme guide",
+	"escape_list_title": "Nos <span class=\"text-primary\">escapes games</span>",
+	"escape_game_card_text": "Voir plus"
 }
