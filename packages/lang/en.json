@@ -260,7 +260,7 @@
 	"facebook": "Facebook",
 	"instagram": "Instagram",
 	"teambuilding_argumentary_h3":"Why team-building <span class=\"text-primary\">with us ?</span>",
-	"type_your_message":"Type your message here"
+	"type_your_message":"Type your message here",
 	"jobs_hero_title": "Join us, team players. <br /> Your <span class=\"text-primary\">talents</span> make people's life shine.",
 	"jobs_hero_button_0": "Open positions",
 	"jobs_hero_button_1": "Learn more",
@@ -312,7 +312,7 @@
 	"escape_details_book_discount_title": "Save 15% for groups 5+",
 	"escape_details_book_discount_description": "Special offer from us for groups of 5 or more people, get a 15% discount!",
 	"footer_designed": "Designed by MMI",
-	"footer_rights": "Kaiserstuhl Escape 2024 © All rights reserved"
+	"footer_rights": "Kaiserstuhl Escape 2024 © All rights reserved",
 	"center_mulhouse_quiz_question_0":"What is the name of this historic building ?",
 	"center_mulhouse_quiz_question_1":"What year was Temple of Mulhouse built ?",
 	"center_mulhouse_quiz_question_2":"What is the particularity of this pharmacy ?",
@@ -344,5 +344,10 @@
 	"fragrance_garden_quiz_question_2_0":"Appeasing patients",
 	"fragrance_garden_quiz_question_2_1":"To beautify the neighbourhood",
 	"fragrance_garden_quiz_question_2_2":"Make a collection of flowers",
-	"fragrance_garden_quiz_question_2_3":"Enabling people to use their sense of smell as a guide"
+	"fragrance_garden_quiz_question_2_3":"Enabling people to use their sense of smell as a guide",
+	"personal_informations": "Personal informations",
+	"edit":"Edit",
+	"firstname":"Firstname",
+	"age":"Age"
+
 }
