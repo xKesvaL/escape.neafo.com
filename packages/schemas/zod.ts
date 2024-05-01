@@ -13,7 +13,6 @@ export type UserRegister = z.infer<typeof userRegisterZodSchema>;
 export const userZodSchema = z.object({
 	_id: z.string(),
 	email: z.string().email(),
-	age: z.number(),
 	firstname: z.string().optional(),
 	lastname: z.string().optional(),
 	role: z.enum(["user", "admin"]).default("user"),
@@ -30,6 +29,12 @@ export const userEditZodSchema = userZodSchema.omit({
 });
 
 export type UserEdit = z.infer<typeof userZodSchema>;
+
+export const userPasswordZodSchema = z.object({
+	current_password: z.string().min(8),
+	new_password: z.string().min(8),
+	new_password_confirm: z.string().min(8),
+});
 
 export const escapeCreateZodSchema = z.object({
 	name: z.string(),
