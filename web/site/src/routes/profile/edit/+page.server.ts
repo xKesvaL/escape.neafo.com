@@ -57,7 +57,6 @@ export const actions: Actions = {
 		user.lastname = lastname;
 		user.age = age;
 		
-
 		await user.save();
 
 		return true;
