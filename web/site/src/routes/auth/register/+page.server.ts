@@ -1,13 +1,13 @@
-import { superValidate } from "sveltekit-superforms";
-import { type User, userRegisterZodSchema } from "@repo/schemas/zod";
-import { zod } from "sveltekit-superforms/adapters";
-import type { PageServerLoad, Actions } from "./$types.js";
+import { route } from "$lib/ROUTES";
 import { lucia } from "$lib/server/auth";
 import { getDatabaseConnection } from "$lib/server/db";
+import { type User, userRegisterZodSchema } from "@repo/schemas/zod";
 import { fail, redirect } from "@sveltejs/kit";
 import { generateId } from "lucia";
 import { Argon2id } from "oslo/password";
-import { route } from "$lib/ROUTES";
+import { superValidate } from "sveltekit-superforms";
+import { zod } from "sveltekit-superforms/adapters";
+import type { Actions, PageServerLoad } from "./$types.js";
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -24,7 +24,7 @@ export const actions: Actions = {
 			});
 		}
 
-		const { email, password } = form.data;
+		const { email, password, lastname, firstname, age } = form.data;
 
 		const userId = generateId(40);
 		const hashedPassword = await new Argon2id().hash(password);
@@ -44,6 +44,9 @@ export const actions: Actions = {
 			_id: userId,
 			email,
 			hashed_password: hashedPassword,
+			firstname,
+			lastname,
+			age,
 		});
 
 		await user.save();

@@ -3,6 +3,9 @@ import { z } from "zod";
 export const userRegisterZodSchema = z.object({
 	email: z.string().email(),
 	password: z.string().min(8),
+	firstname: z.string().optional(),
+	lastname: z.string().optional(),
+	age: z.string(),
 });
 
 export type UserRegister = z.infer<typeof userRegisterZodSchema>;
@@ -10,10 +13,10 @@ export type UserRegister = z.infer<typeof userRegisterZodSchema>;
 export const userZodSchema = z.object({
 	_id: z.string(),
 	email: z.string().email(),
-	age: z.number(),
 	firstname: z.string().optional(),
 	lastname: z.string().optional(),
 	role: z.enum(["user", "admin"]).default("user"),
+	age: z.string(),
 	hashed_password: z.string().optional(),
 });
 
@@ -26,6 +29,12 @@ export const userEditZodSchema = userZodSchema.omit({
 });
 
 export type UserEdit = z.infer<typeof userZodSchema>;
+
+export const userPasswordZodSchema = z.object({
+	current_password: z.string().min(8),
+	new_password: z.string().min(8),
+	new_password_confirm: z.string().min(8),
+});
 
 export const escapeCreateZodSchema = z.object({
 	name: z.string(),

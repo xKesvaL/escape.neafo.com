@@ -36,6 +36,10 @@ export const UserSchema = new Schema<User>(
 			required: true,
 			default: "user",
 		},
+		age: {
+			type: String,
+			required: true,
+		},
 		hashed_password: {
 			type: String,
 			required: false,
