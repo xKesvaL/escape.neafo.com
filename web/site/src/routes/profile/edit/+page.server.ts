@@ -3,7 +3,10 @@ import { type User, userEditZodSchema } from "@repo/schemas/zod";
 import { fail } from "@sveltejs/kit";
 import { superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
-import type { Actions, PageServerLoad } from "./$types.js";
+import type {
+	Actions,
+	PageServerLoad,
+} from "../../../../.svelte-kit/types/src/routes";
 
 export const load: PageServerLoad = async ({ params }) => {
 	const userId = params.userId;
@@ -61,7 +64,6 @@ export const actions: Actions = {
 		user.firstname = firstname;
 		user.lastname = lastname;
 		user.age = age;
-		
 
 		await user.save();
 
