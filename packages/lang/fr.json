@@ -355,6 +355,8 @@
 	"fragrance_garden_quiz_question_2_1":"Pour embellir le voisinage",
 	"fragrance_garden_quiz_question_2_2":"Faire une collection de fleurs",
 	"fragrance_garden_quiz_question_2_3":"Permettre aux personnes d'utiliser leur odorat comme guide",
+	"escape_list_title": "Nos <span class=\"text-primary\">escapes games</span>",
+	"escape_game_card_text": "Voir plus"
 	"firstname":"Prénom",
 	"lastname":"Nom",
 	"current_password":"Mot de passe actuel",

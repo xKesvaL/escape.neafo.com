@@ -72,6 +72,18 @@ export const escapeZodSchema = escapeCreateZodSchema.extend({
 
 export type Escape = z.infer<typeof escapeZodSchema>;
 
+export const escapeEditZodSchema = escapeZodSchema
+	.omit({
+		_id: true,
+		created_at: true,
+		updated_at: true,
+	})
+	.extend({
+		image: z.any(),
+	});
+
+export type EscapeEdit = z.infer<typeof escapeEditZodSchema>;
+
 export const contactZodSchema = z.object({
 	_id: z.string(),
 	name: z.string(),
