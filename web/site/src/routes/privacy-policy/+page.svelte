@@ -6,12 +6,24 @@
     
     const policy = [
         {
-            title: m.policy_title_condition(),
-            description: m.policy_description_condition()
+            title: m.policy_title_cookie(),
+            description: m.policy_description_cookie()
+        },
+        {
+            title: m.policy_title_rgpd(),
+            description: m.policy_description_rgpd()
+        },
+        {
+            title: m.policy_title_host(),
+            description: m.policy_description_host()
         },
         {
             title: m.policy_title_collect(),
             description: m.policy_description_collect()
+        },
+        {
+            title: m.policy_title_share(),
+            description: m.policy_description_share()
         },
         {
             title: m.policy_title_property(),
