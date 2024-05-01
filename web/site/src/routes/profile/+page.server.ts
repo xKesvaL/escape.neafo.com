@@ -1,16 +1,13 @@
+import { route } from "$lib/ROUTES";
+import { fail, redirect } from "@sveltejs/kit";
 import type { PageServerLoad } from "./$types";
-import { getDatabaseConnection } from "$lib/server/db";
-import { type User } from "@repo/schemas/zod";
 
-export const load: PageServerLoad = async ({ params }) => {
-	const userId = params.userId;
+export const load: PageServerLoad = async ({ locals }) => {
+	const { user } = locals;
 
-	const mongoose = await getDatabaseConnection();
-	const userModel = mongoose.model<User>("User");
-
-	const user = await userModel.findOne({ _id: userId }).lean().select({
-		email: true,
-	});
+	if (!user) {
+		return redirect(302, route("/auth/login"));
+	}
 
 	return {
 		user: user,

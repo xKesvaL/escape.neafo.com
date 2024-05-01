@@ -8,18 +8,17 @@
 	const user = data.user;
 </script>
 
-<section class="container flex flex-col gap-4 py-4">
-    {#if user}
+<section class="container container-sm flex flex-col gap-4 py-16">
 	<h1 class="py-4 text-3xl font-semibold">My profile</h1>
 
 	<div
-		class="border-muted-foreground flex md:w-3/4 flex-col justify-center gap-4 rounded-2xl border-[1px] p-6 align-top"
+		class="border-muted-foreground flex flex-col justify-center gap-4 rounded-2xl border-[1px] p-6 align-top"
 	>
 		<div
 			class="border-muted-foreground flex w-full flex-row flex-wrap gap-2 items-center justify-between border-b-[1px] pb-4"
 		>
 			<h3 class="font-bold md:text-2xl text-xl">{m.personal_informations()}</h3>
-			<Button variant="outline" class="flex h-fit flex-row  items-center gap-2 w-fit ">
+			<Button variant="outline" class="flex flex-row items-center gap-2">
                 <span>{m.edit()}</span>
 				<Pencil size="16" stroke="2" />
 			</Button>
@@ -32,8 +31,8 @@
 			</div>
 
 			<div class="flex flex-col gap-1">
-				<Label class="text-muted-foreground text-lg font-normal">{m.age()}</Label>
-				<span class="text-xl font-medium">{user.age}</span>
+				<Label class="text-muted-foreground text-lg font-normal">{m.role()}</Label>
+				<span class="text-xl font-medium">{user.role}</span>
 			</div>
 
 			<div class="flex flex-col gap-1  col-end-2">
@@ -47,7 +46,4 @@
 			</div>
 		</div>
 	</div>
-    {:else}
-    <p>There is no user</p>
-    {/if}
 </section>

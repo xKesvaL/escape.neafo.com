@@ -3,6 +3,9 @@ import { z } from "zod";
 export const userRegisterZodSchema = z.object({
 	email: z.string().email(),
 	password: z.string().min(8),
+	firstname: z.string().optional(),
+	lastname: z.string().optional(),
+	age: z.string(),
 });
 
 export type UserRegister = z.infer<typeof userRegisterZodSchema>;
@@ -13,6 +16,7 @@ export const userZodSchema = z.object({
 	firstname: z.string().optional(),
 	lastname: z.string().optional(),
 	role: z.enum(["user", "admin"]).default("user"),
+	age: z.string(),
 	hashed_password: z.string().optional(),
 });
 

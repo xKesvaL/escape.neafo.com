@@ -4,7 +4,7 @@
 	import { route } from '$lib/ROUTES.js';
 </script>
 
-<section class="container grid-cols-[3fr,2fr] gap-8 overflow-hidden p-8 lg:grid">
+<section class="container grid-cols-[3fr,2fr] gap-16 overflow-hidden p-4 md:p-8 lg:grid">
 	<div class="max-w-screen absolute -left-20 -top-32 -z-10 h-screen w-full blur-3xl overflow-hidden">
 		<div class="bg-primary relative left-[50%] top-[30%] h-[300px] w-[300px] opacity-10"></div>
 		<div class="bg-primary relative right-[20%] top-[20%] h-[300px] w-[300px] opacity-10"></div>
@@ -18,7 +18,7 @@
 		>
 		</enhanced:img>
 	</div>
-	<div class="flex flex-col items-center gap-4 text-center">
+	<div class="flex flex-col items-center gap-6 md:gap-12 text-center">
 		<Tabs.Root value="account">
 			<Tabs.List
 				class="bg-muted/75 h-auto min-w-52 gap-2 p-2 backdrop-blur-xl backdrop-saturate-150"
@@ -37,8 +37,6 @@
 			</Tabs.List>
 		</Tabs.Root>
 
-		<div class="">
-			<slot />
-		</div>
+		<slot />
 	</div>
 </section>
