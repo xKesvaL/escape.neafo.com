@@ -19,7 +19,7 @@
                 {#each conditions as condition}
                 <div class="flex flex-col gap-4">
                     <span id={condition.title} class="text-white font-semibold text-3xl pb-2">{condition.title}</span>
-                    <div class="text-base font-normal"> {condition.description} </div>
+                    <div class="text-base font-normal"> {@html condition.description} </div>
                 </div>
                 {/each}
             </div>

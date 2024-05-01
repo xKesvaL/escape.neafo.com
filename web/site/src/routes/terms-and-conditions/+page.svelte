@@ -6,21 +6,25 @@
     
     const conditions = [
         {
-            title: m.terms_title_condition(),
-            description: m.terms_description_condition()
+            title: m.terms_title_use(),
+            description: m.terms_description_use()
         },
         {
-            title: m.terms_title_collect(),
-            description: m.terms_description_collect()
+            title: m.terms_title_content(),
+            description: m.terms_description_content()
         },
         {
-            title: m.terms_title_property(),
-            description: m.terms_description_property()
+            title: m.terms_title_reservation(),
+            description: m.terms_description_reservation()
         },
 
         {
-            title: m.terms_title_link(),
-            description: m.terms_description_link()
+            title: m.terms_title_limitation(),
+            description: m.terms_description_limitation()
+        },
+        {
+            title: m.terms_title_modification(),
+            description: m.terms_description_modification()
         },
 
 
