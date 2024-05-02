@@ -50,7 +50,7 @@ const PAGES = {
  * SERVERS
  */
 const SERVERS = {
-  
+  "GET /manifest.webmanifest": `/manifest.webmanifest`
 }
 
 /**
@@ -186,7 +186,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 */
 export type KIT_ROUTES = {
   PAGES: { '/': never, '/about': never, '/admin': never, '/admin/escapes': never, '/admin/escapes/[slug]/delete': 'slug', '/admin/escapes/[slug]/edit': 'slug', '/admin/escapes/create': never, '/admin/users': never, '/admin/users/[userId]/edit': 'userId', '/auth/login': never, '/auth/register': never, '/contact': never, '/escapes': never, '/escapes/[slug]': 'slug', '/escapes/[slug]/book': 'slug', '/escapes/[slug]/book/pay': 'slug', '/faq': never, '/jobs': never, '/privacy-policy': never, '/profile': never, '/profile/edit': never, '/teambuilding': never, '/terms-and-conditions': never }
-  SERVERS: Record<string, never>
+  SERVERS: { 'GET /manifest.webmanifest': never }
   ACTIONS: { 'default /admin/escapes/[slug]/edit': 'slug', 'default /admin/escapes/create': never, 'default /admin/users/[userId]/edit': 'userId', 'default /auth/login': never, 'default /auth/register': never, 'default /contact': never, 'default /escapes/[slug]': 'slug', 'default /escapes/[slug]/book': 'slug', 'profile /profile/edit': never, 'password /profile/edit': never, 'default /teambuilding': never }
   LINKS: Record<string, never>
   Params: { slug: never, userId: never }
