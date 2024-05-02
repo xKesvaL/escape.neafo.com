@@ -1,0 +1,196 @@
+<script lang="ts">
+    import type {PageData} from './$types';
+    import {
+        IconAntennaBars5,
+        IconClock,
+        IconDiscount,
+        IconEdit,
+        IconHeart,
+        IconPuzzle,
+        IconShare
+    } from "@tabler/icons-svelte";
+    import {CalendarDate, DateFormatter, getLocalTimeZone, today} from "@internationalized/date";
+    import {Separator} from '$lib/components/ui/separator';
+    import * as m from '$paraglide/messages';
+    import {getI18n} from "$lib/utils/functions";
+    import {TimeSlotDatePicker} from "$lib/components/base/time-slot-date-picker/index.js";
+    import CalendarIcon from "svelte-radix/Calendar.svelte";
+    import {Popover, PopoverContent, PopoverTrigger} from "$lib/components/ui/popover/index.js";
+    import {Button} from "$lib/components/ui/button/index.js";
+    import {cn} from "$lib/utils/ui.js";
+    import {Counter} from "$lib/components/base/counter/index";
+    import {Control, Field, FieldErrors, Label, Button as FormButton} from "$lib/components/ui/form";
+    import {dateProxy, superForm} from "sveltekit-superforms";
+    import {zodClient} from "sveltekit-superforms/adapters";
+    import {bookingZodSchema} from "@repo/schemas/zod";
+    import Form from '$lib/components/base/Form.svelte';
+    import autoAnimate from "@formkit/auto-animate";
+    import {formatPrice} from '@repo/utils';
+    import {languageTag} from "$paraglide/runtime";
+    import {onMount} from "svelte";
+    import Map from "$lib/components/base/Map.svelte";
+    import {Input} from "$lib/components/ui/input";
+    import { route } from '$lib/ROUTES';
+
+    const df = new DateFormatter(languageTag(), {
+        dateStyle: "long"
+    });
+
+    export let data: PageData;
+
+    const { escape, form: dataForm, bookings, user } = data;
+
+    // Form
+    const form = superForm(dataForm, {
+        validators: zodClient(bookingZodSchema),
+    });
+
+    const { form: formData, enhance } = form;
+    const price = Number(escape.price);
+
+    const bookingOptions = {
+        min: 8,
+        max: 18,
+        step: 1,
+        exclude: [12]
+    };
+
+    const timeZone = getLocalTimeZone();
+    const todayDate = today(timeZone);
+    let selectedDate = new CalendarDate(todayDate.year, todayDate.month, todayDate.day);
+    let selectedHour = 8;
+
+    $: isDiscount = $formData.people_number >= 5;
+
+    onMount(() => {
+        selectedHour = Math.round(new Date().getHours() / bookingOptions.step) * bookingOptions.step;
+
+        if (selectedHour < bookingOptions.min) {
+            selectedHour = bookingOptions.min;
+        } else if (selectedHour > bookingOptions.max) {
+            selectedHour = bookingOptions.max;
+        }
+    });
+
+</script>
+
+{#if escape}
+    <img class="w-full h-80 object-cover opacity-50" src={escape.image?.data} alt="escape_image" />
+    <div class="container container-lg grid grid-cols-[12fr,5fr] max-sm:grid-cols-1 gap-8 -translate-y-20 z-10">
+        <div class="flex flex-col bg-card rounded-2xl p-4 gap-8">
+            <img class="w-full h-80 rounded-lg object-cover" src={escape.image?.data} alt="escape_image" style:view-transition-name="escape-img" />
+            <div class="flex flex-col gap-4">
+                <div class="flex flex-row justify-between items-center">
+                    <h1 class="text-3xl font-bold">{escape.name}</h1>
+                    <div class="flex flex-row gap-4">
+                        {#if user?.role === 'admin'}
+                            <a href={route('/admin/escapes/[slug]/edit', { slug: escape.slug })}>
+                                <IconEdit class="text-muted-foreground" stroke="1.5"/>
+                            </a>
+                        {/if}
+<!--                        <IconShare class="text-muted-foreground" stroke="1.5"/>-->
+<!--                        <IconHeart class="text-muted-foreground" stroke="1.5"/>-->
+                    </div>
+                </div>
+                <p>{escape.description}</p>
+            </div>
+            <Separator />
+            <div class="flex flex-col gap-4">
+                <h2 class="font-bold text-xl">{m.escape_details_more()}</h2>
+                <div class="flex flex-row gap-4 max-sm:grid max-sm:grid-cols-4">
+                    <div class="px-4 py-3 bg-muted rounded-lg flex flex-row gap-3 max-sm:col-span-1">
+                        {#each escape.langs as lang}
+                            <p>{lang}</p>
+                        {/each}
+                    </div>
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center max-sm:col-span-3">
+                        <IconPuzzle class="text-primary" stroke="1.5"/>
+                        <p>{m.escape_details_puzzle_difficulty({ difficulty: getI18n(escape.puzzle) })}</p>
+                    </div>
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center max-sm:col-span-2">
+                        <IconAntennaBars5 class="text-primary" stroke="1.5"/>
+                        <p>{m.escape_details_difficulty({ difficulty: getI18n(escape.difficulty) })}</p>
+                    </div>
+                    <div class="px-4 py-3 flex flex-row bg-muted rounded-lg gap-3 items-center max-sm:col-span-2">
+                        <IconClock class="text-primary" stroke="1.5"/>
+                        <p>{m.escape_time({ time: escape.time })}</p>
+                    </div>
+                </div>
+            </div>
+            <Separator />
+            {#if escape.latitude && escape.longitude}
+                <div class="flex flex-col gap-4">
+                    <h2 class="font-bold text-xl">{m.escape_details_location()}</h2>
+                    <Map latitude={escape.latitude} longitude={escape.longitude} />
+                </div>
+            {/if}
+        </div>
+        <div class="flex flex-col gap-4">
+            <div class="bg-card p-4 rounded-2xl flex flex-col gap-4">
+                <p class="text-3xl font-bold">{price}€ <span class="text-xl font-light text-muted-foreground">{m.escape_details_book_person()}</span></p>
+                <Form class="flex flex-col gap-4" method="POST" {enhance} {formData} dev={false}>
+                    <div class="flex flex-col gap-2">
+                        <Field {form} name="date">
+                            <Control let:attrs>
+                                <Label>{m.escape_details_book_date()}</Label>
+                                <Input type="hidden" bind:value={$formData.date} {...attrs} />
+                                <Popover>
+                                    <PopoverTrigger {...attrs} asChild let:builder>
+                                        <Button
+                                                variant="outline"
+                                                class={cn(
+                                            "w-full justify-start text-left font-normal",
+                                            !$formData.date && "text-muted-foreground"
+                                          )}
+                                                builders={[builder]}
+                                        >
+                                            <CalendarIcon class="mr-2 h-4 w-4" />
+                                            {$formData.date ? `${df.format(new Date($formData.date))} - ${selectedHour}h00` : "Pick a date"}
+                                        </Button>
+                                    </PopoverTrigger>
+                                    <PopoverContent class="w-auto p-0 rounded-xl" align="start" sideOffset={8}>
+                                        <TimeSlotDatePicker bind:date={$formData.date} {bookings} bind:selectedDate bind:selectedHour {escape} />
+                                    </PopoverContent>
+                                </Popover>
+                            </Control>
+                            <FieldErrors/>
+                        </Field>
+                        <Field {form} name="people_number">
+                            <Control let:attrs>
+                                <Label>{m.escape_details_book_people()}</Label>
+                                <Counter min={2} {...attrs} bind:value={$formData.people_number}/>
+                            </Control>
+                            <FieldErrors/>
+                        </Field>
+                    </div>
+                    <div class="flex flex-col gap-3 p-3 border-input rounded-lg border" use:autoAnimate>
+                        <p>{m.escape_details_book_charge()}</p>
+                        <div class="flex flex-row justify-between">
+                            <p class="text-muted-foreground">{formatPrice(price)}€ x {$formData.people_number}</p>
+                            <p>{formatPrice(price * $formData.people_number)}€</p>
+                        </div>
+                        {#if isDiscount}
+                            <div class="flex flex-row justify-between">
+                                <p class="text-muted-foreground">{$formData.people_number} {m.escape_details_book_discount()}</p>
+                                <p>-{formatPrice(price * $formData.people_number * 0.10)}€ (10%)</p>
+                            </div>
+                        {/if}
+                        <hr class="h-[2px] bg-muted-foreground opacity-25">
+                        <div class="flex flex-row justify-between">
+                            <p>{m.escape_details_book_taxes()}</p>
+                            <p>{formatPrice((price * $formData.people_number) - (isDiscount ? price * $formData.people_number * 0.10 : 0))}€</p>
+                        </div>
+                    </div>
+                    <FormButton>{m.escape_details_book_submit()}</FormButton>
+                </Form>
+            </div>
+            <div class="flex flex-col gap-3 bg-primary rounded-xl p-4">
+                <div class="flex flex-row gap-2 items-center">
+                    <IconDiscount stroke="1.5"/>
+                    <h2 class="text-lg font-bold">{m.escape_details_book_discount_title()}</h2>
+                </div>
+                <p>{m.escape_details_book_discount_description()}</p>
+            </div>
+        </div>
+    </div>
+{/if}

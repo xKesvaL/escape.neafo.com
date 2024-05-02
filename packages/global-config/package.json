@@ -1,0 +1,10 @@
+{
+	"name": "@repo/global-config",
+	"version": "0.0.1",
+	"exports": {
+		".": "./config.ts"
+	},
+	"dependencies": {
+		"@repo/schemas": "*"
+	}
+}

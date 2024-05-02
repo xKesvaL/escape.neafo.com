@@ -1,0 +1,18 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="40" height="40" viewBox="0 0 64 64" fill="none" stroke="black"
+     stroke-width="2" stroke-linecap="round" stroke-linejoin="round"
+     class="icon icon-tabler icons-tabler-outline icon-tabler-navigation">
+    <defs>
+        <filter id='shadow' color-interpolation-filters="sRGB">
+            <feDropShadow dx="0" dy="0" stdDeviation="1.5" flood-opacity="0.7"/>
+        </filter>
+    </defs>
+    <g filter="url(#shadow)" transform="translate(8, 8)">
+        <ellipse rx="24" ry="24" transform="translate(24 24)" fill="#ffab01" stroke="none"/>
+        <g transform="translate(12 12)" filter="url(#eKPRpI9QNs03-filter)">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"/>
+            <path d="M5 7h1a2 2 0 0 0 2 -2a1 1 0 0 1 1 -1h6a1 1 0 0 1 1 1a2 2 0 0 0 2 2h1a2 2 0 0 1 2 2v9a2 2 0 0 1 -2 2h-14a2 2 0 0 1 -2 -2v-9a2 2 0 0 1 2 -2"/>
+            <path d="M9 13a3 3 0 1 0 6 0a3 3 0 0 0 -6 0"/>
+        </g>
+    </g>
+</svg>
+

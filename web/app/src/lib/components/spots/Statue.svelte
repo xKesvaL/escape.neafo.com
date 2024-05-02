@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/spots/statue.png" alt="statue" />
