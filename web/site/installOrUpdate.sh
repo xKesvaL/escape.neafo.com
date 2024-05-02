@@ -67,6 +67,10 @@ echo "deb [ signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] http://repo.m
 apt update
 apt install -qq mongodb-org
 
+# Usual bug with mongodb installation
+sudo chown -R mongodb:mongodb /var/lib/mongodb
+sudo chown mongodb:mongodb /tmp/mongodb-27017.sock
+
 if [ -d "$INSTALLDIR/escape.neafo.com" ]; then
 	warn ' *** Une installation de SAE401 semble déjà présente ***'
 else
