@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/events/black.png" alt="Mustache" />

@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/events/teeth.png" alt="Teeth" />

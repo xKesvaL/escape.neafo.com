@@ -8,9 +8,13 @@ import * as m from "$paraglide/messages";
 
 import type { ComponentType } from "svelte";
 
-interface Quiz {
-	slug: string;
+export interface Quiz {
+	name: string;
 	questions: QuizQuestion[];
+	location: {
+		latitude: number;
+		longitude: number;
+	};
 }
 
 interface QuizQuestion {
@@ -22,12 +26,17 @@ interface QuizQuestion {
 }
 
 export const centerMulhouseQuiz = {
-	slug: "center-mulhouse",
+	name: "center-mulhouse",
 	questions: [
 		{
 			question: m.center_mulhouse_quiz_question_0(),
 			content: CathedralMulhouse,
-			answers: [m.center_mulhouse_quiz_question_0_0(),m.center_mulhouse_quiz_question_0_1(), m.center_mulhouse_quiz_question_0_2(), m.center_mulhouse_quiz_question_0_3()],
+			answers: [
+				m.center_mulhouse_quiz_question_0_0(),
+				m.center_mulhouse_quiz_question_0_1(),
+				m.center_mulhouse_quiz_question_0_2(),
+				m.center_mulhouse_quiz_question_0_3(),
+			],
 			correctAnswer: m.center_mulhouse_quiz_question_0_0(),
 			hints: [],
 		},
@@ -41,41 +50,70 @@ export const centerMulhouseQuiz = {
 		{
 			question: m.center_mulhouse_quiz_question_2(),
 			content: OldestPharmacy,
-			answers: [m.center_mulhouse_quiz_question_2_0(), m.center_mulhouse_quiz_question_2_1(), m.center_mulhouse_quiz_question_2_2(), m.center_mulhouse_quiz_question_2_3()],
+			answers: [
+				m.center_mulhouse_quiz_question_2_0(),
+				m.center_mulhouse_quiz_question_2_1(),
+				m.center_mulhouse_quiz_question_2_2(),
+				m.center_mulhouse_quiz_question_2_3(),
+			],
 			correctAnswer: m.center_mulhouse_quiz_question_2_0(),
 			hints: [],
 		},
 		{
 			question: m.center_mulhouse_quiz_question_3(),
 			content: TailorBuilding,
-			answers: [m.center_mulhouse_quiz_question_3_0(), m.center_mulhouse_quiz_question_3_1(), m.center_mulhouse_quiz_question_3_2(), m.center_mulhouse_quiz_question_3_3()],
+			answers: [
+				m.center_mulhouse_quiz_question_3_0(),
+				m.center_mulhouse_quiz_question_3_1(),
+				m.center_mulhouse_quiz_question_3_2(),
+				m.center_mulhouse_quiz_question_3_3(),
+			],
 			correctAnswer: m.center_mulhouse_quiz_question_3_0(),
 			hints: [],
 		},
 	],
+	location: {
+		latitude: 47.74688,
+		longitude: 7.3384,
+	},
 } as const satisfies Quiz;
 
 export const fragranceGarden = {
-	slug: "fragrance-garden",
+	name: "fragrance-garden",
 	questions: [
 		{
-			question:m.fragrance_garden_quiz_question_0(),
+			question: m.fragrance_garden_quiz_question_0(),
 			content: FragranceGarden,
-			answers: [m.fragrance_garden_quiz_question_0_0(), m.fragrance_garden_quiz_question_0_1(), m.fragrance_garden_quiz_question_0_2(), m.fragrance_garden_quiz_question_0_3()],
+			answers: [
+				m.fragrance_garden_quiz_question_0_0(),
+				m.fragrance_garden_quiz_question_0_1(),
+				m.fragrance_garden_quiz_question_0_2(),
+				m.fragrance_garden_quiz_question_0_3(),
+			],
 			correctAnswer: m.fragrance_garden_quiz_question_0_2(),
 			hints: [],
 		},
 		{
 			question: m.fragrance_garden_quiz_question_1(),
 			content: RalfBenner,
-			answers: [m.fragrance_garden_quiz_question_1_0(), m.fragrance_garden_quiz_question_1_1(), m.fragrance_garden_quiz_question_1_2(), m.fragrance_garden_quiz_question_1_3()],
+			answers: [
+				m.fragrance_garden_quiz_question_1_0(),
+				m.fragrance_garden_quiz_question_1_1(),
+				m.fragrance_garden_quiz_question_1_2(),
+				m.fragrance_garden_quiz_question_1_3(),
+			],
 			correctAnswer: m.fragrance_garden_quiz_question_1_2(),
 			hints: [],
 		},
 		{
 			question: m.fragrance_garden_quiz_question_2(),
 			content: FragranceGarden1,
-			answers: [m.fragrance_garden_quiz_question_2_0(), m.fragrance_garden_quiz_question_2_1(), m.fragrance_garden_quiz_question_2_2(), m.fragrance_garden_quiz_question_2_3()],
+			answers: [
+				m.fragrance_garden_quiz_question_2_0(),
+				m.fragrance_garden_quiz_question_2_1(),
+				m.fragrance_garden_quiz_question_2_2(),
+				m.fragrance_garden_quiz_question_2_3(),
+			],
 			correctAnswer: m.fragrance_garden_quiz_question_2_0(),
 			hints: [],
 		},
@@ -87,11 +125,12 @@ export const fragranceGarden = {
 			hints: [],
 		},
 	],
+	location: {
+		latitude: 47.747377,
+		longitude: 7.333192,
+	},
 } as const satisfies Quiz;
 
-export const quizzes = {
-	"center-mulhouse": centerMulhouseQuiz,
-	"fragrance-garden":fragranceGarden
-} as const;
+export const quizzes: Quiz[] = [centerMulhouseQuiz, fragranceGarden] as const;
 
 export type QuizKey = keyof typeof quizzes;

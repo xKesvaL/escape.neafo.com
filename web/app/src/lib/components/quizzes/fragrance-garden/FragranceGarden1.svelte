@@ -1,1 +1,1 @@
-<enhanced:img src="$assets/quizz/FragranceGarden1.jpg" alt="Fragrance_garden1"/>
+<enhanced:img src="$assets/quizz/FragranceGarden1.jpg" alt="Fragrance_garden1" class="w-full object-cover rounded-md"/>

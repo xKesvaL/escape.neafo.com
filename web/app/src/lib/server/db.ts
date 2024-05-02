@@ -1,5 +1,10 @@
 import { BRAND } from "$lib/config/brand";
-import { EscapeSchema, SessionSchema, UserSchema } from "@repo/schemas";
+import {
+	EscapeSchema,
+	ImageAlbumSchema,
+	SessionSchema,
+	UserSchema,
+} from "@repo/schemas";
 import { logger } from "@repo/utils";
 import { type Mongoose, connect } from "mongoose";
 
@@ -21,6 +26,7 @@ export const getDatabaseConnection = async (): Promise<Mongoose> => {
 		connection.model("User", UserSchema);
 		connection.model("Session", SessionSchema);
 		connection.model("Escape", EscapeSchema);
+		connection.model("ImageAlbum", ImageAlbumSchema);
 	}
 
 	con = connection;

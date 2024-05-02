@@ -13,6 +13,12 @@ const PAGES = {
   "/home": `/home`,
   "/play": `/play`,
   "/play/album": `/play/album`,
+  "/play/album/new/[slug]": (params: { slug: (string | number) }) => {
+    return `/play/album/new/${params.slug}`
+  },
+  "/play/differences/[slug]": (params: { slug: (string | number) }) => {
+    return `/play/differences/${params.slug}`
+  },
   "/play/quizz/[slug]": (params: { slug: (string | number) }) => {
     return `/play/quizz/${params.slug}`
   },
@@ -30,6 +36,9 @@ const SERVERS = {
  * ACTIONS
  */
 const ACTIONS = {
+  "default /play/album/new/[slug]": (params: { slug: (string | number) }) => {
+    return `/play/album/new/${params.slug}`
+  },
   "default /login": `/login`
 }
 
@@ -140,9 +149,9 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/home': never, '/play': never, '/play/album': never, '/play/quizz/[slug]': 'slug', '/login': never }
+  PAGES: { '/': never, '/home': never, '/play': never, '/play/album': never, '/play/album/new/[slug]': 'slug', '/play/differences/[slug]': 'slug', '/play/quizz/[slug]': 'slug', '/login': never }
   SERVERS: { 'GET /manifest.webmanifest': never }
-  ACTIONS: { 'default /login': never }
+  ACTIONS: { 'default /play/album/new/[slug]': 'slug', 'default /login': never }
   LINKS: Record<string, never>
   Params: { slug: never }
 }

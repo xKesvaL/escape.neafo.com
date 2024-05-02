@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/events/police.png" alt="Police" />
