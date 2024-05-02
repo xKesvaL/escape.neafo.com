@@ -78,10 +78,10 @@
     <img class="w-full h-80 object-cover opacity-50" src={escape.image?.data} alt="escape_image" />
     <div class="container container-lg grid grid-cols-[12fr,5fr] max-sm:grid-cols-1 gap-8 -translate-y-20 z-10">
         <div class="flex flex-col bg-card rounded-2xl p-4 gap-8">
-            <img class="w-full h-80 rounded-lg object-cover" src={escape.image?.data} alt="escape_image" style:view-transition-name="escape-img" />
+            <img class="w-full h-80 rounded-lg object-cover" src={escape.image?.data} alt="escape_image" style:view-transition-name="escape-img-{escape.slug}" />
             <div class="flex flex-col gap-4">
                 <div class="flex flex-row justify-between items-center">
-                    <h1 class="text-3xl font-bold">{escape.name}</h1>
+                    <h1 class="text-3xl font-bold" style:view-transition-name="escape-title-{escape.slug}">{escape.name}</h1>
                     <div class="flex flex-row gap-4">
                         {#if user?.role === 'admin'}
                             <a href={route('/admin/escapes/[slug]/edit', { slug: escape.slug })}>

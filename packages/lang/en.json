@@ -252,7 +252,7 @@
 	"terms_description_modification": "we-escape reserves the right to modify these Terms at any time by posting revised Terms on the Site. Your continued use of the Site following the posting of changes constitutes your acceptance of those changes.",
 	"terms_legal_title": "Terms of use",
 	"terms_legal_update": "Last update 27/03/2024",
-	"h1_home": "Break out of your normal escapes. Go outside.<span class=\"text-primary\">Touch grass.</span>",
+	"h1_home": "Break out of your normal escapes. Go outside. <span class=\"text-primary\">Touch grass.</span>",
 	"hero_home_text": "Where mystery meets the great outdoors, Kaiserstuhl Escape lets you unleash your inner explorer.",
 	"book_your_escape": "Book your escape",
 	"virtual_visit": "Virtual visit",
@@ -378,5 +378,7 @@
 	"new_password": "New password",
 	"confirm_new_password": "Confirm new password",
 	"apply_changes": "Apply changes",
-	"change_password": "Change password"
+	"change_password": "Change password",
+	"page_edit_title": "Edit",
+	"new_": "New"
 }

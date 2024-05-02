@@ -28,11 +28,11 @@
 	] satisfies Array<Steps>;
 </script>
 
-<div class="flex flex-col items-center gap-8">
+<div class="flex flex-col items-center gap-24">
 	<p class="text-muted-foreground max-w-[100ch] text-center">
 		{m.teambuilding_steps_text()}
 	</p>
-	<div class="grid items-center justify-between gap-8 md:grid-cols-2">
+	<div class="grid items-center justify-between gap-12 md:grid-cols-2">
 		{#each steps as step}
 			<div class="flex items-start gap-2">
 				<div class="flex-shrink-0">

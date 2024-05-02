@@ -6,7 +6,7 @@
     export let profile: AboutUsProfile;
 </script>
 
-<div class="p-6 flex flex-col gap-6 border border-primary rounded-lg">
+<div class="p-6 flex flex-col gap-6 border border-primary rounded-lg adventurer-card">
     <div class="flex flex-col gap-1">
         <h1 class="text-2xl font-bold">{profile.name}</h1>
         <div class="flex flex-row gap-2 items-start">
@@ -32,5 +32,10 @@
 <style lang="postcss">
     :global(.occupation span) {
         @apply text-primary;
+    }
+
+    :global(.adventurer-card img),
+    :global(.adventurer-card picture) {
+        @apply max-h-60 object-cover rounded-md;
     }
 </style>

@@ -1,11 +1,17 @@
+import { route } from "$lib/ROUTES";
 import { getDatabaseConnection } from "$lib/server/db";
-import { type User, userEditZodSchema } from "@repo/schemas/zod";
-import { fail } from "@sveltejs/kit";
+import {
+	type User,
+	userAdminEditZodSchema,
+	userEditZodSchema,
+} from "@repo/schemas/zod";
+import { fail, redirect } from "@sveltejs/kit";
 import { superValidate } from "sveltekit-superforms";
 import { zod } from "sveltekit-superforms/adapters";
-import type { Actions, PageServerLoad } from "./$types.js";
+import type { Actions, PageServerLoad } from "./$types";
 
-export const load: PageServerLoad = async ({ params }) => {
+export const load: PageServerLoad = async ({ params, parent }) => {
+	await parent();
 	const userId = params.userId;
 
 	const mongoose = await getDatabaseConnection();
@@ -15,17 +21,23 @@ export const load: PageServerLoad = async ({ params }) => {
 		email: true,
 		firstname: true,
 		lastname: true,
+		age: true,
+		role: true,
 	});
+
+	if (!user) {
+		return redirect(302, route("/admin/users"));
+	}
 
 	return {
 		user: user,
-		form: await superValidate(user, zod(userEditZodSchema)),
+		form: await superValidate(user, zod(userAdminEditZodSchema)),
 	};
 };
 
 export const actions: Actions = {
 	default: async (event) => {
-		const form = await superValidate(event, zod(userEditZodSchema));
+		const form = await superValidate(event, zod(userAdminEditZodSchema));
 
 		if (!form.valid) {
 			return fail(400, {
@@ -34,7 +46,7 @@ export const actions: Actions = {
 		}
 
 		const userId = event.params.userId;
-		const { email, firstname, lastname } = form.data;
+		const { email, firstname, lastname, role, age } = form.data;
 
 		const mongoose = await getDatabaseConnection();
 
@@ -45,24 +57,17 @@ export const actions: Actions = {
 			.exec();
 
 		if (!user) {
-			return fail(400, {
-				error: "No user",
-			});
-		}
-
-		if (await userModel.exists({ email })) {
-			return fail(400, {
-				form,
-				error: "Email already in use",
-			});
+			return redirect(302, route("/admin/users"));
 		}
 
 		user.email = email;
 		user.firstname = firstname;
 		user.lastname = lastname;
+		user.age = age;
+		user.role = role;
 
 		await user.save();
 
-		return true;
+		return redirect(302, route("/admin/users"));
 	},
 };

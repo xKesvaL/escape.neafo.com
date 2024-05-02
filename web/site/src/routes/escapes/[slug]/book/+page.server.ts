@@ -54,23 +54,46 @@ export const actions: Actions = {
 			});
 		}
 
-		const { escape_id, date, people_number } = form.data;
+		const { date, people_number } = form.data;
 
 		const mongoose = await getDatabaseConnection();
-		const bookingModel = mongoose.model<Booking>("Model");
 
-		if (await bookingModel.exists({ escape_id, date })) {
-			return fail(400, {
-				message: "Booking already exists",
+		const escapeModel = mongoose.model<Escape>("Escape");
+		const escape = await escapeModel
+			.findOne({
+				slug: event.params.slug,
+			})
+			.lean();
+
+		if (!escape) {
+			return fail(404, {
+				slug: event.params.slug,
 			});
 		}
 
-		const booking = await bookingModel.create({
-			escape_id,
-			date,
-			people_number,
+		const bookingModel = mongoose.model<Booking>("Booking");
+		const booking = await bookingModel.findOne({
+			user_id: event.locals.user?.id,
+			escape_id: escape._id,
 		});
 
+		if (!booking) {
+			return fail(404, {
+				slug: event.params.slug,
+			});
+		}
+
+		booking.people_number = people_number;
+		booking.date = date;
+		booking.draft = false;
+
 		await booking.save();
+
+		return redirect(
+			302,
+			route("/escapes/[slug]/book/pay", {
+				slug: event.params.slug,
+			}),
+		);
 	},
 };

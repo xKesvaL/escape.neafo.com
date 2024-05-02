@@ -3,6 +3,7 @@ import type { Review } from "$lib/utils/types";
 import Avatar from "$assets/home/review/Avatar.svelte";
 import * as m from "$paraglide/messages";
 import Star from "$assets/home/review/Star.svelte";
+import { IconStar } from "@tabler/icons-svelte";
 
 const reviews = [
 	{
@@ -38,11 +39,13 @@ const reviews = [
 	{#each reviews as review}
 		<div class="bg-muted flex flex-col gap-4 p-4 border-2 border-primary rounded-2xl w-full ">
 			<div class="flex flex-row justify-between">
-				<div class="flex flex-row gap-1 items-center">
-				{#each Array(review.stars) as _}
-					<Star/>
-				{/each}
-			</div>
+				<div class="flex flex-row gap-1 items-center text-primary">
+					{#each Array(5) as _, i}
+						<IconStar
+								fill={review.stars > i ? "currentColor" : "none"}
+						/>
+					{/each}
+				</div>
 				<enhanced:img src="$assets/auth/google_logo.svg" alt="google_logo">
 			</div>
 			<div class="flex flex-col gap-1">

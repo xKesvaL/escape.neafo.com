@@ -17,7 +17,7 @@ const crumbs = ["home", ...$page.url.pathname.split("/").filter(Boolean)];
 </script>
 
 <!-- Height is 100dvh minus header -->
-<aside class="px-4 py-5 top-20 bg-card fixed h-[calc(100dvh-5rem)] w-60 border-r flex flex-col gap-2 z-10 max-sm:hidden">
+<aside class="px-4 py-5 top-20 bg-card fixed h-[calc(100dvh-5rem)] w-60 border-r flex flex-col gap-2 z-10 max-lg:hidden">
     <MenuButton
             href={route('/admin/users')}
             icon={IconUsers}
@@ -25,7 +25,7 @@ const crumbs = ["home", ...$page.url.pathname.split("/").filter(Boolean)];
         {m.page_aside_users_title()}
     </MenuButton>
     <MenuButton
-            href={route('/admin/escapes/create')}
+            href={route('/admin/escapes')}
             icon={IconPuzzle}
     >
         {m.page_aside_escapes_title()}

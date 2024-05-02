@@ -8,14 +8,21 @@ import {
 	TableHeader,
 	TableRow,
 } from "$lib/components/ui/table";
+import * as m from '$paraglide/messages';
+import {Button} from "$lib/components/ui/button";
+import {IconEdit} from "@tabler/icons-svelte";
+import { route } from "$lib/ROUTES";
 
 export let users: User[] = [];
 
 const HEADERS: {
 	[key in keyof (typeof users)[number]]?: string;
 } = {
-	_id: "id",
-	email: "email",
+	_id: "Id",
+	email: m.email(),
+    firstname: m.firstname(),
+    lastname: m.lastname(),
+    role: m.role(),
 } as const;
 </script>
 
@@ -28,6 +35,7 @@ const HEADERS: {
                         {value}
                     </TableHead>
                 {/each}
+                <TableHead />
             </TableRow>
         </TableHeader>
         <TableBody>
@@ -38,6 +46,11 @@ const HEADERS: {
                             {user[key]}
                         </TableCell>
                     {/each}
+                    <TableCell>
+                        <Button size="icon" variant="ghost" href={route("/admin/users/[userId]/edit", { userId: user._id })}>
+                            <IconEdit />
+                        </Button>
+                    </TableCell>
                 </TableRow>
             {/each}
         </TableBody>

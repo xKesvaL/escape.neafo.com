@@ -10,6 +10,7 @@ import { Input } from "$lib/components/ui/input";
 import { userEditZodSchema } from "@repo/schemas/zod";
 import { superForm } from "sveltekit-superforms";
 import { zodClient } from "sveltekit-superforms/adapters";
+import * as m from "$paraglide/messages";
 
 export let data;
 
@@ -23,33 +24,46 @@ const { form: formData, enhance } = form;
 </script>
 
 <section class="container">
-    {#if user}
     <form method="POST" use:enhance>
-        <Field {form} name="email">
-            <Control let:attrs>
-                <Label>Email</Label>
-                <Input {...attrs} bind:value={$formData.email} />
-            </Control>
-            <FieldErrors/>
-        </Field>
-        <Field {form} name="firstname">
-            <Control let:attrs>
-                <Label>firstname</Label>
-                <Input {...attrs} bind:value={$formData.firstname} />
-            </Control>
-            <FieldErrors/>
-        </Field>
-        <Field {form} name="lastname">
-            <Control let:attrs>
-                <Label>lastname</Label>
-                <Input {...attrs} bind:value={$formData.lastname} />
-            </Control>
-            <FieldErrors/>
-        </Field>
+        <div class="flex lg:flex-row gap-4">
+            <Field {form} name="email" class="flex-1">
+                <Control let:attrs>
+                    <Label>{m.email()}</Label>
+                    <Input {...attrs} bind:value={$formData.email} />
+                </Control>
+                <FieldErrors/>
+            </Field>
+            <Field {form} name="firstname" class="flex-1">
+                <Control let:attrs>
+                    <Label>{m.firstname()}</Label>
+                    <Input {...attrs} bind:value={$formData.firstname} />
+                </Control>
+                <FieldErrors/>
+            </Field>
+            <Field {form} name="lastname" class="flex-1">
+                <Control let:attrs>
+                    <Label>{m.lastname()}</Label>
+                    <Input {...attrs} bind:value={$formData.lastname} />
+                </Control>
+                <FieldErrors/>
+            </Field>
+        </div>
+        <div class="flex lg:flex-row gap-4">
+            <Field {form} name="role" class="flex-1">
+                <Control let:attrs>
+                    <Label>{m.role()}</Label>
+                    <Input {...attrs} bind:value={$formData.role} />
+                </Control>
+                <FieldErrors/>
+            </Field>
+            <Field {form} name="age" class="flex-1">
+                <Control let:attrs>
+                    <Label>{m.age()}</Label>
+                    <Input {...attrs} bind:value={$formData.age} />
+                </Control>
+                <FieldErrors/>
+            </Field>
+        </div>
         <Button>Submit</Button>
     </form>
-
-    {:else}
-    <p>Y'a pas d'utilisateur fait pas chier</p>
-    {/if}
 </section>

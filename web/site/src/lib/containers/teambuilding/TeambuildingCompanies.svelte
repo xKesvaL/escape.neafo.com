@@ -3,7 +3,7 @@
 </script>
 
 
-<div class="flex flex-col items-center gap-8">
+<div class="flex flex-col items-center gap-12 py-12 md:py-24">
     <h3 class="text-3xl font-semibold">
        {m.teambuilding_company()}
     </h3>

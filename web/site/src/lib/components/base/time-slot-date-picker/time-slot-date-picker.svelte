@@ -40,19 +40,23 @@
         date = tempDate.toISOString();
     }
 
-    // get fully booked dates (whole days only) to disable in calendar
-    // we generate an object with booking dates as keys and values as the number of bookings for that date
-    const fullyBookedDates = bookings.reduce((acc, booking) => {
+
+    const bookingsByDate = bookings.reduce((acc, booking) => {
         const bookingDate = new Date(booking.date);
-        bookingDate.setHours(0, 0, 0, 0);
-        acc[bookingDate.toISOString()] = (acc[bookingDate.toISOString()] || 0) + 1;
+        bookingDate.setUTCHours(0, 0, 0, 0);
+        console.log(bookingDate);
+        acc[bookingDate.toISOString()] = acc[bookingDate.toISOString()] || [];
+        acc[bookingDate.toISOString()].push(new Date(booking.date));
         return acc;
     }, {});
 
     // filter out dates with more bookings than available hours
-    const disabledDates = Object.entries(fullyBookedDates)
-        .filter(([_, bookings]) => bookings >= bookingButtons.length)
+    const disabledDates = Object.entries(bookingsByDate)
+        .filter(([_, bookings]) => bookings.length >= bookingButtons.length)
         .map(([date]) => new Date(date));
+
+
+    console.log(bookingsByDate);
 
 </script>
 
@@ -60,7 +64,15 @@
 <Separator class="w-[calc(100%-24px)] mx-auto" />
 <div class="p-3 grid grid-cols-2 gap-2">
     {#each bookingButtons as hour}
+        {@const currentDay = new Date(new Date(date).setUTCHours(0, 0, 0, 0)).toISOString()}
         <!--disable button if hour with date is in bookings -->
-        <Button class="p-2 border rounded-lg hover:border-primary {selectedHour === hour ? 'bg-primary text-primary-foreground hover:bg-primary' : ''}" variant="ghost" on:click={() => { selectedHour = hour }}>{hour}:00</Button>
+        <Button
+            class="p-2 border rounded-lg hover:border-primary {selectedHour === hour ? 'bg-primary text-primary-foreground hover:bg-primary' : ''}"
+            variant="ghost"
+            on:click={() => { selectedHour = hour }}
+            disabled={bookingsByDate[currentDay]?.find(date => date.getHours() === hour)}
+        >
+            {hour}:00
+        </Button>
     {/each}
 </div>

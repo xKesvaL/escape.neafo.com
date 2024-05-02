@@ -131,7 +131,7 @@
      </div>
     <div class="flex flex-col gap-4 ">
         <h1 class="text-4xl font-bold">{@html m.about_adventurers_title()}</h1>
-        <div class="grid grid-cols-4 gap-10 max-sm:grid-cols-1">
+        <div class="grid gap-10 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {#each profiles as profile}
                 <AdventurerCard {profile}/>
             {/each}

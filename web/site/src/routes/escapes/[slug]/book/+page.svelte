@@ -35,7 +35,7 @@
     // Form
     const form = superForm(dataForm, {
         validators: zodClient(bookingZodSchema),
-    });
+    });Form
 
     const { form: formData, enhance } = form;
     const price = Number(escape.price);
@@ -228,6 +228,9 @@
                             {formatPrice(totalPriceWithTaxes)}€
                         </p>
                     </div>
+                    <FormButton>
+                        Book
+                    </FormButton>
                 </div>
             </div>
         </div>

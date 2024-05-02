@@ -67,6 +67,7 @@
         bind:value
         bind:placeholder
         preventDeselect={true}
+        isDateUnavailable={(date) => disabledDates.some((d) => dateEqualityByDayMonthYear(d, date.toDate(getLocalTimeZone())))}
 >
     <Calendar.Header class="pt-0">
         <Calendar.Heading class="flex w-full items-center justify-between gap-2">
@@ -128,11 +129,11 @@
                     {#each month.weeks as weekDates}
                         <Calendar.GridRow class="mt-2 w-full">
                             {#each weekDates as date}
-                                {#if disabledDates.some((d) => dateEqualityByDayMonthYear(d, date.toDate(getLocalTimeZone())))}
-                                    {date}
-                                {/if}
                                 <Calendar.Cell {date} >
-                                    <Calendar.Day {date} month={month.value} />
+                                    <Calendar.Day
+                                            {date}
+                                            month={month.value}
+                                    />
                                 </Calendar.Cell>
                             {/each}
                         </Calendar.GridRow>

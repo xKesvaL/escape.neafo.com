@@ -106,7 +106,7 @@ $: currentRoute = i18n.route($page.url.pathname);
                             {m.page_aside_users_title()}
                         </HeaderMenuButton>
                         <HeaderMenuButton
-                                href={route('/admin/escapes/create')}
+                                href={route('/admin/escapes')}
                                 icon={IconPuzzle}
                                 startsWith={true}
                         >

@@ -6,6 +6,6 @@ export let data;
 const users = data.users;
 </script>
 
-<section class="container">
+<section class="container py-12 md:py-24">
     <UsersDataTable {users}/>
 </section>

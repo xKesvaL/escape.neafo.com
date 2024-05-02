@@ -24,20 +24,14 @@
 </script>
 
 <section class="container flex flex-col items-center gap-24">
-	<div class="hero flex flex-col-reverse items-center justify-between gap-4 md:flex-row">
+	<div class="hero flex flex-col-reverse items-center justify-between py-12 md:py-24 gap-12 md:flex-row">
 		<div class="left flex flex-col justify-between gap-6">
-			<h1 class="text-4xl font-extrabold leading-tight md:text-5xl">
-				<div class="parent">
-					{@html m.h1_teambuilding()}
-					<span class="enfant"> </span>
-				</div>
+			<h1 class="text-4xl font-extrabold !leading-tight md:text-5xl parent">
+				{@html m.h1_teambuilding()}
 			</h1>
 
-			<h3 class="text-2xl">
-				<div class="parent">
-					{@html m.need_teambuilding()}
-					<span class="enfant"> </span>
-				</div>
+			<h3 class="text-2xl parent">
+				{@html m.need_teambuilding()}
 			</h3>
 
 			<div class="flex flex-row gap-4">
@@ -57,22 +51,16 @@
 	</div>
 
 	<div class="flex flex-col items-center gap-4">
-		<h2 class="text-center text-3xl font-semibold">
-			<div class="parent">
-				{@html m.teambuilding_argument()}
-				<span class="enfant"> </span>
-			</div>
+		<h2 class="text-center text-3xl font-semibold parent">
+			{@html m.teambuilding_argument()}
 		</h2>
 
 		<StepContainer />
 	</div>
 
 	<div class="flex w-full flex-col items-center gap-8">
-		<h3 class="text-3xl font-semibold">
-			<div class="parent">
-				{@html m.typical_teambuilding_day()}
-				<span class="enfant"> </span>
-			</div>
+		<h3 class="text-3xl font-semibold parent">
+			{@html m.typical_teambuilding_day()}
 		</h3>
 
 		<div class="h-[200px] w-full md:h-[550px]">
@@ -92,12 +80,9 @@
 	<ArgumentaryTeambuilding />
 
 	<div class="flex w-full flex-col gap-6">
-		<div>
-			<h3 class="text-3xl font-semibold">
-				<div class="parent">
-					{@html m.teambuilding_join_us()}
-					<span class="enfant"> </span>
-				</div>
+		<div class="flex flex-col gap-2">
+			<h3 class="text-3xl font-semibold parent">
+				{@html m.teambuilding_join_us()}
 			</h3>
 			<p class="text-xl">{m.get_in_touch()}</p>
 		</div>

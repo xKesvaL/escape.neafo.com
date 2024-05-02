@@ -30,6 +30,13 @@ export const userEditZodSchema = userZodSchema.omit({
 
 export type UserEdit = z.infer<typeof userZodSchema>;
 
+export const userAdminEditZodSchema = userZodSchema.omit({
+	_id: true,
+	hashed_password: true,
+});
+
+export type UserAdminEdit = z.infer<typeof userAdminEditZodSchema>;
+
 export const userPasswordZodSchema = z.object({
 	current_password: z.string().min(8),
 	new_password: z.string().min(8),

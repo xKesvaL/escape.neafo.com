@@ -73,7 +73,7 @@ export const actions: Actions = {
 					)}&postcode=${postal_code}&limit=1&autocomplete=0`,
 				)
 			).json()
-		).features[0].geometry.coordinates as [number, number];
+		)?.features?.[0]?.geometry?.coordinates as [number, number];
 
 		const [lng, lat] = geolocation;
 
