@@ -7,12 +7,12 @@ import {
 } from "$lib/components/ui/popover/index";
 import { Button } from "$lib/components/ui/button/index";
 import {
-	IconMenu2,
-	IconServerCog,
-	IconUser,
-	IconUserCog,
+    IconMenu2,
+    IconServerCog,
+    IconUser,
+    IconUserCog,
     IconUsers,
-    IconPuzzle
+    IconPuzzle, IconHome
 } from "@tabler/icons-svelte";
 import * as m from "$paraglide/messages";
 import { BRAND } from "$lib/config/brand";
@@ -20,6 +20,7 @@ import { Separator } from "$lib/components/ui/separator/index";
 import HeaderMenuButton from "$lib/components/base/MenuButton.svelte";
 import { page } from '$app/stores';
 import {i18n} from "$lib/config/i18n";
+import { availableLanguageTags, languageTag } from "$paraglide/runtime.js";
 
 $: currentRoute = i18n.route($page.url.pathname);
 </script>
@@ -61,22 +62,38 @@ $: currentRoute = i18n.route($page.url.pathname);
                         <HeaderMenuButton
                                 href={route('/')}
                                 startsWith={true}
+                                icon={IconHome}
                         >
                             {m.home()}
                         </HeaderMenuButton>
                         <HeaderMenuButton
                                 href={route('/escapes')}
                                 startsWith={true}
+                                icon={IconPuzzle}
                         >
                             Escapes Games
                         </HeaderMenuButton>
                         <HeaderMenuButton
                                 href={route('/teambuilding')}
                                 startsWith={true}
+                                icon={IconUsers}
                         >
                             Teambuilding
                         </HeaderMenuButton>
                         <Separator/>
+                    </div>
+                    <div class="flex gap-4">
+                        {#each availableLanguageTags as lang}
+                            <!-- the hreflang attribute decides which language the link points to -->
+                            <a
+                                    href={i18n.route($page.url.pathname)}
+                                    hreflang={lang}
+                                    aria-current={lang === languageTag() ? "page" : undefined}
+                                    class="w-full h-10 bg-muted/25 rounded transition flex justify-center items-center hover:bg-muted"
+                            >
+                                {lang.toUpperCase()}
+                            </a>
+                        {/each}
                     </div>
                     <HeaderMenuButton
                             href={route('/profile')}
