@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/spots/street-art-teutonique.png" alt="street-art-teutonique" />

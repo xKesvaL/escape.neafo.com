@@ -5,6 +5,7 @@ import type {
 	ContactTeamBuilding,
 	CustomImage,
 	Escape,
+	ImageAlbum,
 	User,
 } from "./zod";
 
@@ -18,10 +19,6 @@ export const UserSchema = new Schema<User>(
 			type: String,
 			required: true,
 			index: true,
-		},
-		age: {
-			type: Number,
-			required: true,
 		},
 		firstname: {
 			type: String,
@@ -277,6 +274,34 @@ export const BookingSchema = new Schema<Booking>(
 			default: true,
 		},
 		date: {
+			type: String,
+			required: true,
+		},
+	},
+	{
+		_id: false,
+		timestamps: {
+			createdAt: "created_at",
+			updatedAt: "updated_at",
+		},
+	},
+);
+
+export const ImageAlbumSchema = new Schema<ImageAlbum>(
+	{
+		_id: {
+			type: String,
+			required: true,
+		},
+		name: {
+			type: String,
+			required: true,
+		},
+		user_id: {
+			type: String,
+			required: true,
+		},
+		image: {
 			type: String,
 			required: true,
 		},

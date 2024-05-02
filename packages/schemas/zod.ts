@@ -122,3 +122,12 @@ export const bookingZodSchema = z.object({
 });
 
 export type Booking = z.infer<typeof bookingZodSchema>;
+
+export const imageAlbumZodSchema = z.object({
+	_id: z.string(),
+	name: z.string(),
+	user_id: z.string(),
+	image: z.string(),
+});
+
+export type ImageAlbum = z.infer<typeof imageAlbumZodSchema>;

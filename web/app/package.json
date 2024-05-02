@@ -17,6 +17,7 @@
 		"@inlang/paraglide-sveltekit": "^0.6.7",
 		"@internationalized/date": "^3.5.2",
 		"@sveltejs/adapter-auto": "^3.1.1",
+		"@sveltejs/adapter-node": "^5.0.1",
 		"@sveltejs/kit": "^2.5.5",
 		"@sveltejs/vite-plugin-svelte": "^3.0.2",
 		"@total-typescript/ts-reset": "^0.5.1",
@@ -68,7 +69,9 @@
 		"postcss-import": "^16.1.0",
 		"@formkit/auto-animate": "^0.8.2",
 		"svelte-radix": "^1.1.0",
-		"ol": "^9.1.0"
+		"ol": "^9.1.0",
+		"@neoconfetti/svelte": "^2.2.1",
+		"browser-image-compression": "^2.0.2"
 	},
 	"dependencies": {
 		"lucide-svelte": "0.364.0"

@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/spots/hotel-de-ville.png" alt="hotel-de-ville" />

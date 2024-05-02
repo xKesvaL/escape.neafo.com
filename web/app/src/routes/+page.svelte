@@ -24,7 +24,7 @@ import { ALLOW_GUESTS_APP } from "@repo/global-config";
 
     <div class="flex flex-col gap-4">
         {#if ALLOW_GUESTS_APP}
-            <Button class="rounded-full w-full" href={route('/home')}>
+            <Button class="rounded-full w-full" href={route('/play')}>
                 Login as Guest (MMI)
             </Button>
         {:else}

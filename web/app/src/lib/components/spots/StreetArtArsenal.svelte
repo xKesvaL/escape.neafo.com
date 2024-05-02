@@ -1,0 +1,1 @@
+<enhanced:img src="$assets/spots/street-art-arsenal.png" alt="street-art-arsenal" />
