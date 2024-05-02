@@ -16,6 +16,9 @@ const config = {
 			$paraglide: "./src/paraglide",
 			$assets: "./src/assets",
 		},
+		csrf: {
+			checkOrigin: false,
+		},
 	},
 };
 
