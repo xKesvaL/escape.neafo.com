@@ -21,8 +21,8 @@
 					{m.hero_home_text()}
 				</p>
 				<div class="flex flex-row gap-4">
-					<Button class="rounded-full">{m.book_your_escape()}</Button>
-					<Button class="rounded-full" variant="secondary">{m.virtual_visit()}</Button>
+					<Button class="rounded-full" href="/escapes">{m.book_your_escape()}</Button>
+					<Button class="rounded-full" variant="secondary" href="/teambuilding">Teambuilding</Button>
 				</div>
 			</div>
 		</div>
