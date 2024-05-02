@@ -87,6 +87,7 @@
         });
 
         stats.addSpots(slug);
+        stats.addPoints(100);
 
         await goto(route("/play/album"));
     };

@@ -16,7 +16,10 @@ export const getDatabaseConnection = async (): Promise<Mongoose> => {
 	}
 
 	const connection = await connect("mongodb://localhost:27017", {
+		// appName: "SAE4",
 		appName: `${BRAND.logName}/app`,
+		// retryWrites: true,
+		// w: "majority",
 		dbName: `${BRAND.logName}-web`,
 	});
 

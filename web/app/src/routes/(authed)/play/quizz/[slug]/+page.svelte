@@ -36,7 +36,7 @@
         if (selectedAnswer && question) {
 
             if (selectedAnswer === question.correctAnswer) {
-                stats.addPoints(100);
+                stats.addPoints(50);
             }
 
             nextQuestionTimeout = setTimeout(() => {

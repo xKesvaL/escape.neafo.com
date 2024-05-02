@@ -10,6 +10,7 @@
  */
 const PAGES = {
   "/": `/`,
+  "/games": `/games`,
   "/home": `/home`,
   "/play": `/play`,
   "/play/album": `/play/album`,
@@ -149,7 +150,7 @@ export function route<T extends keyof AllTypes>(key: T, ...params: any[]): strin
 * ```
 */
 export type KIT_ROUTES = {
-  PAGES: { '/': never, '/home': never, '/play': never, '/play/album': never, '/play/album/new/[slug]': 'slug', '/play/differences/[slug]': 'slug', '/play/quizz/[slug]': 'slug', '/login': never }
+  PAGES: { '/': never, '/games': never, '/home': never, '/play': never, '/play/album': never, '/play/album/new/[slug]': 'slug', '/play/differences/[slug]': 'slug', '/play/quizz/[slug]': 'slug', '/login': never }
   SERVERS: { 'GET /manifest.webmanifest': never }
   ACTIONS: { 'default /play/album/new/[slug]': 'slug', 'default /login': never }
   LINKS: Record<string, never>
